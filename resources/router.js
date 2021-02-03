@@ -4,16 +4,23 @@ import DashboardLayout from './layout/DashboardLayout'
 // import AuthLayout from './layout/AuthLayout'
 import UserProfile from "@/views/User/UserProfile.vue";
 import ListUserPage from "@/views/User/UserManagement/ListUserPage.vue";
+
 import EditCourse from "@/views/Course/EditCourse.vue";
 import ListCourse from "@/views/Course/Course.vue";
 import FavoriteCourses from "@/views/Course/FavoriteCourses.vue";
 import KeywordSearch from "@/views/Course/KeywordSearch.vue";
 import RankCourse from "@/views/Course/RankCourse.vue";
 import ReviewCourse from "@/views/Course/ReviewCourse.vue";
+
 import ListCategory from "@/views/Category/Category.vue";
+import ActionCategory from "@/views/Category/ActionCategory.vue";
+
 import ListCustomer from "@/views/Customer/Customer.vue";
+
 import ListNew from "@/views/New/New.vue";
+
 import ListOrder from "@/views/Order/Order.vue";
+
 import ListTeacher from "@/views/Teacher/Teacher.vue";
 Vue.use(Router)
 
@@ -45,6 +52,7 @@ export default new Router({
       component: DashboardLayout,
       children:[
         { path: "list-category",name: "List Category",components: { default: ListCategory }},
+        { path: "add-category",name: "Add Category",components: { default: ActionCategory }},
       ]
     },
     {

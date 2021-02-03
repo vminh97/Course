@@ -40,6 +40,11 @@
               :link="{  name: 'List Teacher', path: '/teacher/list-teacher',}"           
             />
         </sidebar-item>
+        <sidebar-item :link="{name: 'Category',icon: 'ni ni-circle-08 text-red',path:''}">
+           <sidebar-item
+              :link="{  name: 'List Category', path: '/category/list-category',}"           
+            />
+        </sidebar-item>
         <sidebar-item :link="{name: 'Customer',icon: 'ni ni-hat-3 text-red',path:''}">
            <sidebar-item
               :link="{  name: 'List Customer', path: '/customer/list-customer',}"           
@@ -95,5 +100,5 @@
     }
   };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 </style>

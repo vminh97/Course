@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -13,7 +14,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        try
+        {
+            $items = Category::all();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -21,6 +30,18 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function listcategorydad()
+    {
+        try
+        {
+            $items = Category::select('*')->where('order_number','1')->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
     public function create()
     {
         //
@@ -32,9 +53,35 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        try {
+        $this->validate($request, [
+            'namecategory' => 'required|min:5',
+            'displaycategory' => 'required|numeric|gt:0',
+            'categorymain' => 'required|min:5',
+            'order_number' => 'required|numeric|gt:0',
+        ]);
+        
+    
+        $category = Category::find($id);
+        $category->Name = $request->input('namecategory');
+        $category->nameDisplay = $request->input('displaycategory');
+        $category->parent_id=$request->input('categorymain');
+        $category->category_status = $request->input('categorymain');
+        $category->order_number = $request->input('order_number');
+        $category->slug_url = $request->input('slug_url');
+        
+        $category->save();
+    
+        return response([
+            'category' => $category
+        ], 200);
+        }
+        catch (\Exception $e) {
+            //return error message
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -56,7 +103,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
     }
 
     /**
@@ -68,7 +116,34 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $this->validate($request, [
+                'namecategory' => 'required|min:5',
+                'displaycategory' => 'required|numeric|gt:0',
+                'categorymain' => 'required|min:5',
+                'order_number' => 'required|numeric|gt:0',
+            ]);
+            
+        
+            $category = Category::find($id);
+            $category->Name = $request->input('namecategory');
+            $category->nameDisplay = $request->input('displaycategory');
+            $category->parent_id=$request->input('categorymain');
+            $category->category_status = $request->input('categorymain');
+            $category->order_number = $request->input('order_number');
+            $category->slug_url = $request->input('slug_url');
+            
+            $category->save();
+        
+            return response([
+                'category' => $category
+            ], 200);
+        }
+        catch (\Exception $e) {
+                //return error message
+                return $e->getMessage();
+        }
+
     }
 
     /**
@@ -79,6 +154,17 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $category = Category::find($id);
+            $category->delete();
+    
+          return response()->json('Successfully Deleted');
+        }
+        catch (\Exception $e) {
+            //return error message
+            return $e->getMessage();
+        }
+
+
     }
 }

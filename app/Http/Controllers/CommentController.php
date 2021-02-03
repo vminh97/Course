@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Egulias\EmailValidator\Warning\Comment;
 use Illuminate\Http\Request;
 use Illuminate\support\Facades\DB;
-use App\Model\News;
-class NewController extends Controller
+use App\Model\Comments;
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +16,15 @@ class NewController extends Controller
     public function index()
     {
         try{
-            $news = DB::table('news')->join('users', 'news.user_id', '=', 'users.id')
-            ->join('category','news.category_id','=','category.id')->get();
-            return response()->json($news);   
+            $comments = DB::table('comments')->join('customers', 'comments.customer_id', '=', 'customers.id')
+            ->join('products','comments.product_id','=','products.id')->get();
+            return response()->json($comments);   
         }
         catch (\Exception $e) {
             //return error message
             return response()->json(['message' => 'response failed!'], 500);
         }
+
     }
 
     /**
@@ -45,32 +47,29 @@ class NewController extends Controller
     {
         try{
             $this->validate($request, [
-                'title_news' => 'required|min:5',
-                'description_news' => 'required',
-                'content_news' => 'required',
-                'user_id' => 'required',
-                'editer_by' => 'required',
+                'customer_id' => 'required|min:5',
+                'customers_code' => 'required',
+                'customers_name' => 'required',
+                'content_comment' => 'required',
+                'star_comment' => 'required',
+                'comment_image' => 'required',
                 'status' => 'required',
-                'news_Date' => 'required',
-                'news_image'=>'required',
-                'category_id'=>'required'
+                'isPublic'=>'required'
             ]);
         
-            $news = News::find($id);
-            $news->title_news = $request->input('title_news');
-            $news->description_news = $request->input('description_news');
-            $news->content_news=$request->input('content_news');
-            $news->editer_by = $request->input('editer_by');
-            $news->user_id = $request->input('user_id');
-            $news->status=$request->input('status');
-            $news->news_Date = $request->input('news_Date');
-            $news->news_image=$request->input('news_image');
-            $news->category_id = $request->input('category_id');
+            $comment = Comments::find($id);
+            $comment->customer_id = $request->input('customer_id');
+            $comment->customers_code = $request->input('customers_code');
+            $comment->customers_name=$request->input('customers_name');
+            $comment->content_comment = $request->input('content_comment');
+            $comment->comment_image = $request->input('comment_image');
+            $comment->status=$request->input('status');
+            $comment->isPublic = $request->input('isPublic');
             
-            $news->save();
+            $comment->save();
         
             return response([
-                'news' => $news
+                'comment' => $comment
             ], 200);
         }
         catch (\Exception $e) {
@@ -112,32 +111,29 @@ class NewController extends Controller
     {
         try{
             $this->validate($request, [
-                'title_news' => 'required|min:5',
-                'description_news' => 'required',
-                'content_news' => 'required',
-                'user_id' => 'required',
-                'editer_by' => 'required',
+                'customer_id' => 'required|min:5',
+                'customers_code' => 'required',
+                'customers_name' => 'required',
+                'content_comment' => 'required',
+                'star_comment' => 'required',
+                'comment_image' => 'required',
                 'status' => 'required',
-                'news_Date' => 'required',
-                'news_image'=>'required',
-                'category_id'=>'required'
+                'isPublic'=>'required'
             ]);
         
-            $news = News::find($id);
-            $news->title_news = $request->input('title_news');
-            $news->description_news = $request->input('description_news');
-            $news->content_news=$request->input('content_news');
-            $news->editer_by = $request->input('editer_by');
-            $news->user_id = $request->input('user_id');
-            $news->status=$request->input('status');
-            $news->news_Date = $request->input('news_Date');
-            $news->news_image=$request->input('news_image');
-            $news->category_id = $request->input('category_id');
+            $comment = Comments::find($id);
+            $comment->customer_id = $request->input('customer_id');
+            $comment->customers_code = $request->input('customers_code');
+            $comment->customers_name=$request->input('customers_name');
+            $comment->content_comment = $request->input('content_comment');
+            $comment->comment_image = $request->input('comment_image');
+            $comment->status=$request->input('status');
+            $comment->isPublic = $request->input('isPublic');
             
-            $news->save();
+            $comment->save();
         
             return response([
-                'news' => $news
+                'comment' => $comment
             ], 200);
         }
         catch (\Exception $e) {
@@ -155,8 +151,8 @@ class NewController extends Controller
     public function destroy($id)
     {
         try{
-            $news = News::find($id);
-            $news->delete();
+            $comment = Comments::find($id);
+            $comment->delete();
     
           return response()->json('Successfully Deleted');
         }

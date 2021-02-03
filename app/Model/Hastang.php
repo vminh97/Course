@@ -4,13 +4,13 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Hastang extends Model
 {
     protected $table = 'category';
     /**
      * Get the phone record associated with the user.
      */
-    protected $fillable = ['order_number','Name','name_Display','isDiplay','slug_url','category_status','parent_id'];
+    protected $fillable = ['hastang_code','hastang_title','status','start_date','end_date','isDisplay','keyword','description','show_order'];
 
     
 }

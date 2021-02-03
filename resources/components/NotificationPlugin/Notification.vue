@@ -168,7 +168,7 @@
     }
   };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .notifications .alert {
     position: fixed;
     z-index: 10000;

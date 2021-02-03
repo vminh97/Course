@@ -14,6 +14,7 @@
     "bootstrap-vue": "2.15.0",
     "chart.js": "2.9.3",
     "core-js": "3.6.5",
+    "element-ui": "^2.15.0",
     "flatpickr": "4.6.3",
     "nouislider": "14.6.0",
     "register-service-worker": "1.7.1",

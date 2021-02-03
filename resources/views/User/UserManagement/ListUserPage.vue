@@ -10,7 +10,7 @@
               <h3 class="mb-0">Users List</h3>
             </div>
             <div class="col text-right">
-              <base-button type="primary" icon size="sm" @click="onProFeature">
+              <base-button type="primary" icon size="sm" >
                 <i class="fas fa-user-edit mr-2"></i>
                 <span class="btn-inner--text">Add User</span>
               </base-button>
@@ -47,10 +47,10 @@
                 {{ row.created_at }}
               </td>
               <td>
-                <a style="cursor: pointer" @click="onProFeature" class="mr-2">
+                <a style="cursor: pointer"  class="mr-2">
                    <i class="fas fa-user-edit"></i>
                 </a>
-                <a style="cursor: pointer" @click="onProFeature">
+                <a style="cursor: pointer" >
                   <i class="fas fa-trash"></i>
                 </a>
               </td>

@@ -14,10 +14,10 @@ class CreateCategoryTable extends Migration
     public function up()
     {
         Schema::create('category', function (Blueprint $table) {
-            $table->increments('id_category');
+            $table->increments('id');
             $table->integer('order_number');
             $table->string('Name');
-            $table->string('name_isplay');
+            $table->string('name_Display');
             $table->tinyInteger('isDisplay');
             $table->string('slug_url');
             $table->string('category_status');

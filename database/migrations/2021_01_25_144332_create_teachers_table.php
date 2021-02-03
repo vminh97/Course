@@ -14,17 +14,17 @@ class CreateTeachersTable extends Migration
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->increments('id_teacher');
-            $table->varchar('customer_name');
+            $table->increments('id');
+            $table->string('customer_name');
             $table->text('image_teacher');
             $table->dateTime('birthday');
-            $table->varchar('address');
-            $table->varchar('email');
+            $table->string('address');
+            $table->string('email');
             $table->boolean('isactive');
-            $table->tinyint('status');
-            $table->varchar('first_name');
-            $table->varchar('last_name');
-            $table->integer('phone',11);
+            $table->boolean('status');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->integer('phone');
             $table->timestamps();
         });
     }

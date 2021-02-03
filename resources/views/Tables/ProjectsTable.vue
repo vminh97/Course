@@ -10,11 +10,37 @@
           </h3>
         </div>
         <div class="col text-right">
-          <base-button type="primary" size="sm">See all</base-button>
+            <base-button type="primary" icon size="sm" >
+                <i class="fas fa-user-edit mr-2"></i>
+                <span class="btn-inner--text">Add User</span>
+            </base-button>
         </div>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="dataTables_length" id="datatable-basic_length">
+          <span class="fill1">
+            Show 
+          </span>
+            <select name="datatable-basic_length" aria-controls="datatable-basic" class="form-control form-control-sm fill-table">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+            <span >entries</span>        
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div id="datatable-basic_filter" class="dataTables_filter">
+          <span class="fill1">
+            Search:
+          </span>  
+            <input type="search" class="form-control form-control-sm fill-table" placeholder="" aria-controls="datatable-basic">
+        </div>
+      </div>
+    </div>
     <div class="table-responsive">
       <base-table class="table align-items-center table-flush"
                   :class="type === 'dark' ? 'table-dark': ''"
@@ -27,15 +53,12 @@
           <th>Status</th>
           <th>Users</th>
           <th>Completion</th>
-          <th></th>
+          <th>Action</th>
         </template>
 
         <template slot-scope="{row}">
           <th scope="row">
             <div class="media align-items-center">
-              <a href="#" class="avatar rounded-circle mr-3">
-                <img alt="Image placeholder" :src="row.img">
-              </a>
               <div class="media-body">
                 <span class="name mb-0 text-sm">{{row.title}}</span>
               </div>
@@ -44,12 +67,7 @@
           <td class="budget">
             {{row.budget}}
           </td>
-          <td>
-            <badge class="badge-dot mr-4" :type="row.statusType">
-              <i :class="`bg-${row.statusType}`"></i>
-              <span class="status">{{row.status}}</span>
-            </badge>
-          </td>
+
           <td>
             <div class="avatar-group">
               <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
@@ -80,18 +98,12 @@
           </td>
 
           <td class="text-right">
-            <base-dropdown class="dropdown"
-                           position="right">
-              <a slot="title" class="btn btn-sm btn-icon-only text-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-v"></i>
+              <a style="cursor: pointer"  class="mr-2">
+                  <i class="fas fa-user-edit"></i>
               </a>
-
-              <template>
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </template>
-            </base-dropdown>
+              <a style="cursor: pointer" >
+                <i class="fas fa-trash"></i>
+              </a>
           </td>
 
         </template>
@@ -203,5 +215,19 @@
     }
   }
 </script>
-<style>
+<style >
+select.form-control.form-control-sm.fill-table {
+    display: inline !important;
+    width: 13% !important;
+    margin-bottom: 5%;
+}
+input.form-control.form-control-sm.fill-table {
+  display: inline !important;
+  width: 50% !important;
+  margin-bottom: 5%;
+}
+span.fill1{
+  margin-left: 10%;
+}
+
 </style>

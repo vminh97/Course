@@ -16,7 +16,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .argon-error {
       position: relative;
       bottom: 25px;
