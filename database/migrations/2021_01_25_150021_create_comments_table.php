@@ -21,12 +21,12 @@ class CreateCommentsTable extends Migration
                 $table->integer('product_id')->unsigned();
                 $table->foreign('product_id')->references('id')->on('products');
                 $table->string('customers_code');
-                $table->string('customers_name');
+                $table->string('customers_name')->nullable();
                 $table->text('content_comment');
-                $table->integer('star_comment');
-                $table->text('comment_image');
-                $table->string('status');
-                $table->boolean('isPublic');
+                $table->integer('star_comment')->nullable();
+                $table->text('comment_image')->nullable();
+                $table->string('status')->nullable();
+                $table->boolean('isPublic')->nullable();
                 $table->timestamps();
             });
     }

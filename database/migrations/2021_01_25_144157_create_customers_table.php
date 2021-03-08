@@ -16,14 +16,14 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('customer_name');
-            $table->text('image_customer');
-            $table->dateTime('birthday');
-            $table->string('address');
+            $table->text('image_customer')->nullable();
+            $table->dateTime('birthday')->nullable();
+            $table->string('address')->nullable();
             $table->string('email');
-            $table->boolean('isactive');
-            $table->tinyInteger('status');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->boolean('isactive')->nullable();
+            $table->tinyInteger('status')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->integer('phone');
             $table->timestamps();
         });

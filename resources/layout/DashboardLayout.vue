@@ -6,58 +6,58 @@
       title="Minh"
     >
       <template slot="links">
-        <sidebar-item :link="{name: 'Dashboard', icon: 'ni ni-atom text-red', path: '/dashboard'}"/>
+        <sidebar-item :link="{name: 'Dashboard', icon: 'ni ni-atom text-red', path: 'admin/dashboard'}"/>
         <sidebar-item :link="{name: 'User',icon: 'ni ni-single-02 text-red',path:''}">
             <sidebar-item
-              :link="{ name: 'User Profile', path: '/User/user-profile' }"
+              :link="{ name: 'User Profile', path: 'user-profile' }"
             />
             <sidebar-item
-              :link="{name: 'User Management', path: '/User/user-management/list-users',}"
+              :link="{name: 'User Management', path: 'user-management/list-users',}"
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Course', icon: 'ni ni-planet text-red', path:'',}">
             <sidebar-item
-              :link="{  name: 'List Course', path: '/course/list-course',}"           
+              :link="{  name: 'List Course', path: 'list-course',}"           
             />
             <sidebar-item
-              :link="{  name: 'Edit Course', path: '/course/edit-course', }"
+              :link="{  name: 'Edit Course', path: 'edit-course', }"
             />
             <sidebar-item
-              :link="{  name: 'Favorite Courses', path: '/course/favorite-course',}"           
+              :link="{  name: 'Favorite Courses', path: 'favorite-course',}"           
             />
             <sidebar-item
-              :link="{  name: 'Keyword Search', path: '/course/keyword-search', }"
+              :link="{  name: 'Keyword Search', path: 'keyword-search', }"
             />
             <sidebar-item
-              :link="{ name: 'Rank Course', path: '/course/rank-course'}"           
+              :link="{ name: 'Rank Course', path: 'rank-course'}"           
             />
             <sidebar-item
-              :link="{  name: 'Review Course', path: '/course/review-course', }"
+              :link="{  name: 'Review Course', path: 'review-course', }"
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Teacher',icon: 'ni ni-circle-08 text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List Teacher', path: '/teacher/list-teacher',}"           
+              :link="{  name: 'List Teacher', path: 'admin/teacher/list-teacher',}"           
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Category',icon: 'ni ni-circle-08 text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List Category', path: '/category/list-category',}"           
+              :link="{  name: 'List Category', path: 'admin/category/list-category',}"           
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Customer',icon: 'ni ni-hat-3 text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List Customer', path: '/customer/list-customer',}"           
+              :link="{  name: 'List Customer', path: 'list-customer',}"           
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'New',icon: 'ni ni-key-25 text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List New', path: '/new/list-new',}"           
+              :link="{  name: 'List New', path: 'list-new',}"           
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Order',icon: 'ni ni-cart text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List Order', path: '/order/list-order',}"           
+              :link="{  name: 'List Order', path: 'list-order',}"           
             />
         </sidebar-item>
       </template>
@@ -88,7 +88,7 @@
     },
     data() {
       return {
-        sidebarBackground: 'vue' //vue|blue|orange|green|red|primary
+        sidebarBackground: 'vue' 
       };
     },
     methods: {

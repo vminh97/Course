@@ -12,6 +12,14 @@ import KeywordSearch from "@/views/Course/KeywordSearch.vue";
 import RankCourse from "@/views/Course/RankCourse.vue";
 import ReviewCourse from "@/views/Course/ReviewCourse.vue";
 
+import Category from "@/views/Main/category/Category.vue";
+import Course from "@/views/Main/course/Course.vue";
+import MyCourse from "@/views/Main/customer/MyCourse.vue";
+import Customer from "@/views/Main/customer/Customer.vue";
+import InfoTeacherHl from "@/views/Main/teacher/InfoTeacher-Hl.vue";
+import Cart from "@/views/Main/cart/Cart.vue";
+
+
 import ListCategory from "@/views/Category/Category.vue";
 import ActionCategory from "@/views/Category/ActionCategory.vue";
 
@@ -22,6 +30,8 @@ import ListNew from "@/views/New/New.vue";
 import ListOrder from "@/views/Order/Order.vue";
 
 import ListTeacher from "@/views/Teacher/Teacher.vue";
+
+import Main from "@/views/Main/Main.vue";
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +39,41 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Main',
+      component: Main,
+    },
+    {
+      path: '/category',
+      name: 'indexcategory',
+      component: Category,
+    },
+    {
+      path: '/course',
+      name: 'indexcourse',
+      component: Course,
+    },
+    {
+      path: '/mycourse',
+      name: 'indexmycourse',
+      component: MyCourse,
+    },
+    {
+      path: '/customer',
+      name: 'indexcustomer',
+      component: Customer,
+    },
+    {
+      path:'/infoteacherhl',
+      name:'infoteacherhl',
+      component:InfoTeacherHl,
+    },
+    {
+      path:'/cart',
+      name:'cart',
+      component:Cart,
+    },
+    {
+      path: '/admin',
       redirect: 'dashboard',
       component: DashboardLayout,
       children: [
@@ -47,16 +92,17 @@ export default new Router({
       ]
     },
     {
-      path: '/category',
+      path: '/admin/category',
       name: 'Category',
       component: DashboardLayout,
       children:[
         { path: "list-category",name: "List Category",components: { default: ListCategory }},
         { path: "add-category",name: "Add Category",components: { default: ActionCategory }},
+        { path: "edit-category/id",name: "Edit Category",components: { default: ActionCategory }},
       ]
     },
     {
-      path: '/customer',
+      path: '/admin/customer',
       name: 'Customer',
       component: DashboardLayout,
       children:[
@@ -64,7 +110,7 @@ export default new Router({
       ]
     },
     {
-      path: '/new',
+      path: '/admin/new',
       name: 'New',
       component: DashboardLayout,
       children:[
@@ -72,7 +118,7 @@ export default new Router({
       ]
     },
     {
-      path: '/order',
+      path: '/admin/order',
       name: 'Order',
       component: DashboardLayout,
       children:[
@@ -80,7 +126,7 @@ export default new Router({
       ]
     },
     {
-      path: '/teacher',
+      path: '/admin/teacher',
       name: 'Teacher',
       component: DashboardLayout,
       children:[
@@ -88,7 +134,7 @@ export default new Router({
       ]
     },
     {
-      path: '/course',
+      path: '/admin/course',
       component: DashboardLayout,
       name: 'Course',     
       children: [
@@ -101,7 +147,7 @@ export default new Router({
       ]
     },
     {
-      path: "/user",
+      path: "admin/user",
       component: DashboardLayout,
       name: "User",
       children: [

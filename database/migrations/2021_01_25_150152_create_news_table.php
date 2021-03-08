@@ -20,10 +20,10 @@ class CreateNewsTable extends Migration
             $table->text('content_news');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('editer_by');
-            $table->tinyInteger('status');
-            $table->string('news_Date');
-            $table->string('news_image');
+            $table->string('editer_by')->nullable();
+            $table->tinyInteger('status')->nullable();
+            $table->string('news_Date')->nullable();
+            $table->string('news_image')->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('category');
             $table->timestamps();

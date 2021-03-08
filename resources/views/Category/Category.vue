@@ -8,10 +8,9 @@
         </div>
     </div>
     <div>
-        <div class="card shadow"
-            :class="type === 'dark' ? 'bg-default': ''">
+        <div class="card shadow">
             <div class="card-header border-0"
-                :class="type === 'dark' ? 'bg-transparent': ''">
+>
             <div class="row align-items-center">
                 <div class="col">
                 <h3 class="mb-0">
@@ -102,20 +101,22 @@
                     {{row.slug_url}}
                 </td> 
                 <td class="text-right action" >
-                    <a type="text" @click="editCategory(row)" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Add Category' }" >
+                    <a type="text" @click="editCategory(row.id)" class="table-action" data-toggle="tooltip">
+                         <router-link :to="{ name: 'Edit Category'}" >
                              <i class="fas fa-user-edit"></i>
                          </router-link>
                     </a>
                     <a type="text" @click="deleteCategory(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <i class="fas fa-trash"></i>
+                        <router-link :to="{ name: 'Delete Category'}" >
+                             <i class="fas fa-trash"></i>
+                        </router-link>     
                     </a>
                 </td>
                 </template>
 
             </base-table>
             </div>
-            <div class="a">
+            <!-- <div class="a">
                     <b-table
                     :items="items"
                     :fields="listCategory"
@@ -123,7 +124,7 @@
                     :sort-desc.sync="sortDesc"
                     responsive="sm"
                     ></b-table>
-            </div>
+            </div> -->
 
             <div class="card-footer d-flex justify-content-end">
                  <base-pagination></base-pagination>
@@ -147,6 +148,8 @@
     data() {
       return {
         listCategory: [],
+        title: 'Category',
+        type:'',
       }
     },
     created: function()
@@ -155,26 +158,48 @@
     },
     methods: {
         async getListProducts() {
-                try {
-                    const response = await axios.get('/api/category/index');
-                    console.log(response);
-                    this.listCategory = response.data
-                } catch (error) {
-                    this.error = error.response.data
-                }           
-        },    
-        async editCategory() {   
-        },  
-        async deletecCategory() {
-        
+            try {
+                const response = await axios.get('/api/category/index');
+                this.listCategory = response.data
+            } catch (error) {
+                this.error = error.response.data
+            }           
         },
+            async editCategory()
+            {
+                   try {
+                        this.error = null
+                        const id= this.$route.params.id;
+                        const response = await axios.post('/api/category/update/'+id);
+                        if(response.status === 200){
+                          this.category = response.data;                                                 
+                          console.log(this.category)
+                        }
+                    } catch (error) {
+                        console.log(error);
+                    }
+            },
+            async deleteCategory()
+            {
+                    try {
+                        this.error = null
+                        const id= this.$route.params.id;
+                        const response = await axios.post('/api/category/destroy/'+id);
+                        if(response.status === 200){
+                          this.category = this.category.filter(id);                                               
+                          console.log(this.category)
+                        }
+                    } catch (error) {
+                        console.log(error);
+                    }
+            }
     }  
 }
 </script>
 <style >
 select.form-control.form-control-sm.fill-table {
     display: inline !important;
-    width: 17% !important;
+    width: 19% !important;
     margin-bottom: 5%;
 }
 input.form-control.form-control-sm.fill-table {
@@ -196,6 +221,9 @@ i.fas.fa-trash {
 }
 a.add {
     color: white;
+}
+a.add:hover{
+    text-decoration: none !important;
 }
 button.btn.btn-danger {
     margin-bottom: 20px;

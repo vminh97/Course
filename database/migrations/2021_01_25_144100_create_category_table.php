@@ -15,13 +15,13 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('order_number');
-            $table->string('Name');
-            $table->string('name_Display');
-            $table->tinyInteger('isDisplay');
-            $table->string('slug_url');
-            $table->string('category_status');
-            $table->integer('parent_id');
+            $table->integer('order_number')->nullable();
+            $table->string('Name')->nullable();;
+            $table->string('name_Display')->nullable();
+            $table->boolean('is_display')->default('1')->nullable();;
+            $table->string('slug_url')->nullable();
+            $table->string('category_status')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
         });
     }

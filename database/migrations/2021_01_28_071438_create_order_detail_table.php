@@ -22,11 +22,11 @@ class CreateOrderDetailTable extends Migration
             $table->foreign('product_id')->references('id')->on('products'); 
             $table->string('goods_code');
             $table->integer('quantity');
-            $table->bigInteger('sale_price');
-            $table->string('product_image');
-            $table->tinyInteger('isCancer');
+            $table->bigInteger('sale_price')->nullable();
+            $table->string('product_image')->nullable();
+            $table->tinyInteger('isCancer')->nullable();
             $table->bigInteger('product_price');
-            $table->bigInteger('product_price_sale');
+            $table->bigInteger('product_price_sale')->nullable();
             $table->timestamps();
         });
     }

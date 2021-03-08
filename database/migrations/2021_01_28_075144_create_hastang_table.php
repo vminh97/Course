@@ -17,13 +17,13 @@ class CreateHastangTable extends Migration
             $table->increments('id');
             $table->string('hastang_code');
             $table->string('hastang_title');
-            $table->tinyInteger('status');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->tinyInteger('isDisplay');
+            $table->tinyInteger('status')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+            $table->boolean('isDisplay')->default('1');
             $table->string('keyword');
-            $table->string('description');
-            $table->string('show_order');          
+            $table->string('description')->nullable();
+            $table->string('show_order')->nullable();          
             $table->timestamps();
         });
     }

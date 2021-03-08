@@ -29,7 +29,7 @@
                                        <div class="form-group">
                                             <label class="form-control-label" for="validationCustomUsername">Name Category Main</label>
                                             <select class="form-control" id="categorymain" v-model='category.parent_id' >
-                                                <option   v-for="cate in listCategorydad" :key="cate.id" >{{ cate.name_Display }}</option>
+                                                <option v-for="cate in listCategorydad" :key="cate.id" :value="cate.parent_id" >{{ cate.name_Display }}</option>
                                             </select>
                                         </div>
                                 </div>
@@ -38,29 +38,30 @@
                                         <label class="form-control-label" style="margin-left: 80px;" for="validationCustomUsername">Display Category</label>
                                     </div>
                                     <div class="col-lg-12">
-                                        <label class="custom-toggle"   id="isdisplay" style=" margin-left: 110px;margin-top: 10px;">
-                                            <input type="checkbox" v-model='category.isdislay'>
-                                            <span class="custom-toggle-slider rounded-circle"></span>
+                                        <label class="custom-toggle"  
+                                         :id="category.isDisplay"
+                                         style=" margin-left: 110px;margin-top: 10px;">
+                                            <input type="checkbox"  v-model="checked">
+                                            <span class="custom-toggle-slider rounded-circle" style="border-radius: 10px!important" ></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 offset-lg-1">
-                                    <label class="form-control-label" for="validationCustomUsername">Slug_Url</label>
-                                    <input type="text" class="form-control" v-model='category.slug_url' placeholder="Slug_url" id="slug_url" aria-describedby="inputGroupPrepend" required="" disabled>
+                                    <label class="form-control-label" for="validationCustomUsername">Category Status</label>
+                                    <input type="text" class="form-control" v-model='category.category_status' placeholder="category_status" id="slug_url" aria-describedby="inputGroupPrepend" required="" >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-5 sb">
-                                       <button class="btn btn-primary" @click="createCategory" type="submit">Submit</button>
+                                    <router-link to="/admin/category/list-category" >
+                                          <button class="btn btn-primary"  @click="createCategory" >Submit</button>
+                                    </router-link>                                      
                                 </div>                                                              
                             </div>
                         </form>
                     </div>
-
             </div>
         </div>
-
-
     </div>
 </template>
 <script>
@@ -76,61 +77,67 @@
         selected: null,
         listCategorydad:[],
         category:[],
+        categorybyid:[],
+        checked: true,
+        valuechecked:''
       }
     },
     created: function()
     {
         this.listcategorymain();
+        this.valuebyid()
     },
     methods: {
+            isChecked() {
+                if(this.checked==true){  this.valuechecked == 1}
+                else {this.valuechecked == 0}
+            },
             async listcategorymain()
             {
                 try {
                             const response = await axios.get('/api/category/categorydad');
-                            console.log(response);
                             this.listCategorydad = response.data;
                 } catch (error) 
                 {
                             this.error = error.response.data;
                 } 
             },
-            async createCategory() 
+            async valuebyid()
             {
-                    try {
-                        this.error = null
-                        const response = await axios.post('/api/category/store', {
-                            Name: this.category.Name,
-                            order_number: this.category.order_number,
-                            Name_Display: this.category.Name_Display,
-                            is_Display:this.category.is_Display,
-                            slug_url:this.category.slug_url,
-                            category_status:this.category.category_status,
-                            parent_id:this.category.parent_id,
-                        })
-                        console.log(response.data.category)
-                    } catch (error) {
-                        this.error = error.response.data
-                    }
+                try {
+                            const response = await axios.get('/api/category/categorydad');
+                            this.categorybyid = response.data;
+                } catch (error) 
+                {
+                            this.error = error.response.data;
+                } 
             },
-            async UpdateCategory()
-            {
-                   try {
-                        this.error = null
-                        const response = await axios.post('/api/category/update/${this.$route.params.id}', {
-                            name: this.selectedProduct.name,
-                            price: this.selectedProduct.price
-                        })
-                        console.log(response.data.product)
-                    } catch (error) {
-                        this.error = error.response.data
-                    }
-            },
-                async deletePost()
-            {
-
+            // async deletePost(id)
+            // {              
+            //     let uri = `http://127.0.0.1:8000/api/category/destroy/${id}`;
+            //     this.axios.delete(uri).then(response => {
+            //     this.category.splice(this.category.indexOf(id), 1);
+            //     });
+            // },
+            async createCategory() {
+                try {
+                    const response = await axios.post('http://127.0.0.1:8000/api/category/store', {
+                      Name: this.category.Name,
+                      name_Display: this.category.name_Display,
+                      parent_id: this.category.parent_id,
+                      isDisplay: this.category.isDisplay,
+                      category_status: this.category.category_status,
+                      order_number: this.category.order_number,
+                      slug_url: this.category.slug_url,
+                    })
+                    console.log(response.data)
+                } catch (error) {
+                    console.log(error)
+                }
             }
     }
   }
+
 </script>
 <style lang="scss" scoped>
 .form1
@@ -154,4 +161,5 @@ form
 {
     margin-top:2%;
 }
+
 </style>

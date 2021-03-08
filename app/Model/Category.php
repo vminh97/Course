@@ -10,7 +10,7 @@ class Category extends Model
     /**
      * Get the phone record associated with the user.
      */
-    protected $fillable = ['order_number','Name','name_Display','isDiplay','slug_url','category_status','parent_id'];
+    protected $fillable = ['order_number','Name','name_Display','is_diplay','slug_url','category_status','parent_id'];
 
     
 }

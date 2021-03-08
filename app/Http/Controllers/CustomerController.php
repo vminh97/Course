@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Customer;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
     /**
@@ -71,7 +72,120 @@ class CustomerController extends Controller
             'customer' => $customer
         ], 200);
     }
-
+    public function changeAvatar(Request $request)
+    {
+        $this->validate($request, [
+            'file' => 'required|mimes:jpg,jpeg,png,gif,mp4',
+         ],
+         [
+            'file.required'=>'Bạn chưa nhập file',
+            'file.mimes' => 'Chỉ chấp nhận file với đuôi .jpg .jpeg .png .gif',
+         ]);
+         try{
+                    $post= Customer::find(Auth::user()->id);
+                    $post->addMedia($request->file('file'))->withManipulations([
+                        'thumb' => ['orientation' => '90'],
+                        'otherConversion' => ['orientation' => '90'],
+                     ])
+                     ->withCustomProperties([
+                        'generated_conversions' => [
+                            'small' => true,'medium' => true,'large' => true,
+                        ]
+                    ])
+                    ->withResponsiveImages()->toMediaCollection('avatar');
+                    $post->getMedia();
+                    return response()->json([
+                        'status' => 'successfully']);
+            }
+            catch(\Exception $e)
+            {
+                return $this->respondWithException($e);
+            }
+    }
+    public function changeName(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:3',
+            'newname' => 'required|min:3',
+            'retypenewname'=> 'required|min:3|same:newname',
+        ]);
+        try{
+            if(Hash::check($request->input('password'),Auth::user()->password)){
+                Customer::find(Auth::user()->id)->update(['name'=> $request->newname]);
+                return response()->json([
+                    'status' => 'successfully',
+                ]);
+            }else{
+                return response()->json(['status' => 'fail'],401);
+            }
+        }catch (\Exception $e){
+            return $this->respondWithException($e);
+        }
+    }
+    public function changePassword(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:3',
+            'newpassword' => 'required|min:3',
+            'retypenewpassword'=> 'required|min:3|same:newpassword',
+        ]);
+        try{
+            if(Hash::check($request->input('password'),Auth::user()->password)){
+                Customer::find(Auth::user()->id)->update(['name'=> $request->newpassword]);
+                return response()->json([
+                    'status' => 'successfully',
+                ]);
+            }else{
+                return response()->json(['status' => 'fail'],401);
+            }
+        }catch (\Exception $e){
+            return $this->respondWithException($e);
+        }
+    }
+    public function changeEmail(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:3',
+            'newemail' => 'required|email',
+            'retypenewemail'=> 'required|email|same:newemail',
+        ]);
+        try{
+            if(Hash::check($request->input('password'),Auth::user()->password)){
+                Customer::find(Auth::user()->id)->update(['email'=> $request->newemail]);
+                return response()->json([
+                    'status' => 'successfully',
+                ]);
+            }else{
+                return response()->json(['status' => 'fail'],401);
+            }
+        }catch (\Exception $e){
+            return $this->respondWithException($e);
+        }
+    }
+    // public function verify(Request $request)
+    // {
+    //     $newemail = $request->input('newemail');
+    //     $this->validate($request, [
+    //         'password' => 'required|min:3',
+    //         'newemail' => 'required|email',
+    //         'retypenewemail'=> 'required|same:newemail|email',
+    //     ]);
+    //     try{
+    //         if(Hash::check($request->input('password'),Auth::user()->password)){
+    //             $verify_email=Customer::find(Auth::user()->id)->update(['verify_email' => 'base64_encode(str_random(40))']);
+    //             if($newemail){
+    //                 $newemail->notify( new VerifyEmail($verify_email) );
+    //             }
+    //             return response()->json([
+    //                 'status' => 'successfully',
+    //             ]);
+    //         }else{
+    //             return response()->json(['status' => 'fail'],401);
+    //         }
+    //     }catch (\Exception $e){
+    //         return $this->respondWithException($e);
+    //     }
+    // }
     /**
      * Display the specified resource.
      *

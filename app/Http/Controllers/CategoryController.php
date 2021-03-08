@@ -53,34 +53,31 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
         try {
-        $this->validate($request, [
-            'namecategory' => 'required|min:5',
-            'displaycategory' => 'required|numeric|gt:0',
-            'categorymain' => 'required|min:5',
-            'order_number' => 'required|numeric|gt:0',
-        ]);
+            $this->validate($request, [
+                'Name' => 'required|min:3',
+                'name_Display' => 'required|min:3',
+            ]);              
+            $category = new Category();
+            $category->Name = $request['Name'];
+            $category->name_Display = $request['name_Display'];
+            $category->parent_id=$request['parent_id'];
+            $category->is_display = $request['is_display'];
+            $category->category_status = $request['category_status'];
+            $category->order_number = $request['order_number'];
+            $slug_url=str_replace(' ','_',$request['name_Display']);
+            $category->slug_url = $slug_url;
+            $category->save();
         
-    
-        $category = Category::find($id);
-        $category->Name = $request->input('namecategory');
-        $category->nameDisplay = $request->input('displaycategory');
-        $category->parent_id=$request->input('categorymain');
-        $category->category_status = $request->input('categorymain');
-        $category->order_number = $request->input('order_number');
-        $category->slug_url = $request->input('slug_url');
-        
-        $category->save();
-    
-        return response([
-            'category' => $category
-        ], 200);
+            return response([
+                'category' => $category
+            ], 200);
         }
         catch (\Exception $e) {
             //return error message
-            return $e->getMessage();
+            return $e->getMessage('sai');
         }
     }
 
@@ -101,11 +98,6 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-
-
-    }
 
     /**
      * Update the specified resource in storage.
@@ -114,37 +106,33 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function edit(Request $request, $id)
     {
         try {
-            $this->validate($request, [
-                'namecategory' => 'required|min:5',
-                'displaycategory' => 'required|numeric|gt:0',
-                'categorymain' => 'required|min:5',
-                'order_number' => 'required|numeric|gt:0',
-            ]);
-            
-        
+            // $this->validate($request, [
+            //     'Name' => 'required|min:3',
+            //     'name_Display' => 'required|min:3',
+            // ]);              
             $category = Category::find($id);
-            $category->Name = $request->input('namecategory');
-            $category->nameDisplay = $request->input('displaycategory');
-            $category->parent_id=$request->input('categorymain');
-            $category->category_status = $request->input('categorymain');
-            $category->order_number = $request->input('order_number');
-            $category->slug_url = $request->input('slug_url');
-            
+            $category->Name = $request->Name;
+            $category->name_Display = $request->name_Display;
+            $category->parent_id=$request->parent_id;
+            $category->is_display = $request->is_display;
+            $category->category_status = $request->category_status;
+            $category->order_number = $request->order_number;
+            $slug_url=str_replace(' ','_',$request['name_Display']);
+            $category->slug_url = $slug_url;
             $category->save();
         
-            return response([
-                'category' => $category
-            ], 200);
+            return response()->json(['message'=>"successful"]);
         }
         catch (\Exception $e) {
-                //return error message
-                return $e->getMessage();
+            //return error message
+            return $e->getMessage();
         }
-
     }
+
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -158,7 +146,7 @@ class CategoryController extends Controller
             $category = Category::find($id);
             $category->delete();
     
-          return response()->json('Successfully Deleted');
+            return response('Delete Successfully', 200);
         }
         catch (\Exception $e) {
             //return error message

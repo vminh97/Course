@@ -218,7 +218,7 @@
 <style >
 select.form-control.form-control-sm.fill-table {
     display: inline !important;
-    width: 13% !important;
+    width: 19% !important;
     margin-bottom: 5%;
 }
 input.form-control.form-control-sm.fill-table {

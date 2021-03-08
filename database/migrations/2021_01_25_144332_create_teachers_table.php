@@ -16,14 +16,14 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('customer_name');
-            $table->text('image_teacher');
-            $table->dateTime('birthday');
-            $table->string('address');
+            $table->text('image_teacher')->nullable();
+            $table->dateTime('birthday')->nullable();
+            $table->string('address')->nullable();
             $table->string('email');
-            $table->boolean('isactive');
-            $table->boolean('status');
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->boolean('isactive')->nullable();
+            $table->boolean('status')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->integer('phone');
             $table->timestamps();
         });

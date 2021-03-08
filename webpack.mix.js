@@ -13,7 +13,8 @@ let mix = require('laravel-mix');
 
 mix.js('resources/main.js', 'public/js')
 	.sass('resources/assets/scss/argon.scss', 'public/css');
-
+// mix.js('resources/main.js', 'public/js')
+// 	.sass('resources/assets/scss/main.scss', 'public/css');
 mix.webpackConfig({
 	resolve: {
 		alias: {
