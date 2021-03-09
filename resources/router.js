@@ -5,13 +5,14 @@ import DashboardLayout from './layout/DashboardLayout'
 import UserProfile from "@/views/User/UserProfile.vue";
 import ListUserPage from "@/views/User/UserManagement/ListUserPage.vue";
 
-import EditCourse from "@/views/Course/EditCourse.vue";
 import ListCourse from "@/views/Course/Course.vue";
+import ActionCourse from "@/views/Course/ActionCourse.vue";
 import FavoriteCourses from "@/views/Course/FavoriteCourses.vue";
 import KeywordSearch from "@/views/Course/KeywordSearch.vue";
 import RankCourse from "@/views/Course/RankCourse.vue";
 import ReviewCourse from "@/views/Course/ReviewCourse.vue";
 
+//Main
 import Category from "@/views/Main/category/Category.vue";
 import Course from "@/views/Main/course/Course.vue";
 import MyCourse from "@/views/Main/customer/MyCourse.vue";
@@ -83,12 +84,6 @@ export default new Router({
           component: require('./views/Dashboard.vue'),
 
         },
-        {
-          path: '/profile',
-          name: 'profile',
-          component: require('./views/UserProfile.vue'),
-
-        },
       ]
     },
     {
@@ -96,9 +91,9 @@ export default new Router({
       name: 'Category',
       component: DashboardLayout,
       children:[
-        { path: "list-category",name: "List Category",components: { default: ListCategory }},
-        { path: "add-category",name: "Add Category",components: { default: ActionCategory }},
-        { path: "edit-category/id",name: "Edit Category",components: { default: ActionCategory }},
+        { path: "list-category",name: "List Category",components: ListCategory },
+        { path: "add-category",name: "Add Category",components: ActionCategory },
+        { path: "edit-category/id",name: "Edit Category",components:  ActionCategory },
       ]
     },
     {
@@ -106,7 +101,7 @@ export default new Router({
       name: 'Customer',
       component: DashboardLayout,
       children:[
-        { path: "list-customer",name: "List Customer",components: { default: ListCustomer }},
+        { path: "list-customer",name: "List Customer",component: ListCustomer },
       ]
     },
     {
@@ -114,7 +109,7 @@ export default new Router({
       name: 'New',
       component: DashboardLayout,
       children:[
-        { path: "list-new",name: "List New",components: { default: ListNew }},
+        { path: "list-new",name: "List New",component: ListNew },
       ]
     },
     {
@@ -122,7 +117,7 @@ export default new Router({
       name: 'Order',
       component: DashboardLayout,
       children:[
-        { path: "list-order",name: "List Order",components: { default: ListOrder }},
+        { path: "list-order",name: "List Order",component: ListOrder },
       ]
     },
     {
@@ -130,7 +125,7 @@ export default new Router({
       name: 'Teacher',
       component: DashboardLayout,
       children:[
-        { path: "list-teacher",name: "List Teacher",components: { default: ListTeacher }},
+        { path: "list-teacher",name: "List Teacher",component:  ListTeacher },
       ]
     },
     {
@@ -138,8 +133,9 @@ export default new Router({
       component: DashboardLayout,
       name: 'Course',     
       children: [
-        { path: "list-course",name: "List Course",components: { default: ListCourse }},
-        { path: "edit-course",name: "Edit course",components: { default: EditCourse }},
+        { path: "list-course",name: "List Course",component: ListCourse },
+        { path: "add-course",name: "Add Course",component: ActionCourse },
+        { path: "edit-course/:id",name: "Edit Course",component:  ActionCourse },
         { path: "favorite-course",name: "Favorite Courses",components: { default: FavoriteCourses }},
         { path: "keyword-search",name: "Keyword Search",components: { default: KeywordSearch }},
         { path: "rank-course",name: "Rank Course",components: { default: RankCourse }},

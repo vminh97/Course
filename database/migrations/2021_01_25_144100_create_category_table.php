@@ -18,7 +18,7 @@ class CreateCategoryTable extends Migration
             $table->integer('order_number')->nullable();
             $table->string('Name')->nullable();;
             $table->string('name_Display')->nullable();
-            $table->boolean('is_display')->default('1')->nullable();;
+            $table->boolean('is_display')->default(1);
             $table->string('slug_url')->nullable();
             $table->string('category_status')->nullable();
             $table->integer('parent_id')->nullable();

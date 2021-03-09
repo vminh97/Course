@@ -37,12 +37,12 @@
         </sidebar-item>
         <sidebar-item :link="{name: 'Teacher',icon: 'ni ni-circle-08 text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List Teacher', path: 'admin/teacher/list-teacher',}"           
+              :link="{  name: 'List Teacher', path: 'list-teacher',}"           
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Category',icon: 'ni ni-circle-08 text-red',path:''}">
            <sidebar-item
-              :link="{  name: 'List Category', path: 'admin/category/list-category',}"           
+              :link="{  name: 'List Category', path: 'list-category',}"           
             />
         </sidebar-item>
         <sidebar-item :link="{name: 'Customer',icon: 'ni ni-hat-3 text-red',path:''}">

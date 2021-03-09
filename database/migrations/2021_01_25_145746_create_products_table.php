@@ -55,6 +55,7 @@ class CreateProductsTable extends Migration
             $table->string('activation code')->nullable();
             $table->dateTime('date_promotion_start')->nullable();
             $table->dateTime('date_promotion_end')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }
