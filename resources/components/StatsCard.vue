@@ -18,12 +18,6 @@
         </slot>
       </div>
     </div>
-
-    <p class="mt-3 mb-0 text-sm">
-      <slot name="footer">
-
-      </slot>
-    </p>
   </card>
 </template>
 <script>

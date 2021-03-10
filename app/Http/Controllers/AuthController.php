@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Model\User; 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -93,5 +95,20 @@ class AuthController extends Controller
         //return error message
         return response()->json(['message' => 'Logout Failed!'], 409);
         }
+    }
+    public function sendPasswordResetLink(Request $request)
+    {
+    return $this->sendResetLinkEmail($request);
+    }
+    protected function sendResetLinkResponse(Request $request, $response)
+    {
+        return response()->json([
+            'message' => 'Password reset email sent.',
+            'data' => $response
+        ]);
+    }
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+    return response()->json(['message' => 'Email could not be sent to this email address.']);
     }
 }    

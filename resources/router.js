@@ -25,12 +25,14 @@ import ListCategory from "@/views/Category/Category.vue";
 import ActionCategory from "@/views/Category/ActionCategory.vue";
 
 import ListCustomer from "@/views/Customer/Customer.vue";
+import ActionCustomer from "@/views/Customer/ActionCustomer.vue";
 
 import ListNew from "@/views/New/New.vue";
 
 import ListOrder from "@/views/Order/Order.vue";
 
 import ListTeacher from "@/views/Teacher/Teacher.vue";
+import ActionTeacher from "@/views/Teacher/ActionTeacher.vue";
 
 import Main from "@/views/Main/Main.vue";
 Vue.use(Router)
@@ -91,9 +93,9 @@ export default new Router({
       name: 'Category',
       component: DashboardLayout,
       children:[
-        { path: "list-category",name: "List Category",components: ListCategory },
-        { path: "add-category",name: "Add Category",components: ActionCategory },
-        { path: "edit-category/id",name: "Edit Category",components:  ActionCategory },
+        { path: "list-category",name: "List Category",component: ListCategory },
+        { path: "add-category",name: "Add Category",component: ActionCategory },
+        { path: "edit-category/id",name: "Edit Category",component:  ActionCategory },
       ]
     },
     {
@@ -102,6 +104,8 @@ export default new Router({
       component: DashboardLayout,
       children:[
         { path: "list-customer",name: "List Customer",component: ListCustomer },
+        { path: "add-customer",name: "Add Customer",component: ActionCustomer },
+        { path: "edit-customer/id",name: "Edit Customer",component:  ActionCustomer },
       ]
     },
     {
@@ -126,6 +130,8 @@ export default new Router({
       component: DashboardLayout,
       children:[
         { path: "list-teacher",name: "List Teacher",component:  ListTeacher },
+        { path: "add-teacher",name: "Add Teacher",component: ActionTeacher },
+        { path: "edit-teacher/id",name: "Edit Teacher",component:  ActionTeacher },
       ]
     },
     {

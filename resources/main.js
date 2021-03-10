@@ -25,6 +25,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-search-select/dist/VueSearchSelect.css'
 import VuePassword from 'vue-password';
+import CKEditor from 'ckeditor4-vue';
 Vue.config.productionTip = false
 
 Vue.use(VuePassword)
@@ -32,6 +33,7 @@ Vue.use(VuePassword)
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+Vue.use( CKEditor );
 
 Vue.use(ArgonDashboard)
 new Vue({

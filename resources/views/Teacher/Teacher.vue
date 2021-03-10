@@ -43,9 +43,9 @@
                 </div>
                 <div class="col text-right">
                   <base-button type="danger">                        
-                    <router-link :to="{ name: 'Add Category' }" class='add'>
+                    <router-link :to="{ name: 'Add Teacher' }" class='add'>
                         <i class="fas fa-user-edit mr-2"></i>
-                        <span class="btn-inner--text">Add Category</span>
+                        <span class="btn-inner--text">Add Teacher</span>
                     </router-link>
                   </base-button>
                 </div>
@@ -55,11 +55,11 @@
                         :class="type === 'dark' ? 'table-dark': ''"
                         :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
                         tbody-classes="list"
-                        :data="listProduct">
+                        :data="listTeacher">
                 <template slot="columns">
                     <th><b-form-checkbox
                     id="checkbox-1"
-                    v-model="status"
+                    v-model="status1"
                     name="checkbox-1"
                     value="accepted"
                     unchecked-value="not_accepted"
@@ -144,6 +144,7 @@
         listTeacher: [],
         title: 'Customer',
         type:'',
+        status1:''
       }
     },
     created: function()
@@ -159,34 +160,6 @@
                 this.error = error.response.data
             }           
         },
-            async editTeacher()
-            {
-                   try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/teacher/update/'+id);
-                        if(response.status === 200){
-                          this.teacher = response.data;                                                 
-                          console.log(this.teacher);
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-            },
-            async deleteTeacher()
-            {
-                    try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/customer/destroy/'+id);
-                        if(response.status === 200){
-                          this.teacher = this.teacher.filter(id);                                               
-                          console.log(this.teacher)
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-            }
     }  
 }
 </script>

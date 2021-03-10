@@ -31,6 +31,27 @@ Route::group(['prefix' => 'category'], function () {
     
     Route::delete('/destroy/{id}','CategoryController@destroy');
 });
+Route::group(['prefix' => 'teacher'], function () {
+
+    Route::get('/index', 'TeacherController@index');
+
+    Route::post('/store','TeacherController@store');
+
+    Route::post('/edit/{id}','TeacherController@edit');
+    
+    Route::delete('/destroy/{id}','TeacherController@destroy');
+});
+Route::group(['prefix' => 'customer'], function () {
+
+    Route::get('/index', 'CustomerController@index');
+
+    Route::post('/store','CustomerController@store');
+
+    Route::post('/edit/{id}','CustomerController@edit');
+    
+    Route::delete('/destroy/{id}','CustomerController@destroy');
+
+});
 Route::group(['prefix' => 'user'], function () {
     
     Route::post('/register','AuthController@register');
@@ -46,5 +67,9 @@ Route::group(['prefix' => 'user'], function () {
     Route::put('/users/{id}','AuthController@updateUser');
 
     Route::delete('/users/{id}','AuthController@delete');
+    
+    Route::post('/reset-password', 'ResetPasswordController@sendMail');
+    
+    Route::put('/reset-password/{token}', 'ResetPasswordController@reset');
 
 });
