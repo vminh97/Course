@@ -111,7 +111,21 @@ return [
     | of the emails. Or, you may simply stick with the Laravel defaults!
     |
     */
-
+    'gmail' => [
+        'transport' => 'smtp',
+        'host' => 'smtp.gmail.com',
+        'port' => 587,
+        'encryption' => 'tls',
+        'username' => 'minhqcvinh97@gmail.com',
+        'password' => 'njfovubkasskyzkt',
+    ],
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer'       => false,
+            'verify_peer_name'  => false,
+        ],
+    ],
     'markdown' => [
         'theme' => 'default',
 

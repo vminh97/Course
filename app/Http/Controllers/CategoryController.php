@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Model\Category;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facedes\Excel;
+use App\Exports\TestExport;
 class CategoryController extends Controller
 {
+    use Excel;
     /**
      * Display a listing of the resource.
      *
@@ -154,5 +156,9 @@ class CategoryController extends Controller
         }
 
 
+    }
+    public function export()
+    {  
+        return Excel::dowload(new TestExport(), 'categorys.xlxs');
     }
 }

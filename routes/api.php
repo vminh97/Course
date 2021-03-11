@@ -30,6 +30,8 @@ Route::group(['prefix' => 'category'], function () {
     Route::post('/edit/{id}','CategoryController@edit');
     
     Route::delete('/destroy/{id}','CategoryController@destroy');
+
+    Route::get('/export', 'CategoryController@export')->name('export');
 });
 Route::group(['prefix' => 'teacher'], function () {
 
@@ -52,6 +54,9 @@ Route::group(['prefix' => 'customer'], function () {
     Route::delete('/destroy/{id}','CustomerController@destroy');
 
 });
+
+
+
 Route::group(['prefix' => 'user'], function () {
     
     Route::post('/register','AuthController@register');
@@ -67,9 +72,15 @@ Route::group(['prefix' => 'user'], function () {
     Route::put('/users/{id}','AuthController@updateUser');
 
     Route::delete('/users/{id}','AuthController@delete');
-    
-    Route::post('/reset-password', 'ResetPasswordController@sendMail');
-    
-    Route::put('/reset-password/{token}', 'ResetPasswordController@reset');
+    //send gmail
+    Route::post('/sentmail', 'ResetPasswordController@sendMail');
+    //infomation user
+    Route::get('/find/{token}', 'ResetPasswordController@find');
+    //reset password
+    Route::post('/reset', 'ResetPasswordController@resetPassword');
+    //login social
+    Route::post('/loginsocical','UserController@handleProviderCallback');
+
+
 
 });

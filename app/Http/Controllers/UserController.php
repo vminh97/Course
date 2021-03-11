@@ -10,6 +10,52 @@ use Validator;
 
 class UserController extends Controller
 {
+    protected function socialAssociation($email,$name,$photo,$id,$type,$data)
+    {
+        // check for already has account
+        $user = User::where('email', $email)->first();
+        $data = json_encode($data,JSON_UNESCAPED_UNICODE);
+        //if user already found
+        if( is_null($user)) {
+            // create a new user
+            $user = User::create([
+                'name' => $name,
+                'email' => $email
+            ]);
+            // relationship create user_social
+            $user->socialProviders()->create(
+                ['name'=>$name,'email'=>$email,'raw_data'=>$data, 'type' => $type]
+            );
+        }
+        return response()->json(['message'=>"Login successful"]);
+    }
+
+    public function handleProviderCallback(Request $request)
+    {
+        try{
+            //request data
+            $type = $request->input('type');
+            $data = $request->input('data');
+            switch ($type) {
+                //parse login with facebook
+                case 'facebook':
+                    return $this->socialAssociation($data['email'], $data['name'], $data['picture']['data']['url'],$data['id'], $type, $data);
+                    break;
+                //parse login with google
+                case 'google':
+                    return $this->socialAssociation($data['user']['email'], $data['user']['name'], $data['user']['photo'],$data['user']['id'], $type, $data);
+                    break;
+                default:
+                    # code...
+                    break;
+            }
+        }catch (\Exception $e){
+            return $this->respondWithException($e);
+        }
+    }
+
+
+
     public function register(Request $request)
     {
         //validate incoming request
