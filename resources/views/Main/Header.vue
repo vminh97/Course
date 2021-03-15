@@ -92,38 +92,38 @@
                                             <div class="modal-wrapper">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
-                                                        <b-col md="12">  
+                                                        <b-col md="12" lg="12">  
                                                             <div class="modal-header">
                                                                 <h3 style="margin-left: 33%;">Đăng Nhập</h3>
                                                                 <button type="button" class="close" @click="login=false"><span aria-hidden="true">&times;</span></button>
                                                             </div>
                                                         </b-col>   
                                                         <div class="modal-body">
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <div class="form-group">
                                                                 <input type="button" class="fb" value="Đăng Nhập Bằng Facebook">
                                                                 <svg class="fb" version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 112.196 112.196" style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve"><g><circle style="fill:#3B5998;" cx="56.098" cy="56.098" r="56.098"/><path style="fill:#FFFFFF;" d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
                                                                 </div>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <div class="form-group">
                                                                     <input type="button" class="google" value="Đăng Nhập Bằng Google">
                                                                     <svg id="Capa_2" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308h-86.308c-34.255 44.488-52.823 98.707-52.823 155.785s18.568 111.297 52.823 155.785h86.308v-86.308c-12.142-20.347-19.131-44.11-19.131-69.477z" fill="#fbbd00"/><path d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216c-20.525 12.186-44.388 19.039-69.569 19.039z" fill="#0f9d58"/><path d="m139.131 325.477-86.308 86.308c6.782 8.808 14.167 17.243 22.158 25.235 48.352 48.351 112.639 74.98 181.019 74.98v-120c-49.624 0-93.117-26.72-116.869-66.523z" fill="#31aa52"/><path d="m512 256c0-15.575-1.41-31.179-4.192-46.377l-2.251-12.299h-249.557v120h121.452c-11.794 23.461-29.928 42.602-51.884 55.638l86.216 86.216c8.808-6.782 17.243-14.167 25.235-22.158 48.352-48.353 74.981-112.64 74.981-181.02z" fill="#3c79e6"/><path d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606c-48.352-48.352-112.639-74.981-181.02-74.981l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z" fill="#cf2d48"/><path d="m256 120v-120c-68.38 0-132.667 26.629-181.02 74.98-7.991 7.991-15.376 16.426-22.158 25.235l86.308 86.308c23.753-39.803 67.246-66.523 116.87-66.523z" fill="#eb4132"/></g></svg>
                                                                 </div>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
                                                                     <input type="text" class="form-control"/>
                                                                 </div>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <div class="form-group">
                                                                     <label>Password</label>
                                                                     <input type="text" class="form-control"/>
                                                                 </div>
                                                             </b-col>                               
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <input type="hidden" />
                                                                 <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="login=false" />
                                                                 <p style="margin-top:10px">Chưa có tài khoản <a href="">Đăng kí</a></p>
@@ -145,38 +145,38 @@
                                             <div class="modal-wrapper">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
-                                                        <b-col md="12">  
+                                                        <b-col md="12" lg="12">  
                                                             <div class="modal-header">
                                                                 <h3 style="margin-left: 33%;">Đăng kí</h3>
                                                                 <button type="button" class="close" @click="register=false"><span aria-hidden="true">&times;</span></button>
                                                             </div>
                                                         </b-col>   
                                                         <div class="modal-body">
-                                                            <b-col md="12" style="display:none">
+                                                            <b-col md="12" lg="12" style="display:none">
                                                                 <div class="form-group">
                                                                 <input type="button" class="fb" value="Đăng Nhập Bằng Facebook">
                                                                 <svg class="fb" version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 112.196 112.196" style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve"><g><circle style="fill:#3B5998;" cx="56.098" cy="56.098" r="56.098"/><path style="fill:#FFFFFF;" d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
                                                                 </div>
                                                             </b-col>
-                                                            <b-col md="12" style="display:none">
+                                                            <b-col md="12" lg="12" style="display:none">
                                                                 <div class="form-group">
                                                                     <input type="button" class="google" value="Đăng Nhập Bằng Google">
                                                                     <svg id="Capa_2" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308h-86.308c-34.255 44.488-52.823 98.707-52.823 155.785s18.568 111.297 52.823 155.785h86.308v-86.308c-12.142-20.347-19.131-44.11-19.131-69.477z" fill="#fbbd00"/><path d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216c-20.525 12.186-44.388 19.039-69.569 19.039z" fill="#0f9d58"/><path d="m139.131 325.477-86.308 86.308c6.782 8.808 14.167 17.243 22.158 25.235 48.352 48.351 112.639 74.98 181.019 74.98v-120c-49.624 0-93.117-26.72-116.869-66.523z" fill="#31aa52"/><path d="m512 256c0-15.575-1.41-31.179-4.192-46.377l-2.251-12.299h-249.557v120h121.452c-11.794 23.461-29.928 42.602-51.884 55.638l86.216 86.216c8.808-6.782 17.243-14.167 25.235-22.158 48.352-48.353 74.981-112.64 74.981-181.02z" fill="#3c79e6"/><path d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606c-48.352-48.352-112.639-74.981-181.02-74.981l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z" fill="#cf2d48"/><path d="m256 120v-120c-68.38 0-132.667 26.629-181.02 74.98-7.991 7.991-15.376 16.426-22.158 25.235l86.308 86.308c23.753-39.803 67.246-66.523 116.87-66.523z" fill="#eb4132"/></g></svg>
                                                                 </div>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
                                                                     <input type="text" class="form-control"/>
                                                                 </div>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <div class="form-group">
                                                                     <label>Password</label>
                                                                     <input type="text" class="form-control"/>
                                                                 </div>
                                                             </b-col>                               
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <input type="hidden" />
                                                                 <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="register=false" />
                                                                 <p style="margin-top:10px">Chưa có tài khoản <a href="">Đăng kí</a></p>

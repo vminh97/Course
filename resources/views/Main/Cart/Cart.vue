@@ -2,23 +2,23 @@
     <div class="cart">
         <b-container>
             <b-row>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                    <div class="cart-1">
                         <b-row>
-                            <b-col md="1">
+                            <b-col md="1" lg="1">
                                 <i class="fas fa-cart-plus fa-4x"></i>
                             </b-col>
-                            <b-col md="4">
+                            <b-col md="4" lg="4">
                                 <b-row>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <p class="title-cart">Thông Tin Giỏ Hàng</p>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <p class="count-cart-course"><span class="hl">1</span> Khóa Học <span class="hl2">390.000 đ</span></p>
                                     </b-col>
                                 </b-row>
                             </b-col>
-                            <b-col md="3" offset="4">
+                            <b-col md="3" lg="3" offset="4">
                                 <router-link to="/">
                                         <input type="button" value="Tiếp Tục Thanh Toán"  class="continue-cart">
                                 </router-link>                             
@@ -26,61 +26,61 @@
                         </b-row>
                    </div>
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                     <b-container>
                         <div class="course-cart">
                             <b-row>
-                                <b-col md="2">
+                                <b-col md="2" lg="2">
                                 <img src="" alt="" class="image-cart-course">
                                 </b-col>
-                                <b-col md="4">
+                                <b-col md="4" lg="4">
                                     <b-row>
-                                        <b-col md="12">
+                                        <b-col md="12" lg="12">
                                             <p class="name-cart-course">Thiết Kế Và Tối Ưu Website cho Meteker</p>
                                         </b-col>
-                                        <b-col md="12">
+                                        <b-col md="12" lg="12">
                                             <p class="action-delete"><i class="fas fa-trash-alt"></i> Xóa Khóa Học</p>
                                         </b-col>
                                     </b-row>
                                 </b-col>
-                                <b-col md="2" >
+                                <b-col md="2" lg="2" >
                                     <p class="money-first">390.000 đ</p>
                                 </b-col>
-                                <b-col md="2" >
+                                <b-col md="2" lg="2" >
                                     <p class="money-discount">0 đ</p>
                                 </b-col>
-                                <b-col md="2" >
+                                <b-col md="2" lg="2" >
                                     <p class="money-finally">390.000 đ</p>
                                 </b-col>
                             </b-row>
                         </div>
                     </b-container>                  
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                     <b-container>
                         <div class="box-gray">
                             <b-row>                           
-                                    <b-col md="4">
+                                    <b-col md="4" lg="4">
                                     <p class="sum-money">Tổng Thành Tiền</p>
                                     </b-col>
-                                    <b-col md="2" offset="2">
+                                    <b-col md="2" lg="2" offset="2">
                                             <p class="money-first2">390.000 đ</p>
                                     </b-col>
-                                    <b-col md="2">
+                                    <b-col md="2" lg="2">
                                             <p class="money-discount2">0 đ</p>
                                     </b-col>
-                                    <b-col md="2" >
+                                    <b-col md="2" lg="2">
                                             <p class="money-finally2">390.000 đ</p>
                                     </b-col>
                             </b-row>
                         </div>
                     </b-container>
                 </b-col>
-                <b-col md="12">                  
+                <b-col md="12" lg="12">                  
                         <b-container>
                             <div class="title-cl">
                                 <b-row>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <p class="title-hl"><i class="fas fa-money-bill-wave"></i> Các Phương Thức Thanh Toán Linh Hoạt</p>
                                         <p class="title-hl"><i class="fas fa-history"></i> Nội Dung Học Liên Tục Và Xuyên Suốt</p>
                                     </b-col>
@@ -88,7 +88,7 @@
                             </div>
                         </b-container>
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                     <relatedCourse />
                 </b-col>
             </b-row>

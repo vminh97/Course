@@ -19,7 +19,7 @@
                 </div>
                 </div>
             <div class="row">
-                <div class="col-sm-12 col-md-4">
+                <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="dataTables_length" id="datatable-basic_length">
                     <span class="fill1">
                         Show 
@@ -33,7 +33,7 @@
                         <span >entries</span>        
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5">
+                <div class="col-sm-12 col-md-5 col-lg-5">
                     <div id="datatable-basic_filter" class="dataTables_filter">
                     <span class="fill1">
                         Search:
@@ -115,16 +115,6 @@
 
             </base-table>
             </div>
-            <!-- <div class="a">
-                    <b-table
-                    :items="items"
-                    :fields="listCategory"
-                    :sort-by.sync="sortBy"
-                    :sort-desc.sync="sortDesc"
-                    responsive="sm"
-                    ></b-table>
-            </div> -->
-
             <div class="card-footer d-flex justify-content-end">
                  <base-pagination></base-pagination>
             </div>

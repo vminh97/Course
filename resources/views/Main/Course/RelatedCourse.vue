@@ -2,7 +2,7 @@
     <div class="course_m_hl">
         <b-container>
             <b-row>
-                <b-col md=12>
+                <b-col md=12 lg="12">
                     <h3>Khóa Học Đã Xem</h3>
                 </b-col> 
             </b-row>

@@ -2,12 +2,12 @@
     <div class="course_m_hl">
                     <b-container>
                         <b-row>
-                           <b-col md=12>
+                           <b-col md=12 lg="12">
                                <h3>Cùng Nhau Phát Triển Tương Lai</h3>
                             </b-col> 
                         </b-row>
                         <b-row>
-                           <b-col md=12>
+                           <b-col md=12 lg="12">
                               <h6>Thăng tiến vượt bậc với các khóa học phát triển kỹ năng</h6>
                             </b-col> 
                         </b-row>

@@ -3,28 +3,28 @@
         <div class="introduce-course">
             <b-container>
                 <b-row>
-                    <b-col md="9">
+                    <b-col md="9" lg="9">
                         <div class="box-introduce">
                             <b-row>
-                                <b-col md="12">
+                                <b-col md="12" lg="12">
                                     <p class="title-focus"> Lập trình web chuyên nghiệp với PHP </p>
                                 </b-col>
-                                <b-col md="12">
+                                <b-col md="12" lg="12">
                                     <p class="title-nameteacher">Lưu Trần Quang Hải</p>
                                     <p class="positon-nameteacher">Giảng viên cao cấp TalentPool</p>
                                     <p class="moreinfo-nameteacher">Giảng viên Trần Thanh Phương Nghi (Annie Trần),
                                         Cử nhân Tài chính Ngân hàng, Cử nhân Tâm lý Giáo dục,
                                          Á Quân Cuộc thi Tìm kiếm và Phát triển Diễn giả</p>
                                 </b-col>
-                                <b-col md="12">
+                                <b-col md="12" lg="12">
                                     <b-row>
-                                        <b-col md="4">
+                                        <b-col md="4" lg="4">
                                             <p><i class="fa fa-graduation-cap"></i>Cơ bản</p>
                                         </b-col>
-                                        <b-col md="4">
+                                        <b-col md="4" lg="4">
                                             <p><i class="fa fa-thumbs-up"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><span>3.4</span></p>
                                         </b-col>                                      
-                                        <b-col md="4">
+                                        <b-col md="4" lg="4">
                                             <p><i class="fas fa-torah"></i>Cấp chứng chỉ hoàn thành</p>
                                         </b-col>
                                     </b-row>
@@ -32,61 +32,61 @@
                             </b-row>
                         </div>
                     </b-col>
-                    <b-col md="3">
+                    <b-col md="3" lg="3">
                         <div class="card-box-title">
                             <div class="title-1">
                                 <b-row>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <span class="price-course"> 200.000đ</span>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <div class="manipulation">
                                             <b-row>
-                                                <b-col md="12">
+                                                <b-col md="12" lg="12">
                                                      <input type="button" value="Thêm Khóa Học" class="addcourse">
                                                 </b-col>
-                                                <b-col md="12">
+                                                <b-col md="12" lg="12">
                                                      <input type="button" value="Thêm Vào Giỏ Hàng" class="addcart">
                                                 </b-col>
                                             </b-row>                                
                                         </div>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <div class="contact">
                                             <p><a href=""><i class="fas fa-phone"></i></a>Tư Vấn Thêm</p>
                                         </div>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                     
                                     </b-col>
                                 </b-row>  
                             </div>
                             <div class="title-2">
                                 <b-row>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <div class="ttkh">
                                             <p class="name">Thông tin khóa học</p>
                                         </div>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                          <div class="ttct">
                                              <b-row>
-                                                 <b-col md="12">
+                                                 <b-col md="12" lg="12">
                                                       <p><i class="fas fa-user-clock ts"></i> 4 học viên</p>
                                                  </b-col>
-                                                 <b-col md="12">
+                                                 <b-col md="12" lg="12">
                                                       <p><i class="far fa-clock ts"></i> 4 học viên</p>
                                                  </b-col>
-                                                 <b-col md="12">
+                                                 <b-col md="12" lg="12">
                                                       <p><i class="fas fa-book-open ts"></i> 9 bài học</p>
                                                  </b-col>
-                                                 <b-col md="12">
+                                                 <b-col md="12" lg="12">
                                                       <p><i class="far fa-clipboard ts"></i> 1 bài tập</p>
                                                  </b-col>
-                                                 <b-col md="12">
+                                                 <b-col md="12" lg="12">
                                                       <p><i class="fas fa-download ts"></i> 2 tài liệu</p>
                                                  </b-col>
-                                                 <b-col md="12">
+                                                 <b-col md="12" lg="12">
                                                      <p><i class="fas fa-calculator ts"></i>Cập nhật 25/2/2021</p>
                                                  </b-col>
                                              </b-row>
@@ -104,7 +104,7 @@
         <div class="content-course">
             <b-container>
                 <div class="row">
-                    <b-col md="9">
+                    <b-col md="9" lg="12">
                         <div class="tab-content">
                             <b-tabs content-class="mt-3">
                                 <b-tab title="Bạn Sẽ Học Được Gì?" active>
@@ -190,46 +190,46 @@
                                 <b-tab title="Đánh Giá">
                                     <b-container>
                                         <b-row>
-                                            <b-col md="12">
+                                            <b-col md="12" lg="12">
                                                 <p>Đánh giá từ học viên</p>
                                             </b-col>
-                                            <b-col md="12">
+                                            <b-col md="12" lg="12">
                                                <b-row>
-                                                   <b-col md="2">
+                                                   <b-col md="2" lg="2">
 
                                                    </b-col>
-                                                   <b-col md="10">
+                                                   <b-col md="10" lg="2">
                                                        <b-container>
                                                             <b-row>
-                                                                <b-col md="8">
+                                                                <b-col md="8" lg="8">
                                                                     <b-row>
-                                                                        <b-col md="12">
+                                                                        <b-col md="12" lg="12">
                                                                              <b-progress :value="value" :max="max" show-value class="mb-3"></b-progress>
                                                                         </b-col>
-                                                                        <b-col md="12">
+                                                                        <b-col md="12" lg="12">
                                                                              <b-progress :value="value" :max="max" show-value class="mb-3"></b-progress>
                                                                         </b-col>
-                                                                        <b-col md="12">
+                                                                        <b-col md="12" lg="12">
                                                                              <b-progress :value="value" :max="max" show-value class="mb-3"></b-progress>
                                                                         </b-col>
-                                                                        <b-col md="12">
+                                                                        <b-col md="12" lg="12">
                                                                              <b-progress :value="value" :max="max" show-value class="mb-3"></b-progress>
                                                                         </b-col>
-                                                                        <b-col md="12">
+                                                                        <b-col md="12" lg="12">
                                                                              <b-progress :value="value" :max="max" show-value class="mb-3"></b-progress>
                                                                         </b-col>
                                                                     </b-row>
                                                                 </b-col>
-                                                                <b-col md="1">
+                                                                <b-col md="1" lg="1">
                                                                     <p>50%</p>
                                                                     <p>50%</p>
                                                                     <p>50%</p>
                                                                     <p>50%</p>
                                                                     <p>50%</p>
                                                                 </b-col>
-                                                                <b-col md="3">
+                                                                <b-col md="3" lg="3">
                                                                     <div class="row">
-                                                                        <b-col md="12">
+                                                                        <b-col md="12" lg="12">
                                                                             <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                                                             <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                                                             <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
@@ -257,102 +257,102 @@
         <div class="related-course">
             <b-container>
                 <b-row>
-                    <b-col md="12">
+                    <b-col md="12" lg="12">
                            <h3>Khóa Học Liên Quan</h3>
                     </b-col>
-                    <b-col md="9">
+                    <b-col md="9" lg="9">
                            <b-row>
-                                 <b-col md="12">
+                                 <b-col md="12" lg="12">
                                         <div class="relad-cour">
                                             <b-row>
-                                                    <b-col md="2">
+                                                    <b-col md="2" lg="2">
                                                         <img src="" alt="">
                                                     </b-col>
-                                                    <b-col md="4">
+                                                    <b-col md="4" lg="2">
                                                         <b-row>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <p class="name">Kỹ Năng Bán Bảo Hiểm Nhân Thọ Chuyên Nghiệp </p>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <b-row>
-                                                                    <b-col md="6">
+                                                                    <b-col md="6" lg="6">
                                                                         <p><i class="far fa-clock ts" ></i>4 giờ</p>
                                                                     </b-col>
-                                                                    <b-col md="6">
+                                                                    <b-col md="6" lg="6">
                                                                         <p><i class="fas fa-book-open ts"></i> 23 giờ học</p>
                                                                     </b-col>
                                                                 </b-row>
                                                             </b-col>
                                                             </b-row>
                                                     </b-col>
-                                                    <b-col md="3">
+                                                    <b-col md="3" lg="3">
                                                         <p>5 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                                     </b-col>
-                                                    <b-col md="3">
+                                                    <b-col md="3" lg="3">
                                                             <p class="pri-course">290.000đ</p>
                                                     </b-col>
                                              </b-row>                                        
                                         </div>   
                                 </b-col>
-                                 <b-col md="12">
+                                 <b-col md="12" lg="12">
                                         <div class="relad-cour">
                                             <b-row>
-                                                    <b-col md="2">
+                                                    <b-col md="2" lg="2">
                                                         <img src="" alt="">
                                                     </b-col>
-                                                    <b-col md="4">
+                                                    <b-col md="4" lg="4">
                                                         <b-row>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <p class="name">Kỹ Năng Bán Bảo Hiểm Nhân Thọ Chuyên Nghiệp </p>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <b-row>
-                                                                    <b-col md="6">
+                                                                    <b-col md="6" lg="6">
                                                                         <p><i class="far fa-clock ts" ></i>4 giờ</p>
                                                                     </b-col>
-                                                                    <b-col md="6">
+                                                                    <b-col md="6" lg="6">
                                                                         <p><i class="fas fa-book-open ts"></i> 23 giờ học</p>
                                                                     </b-col>
                                                                 </b-row>
                                                             </b-col>
                                                             </b-row>
                                                     </b-col>
-                                                    <b-col md="3">
+                                                    <b-col md="3" lg="3">
                                                         <p>5 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                                     </b-col>
-                                                    <b-col md="3">
+                                                    <b-col md="3" lg="3">
                                                             <p class="pri-course">290.000đ</p>
                                                     </b-col>
                                              </b-row>                                        
                                         </div>   
                                 </b-col>
-                                 <b-col md="12">
+                                 <b-col md="12" lg="12">
                                         <div class="relad-cour">
                                             <b-row>
-                                                    <b-col md="2">
+                                                    <b-col md="2" lg="2">
                                                         <img src="" alt="">
                                                     </b-col>
-                                                    <b-col md="4">
+                                                    <b-col md="4" lg="4">
                                                         <b-row>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <p class="name">Kỹ Năng Bán Bảo Hiểm Nhân Thọ Chuyên Nghiệp </p>
                                                             </b-col>
-                                                            <b-col md="12">
+                                                            <b-col md="12" lg="12">
                                                                 <b-row>
-                                                                    <b-col md="6">
+                                                                    <b-col md="6" lg="6">
                                                                         <p><i class="far fa-clock ts" ></i>4 giờ</p>
                                                                     </b-col>
-                                                                    <b-col md="6">
+                                                                    <b-col md="6" lg="6">
                                                                         <p><i class="fas fa-book-open ts"></i> 23 giờ học</p>
                                                                     </b-col>
                                                                 </b-row>
                                                             </b-col>
                                                             </b-row>
                                                     </b-col>
-                                                    <b-col md="3">
+                                                    <b-col md="3" lg="3">
                                                         <p>5 <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
                                                     </b-col>
-                                                    <b-col md="3">
+                                                    <b-col md="3" lg="3">
                                                             <p class="pri-course">290.000đ</p>
                                                     </b-col>
                                              </b-row>                                        

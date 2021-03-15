@@ -2,11 +2,11 @@
     <div class="customer">
         <b-container>
             <b-row class="box">
-                <b-col md="12" >
+                <b-col md="12" lg="12" >
                     <h3>Chỉnh Sửa Thông Tin Cá Nhân</h3>
                 </b-col>
-                <b-col md="12" >
-                    <b-col md="5" offset="4">
+                <b-col md="12" lg="12" >
+                    <b-col md="5" lg="5" offset="4">
                         <div class="c-field">
                                 <div
                                     :class="{'has-file': showRemovedBtn}"
@@ -29,21 +29,21 @@
                         <svg height="15" class="plus" viewBox="0 0 469.33333 469.33333" width="15" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031 192h-160v-160c0-17.664062-14.335937-32-32-32h-21.332031c-17.664062 0-32 14.335938-32 32v160h-160c-17.664062 0-32 14.335938-32 32v21.332031c0 17.664063 14.335938 32 32 32h160v160c0 17.664063 14.335938 32 32 32h21.332031c17.664063 0 32-14.335937 32-32v-160h160c17.664063 0 32-14.335937 32-32v-21.332031c0-17.664062-14.335937-32-32-32zm0 0"/></svg>
                     </b-col>                  
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                     <b-container>
                         <b-row>
-                            <b-col md="12">
+                            <b-col md="12" lg="12">
                             <b-row>
-                                <b-col md="2"><label for="">Họ Tên</label></b-col>
-                                <b-col md="4"><input type="text" name="" id=""></b-col>
-                                <b-col md="2"><label for="">Email</label></b-col>
-                                <b-col md="4"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2"><label for="">Họ Tên</label></b-col>
+                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2"><label for="">Email</label></b-col>
+                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12">
+                            <b-col md="12" lg="12">
                             <b-row>
-                                <b-col md="2"><label for="">Giới Tính</label></b-col>
-                                <b-col md="4"><b-form-radio-group
+                                <b-col md="2" lg="2"><label for="">Giới Tính</label></b-col>
+                                <b-col md="4" lg="4"><b-form-radio-group
                                                 v-model="selected1"
                                                 :options="options1"
                                                 class="mb-3"
@@ -51,34 +51,34 @@
                                                 text-field="text">
                                                 </b-form-radio-group>
                                     </b-col>
-                                <b-col md="2"><label for="example-datepicker">Birthday</label></b-col>
-                                <b-col md="4"><b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker></b-col>
+                                <b-col md="2" lg="2"><label for="example-datepicker">Birthday</label></b-col>
+                                <b-col md="4" lg="4"><b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker></b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12">
+                            <b-col md="12" lg="12">
                             <b-row>
-                                <b-col md="2"><label for="">Địa Chỉ</label></b-col>
-                                <b-col md="4"><input type="text" name="" id=""></b-col>
-                                <b-col md="2"><label for="example-datepicker">Số Điện Thoại</label></b-col>
-                                <b-col md="4"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2"><label for="">Địa Chỉ</label></b-col>
+                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2"><label for="example-datepicker">Số Điện Thoại</label></b-col>
+                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12">
+                            <b-col md="12" lg="12">
                             <b-row>
-                                <b-col md="2"><label for="">Tỉnh/Thành Phố</label></b-col>
-                                <b-col md="4"><model-select :options="options2"
+                                <b-col md="2" lg="2"><label for="">Tỉnh/Thành Phố</label></b-col>
+                                <b-col md="4" lg="4"><model-select :options="options2"
                                                 v-model="item2"
                                                 placeholder="Chọn"></model-select>
                                     </b-col>
-                                    <b-col md="2"><label for="">Quận/Huyện</label></b-col>
-                                    <b-col md="4"><model-select :options="options2"
+                                    <b-col md="2" lg="2"><label for="">Quận/Huyện</label></b-col>
+                                    <b-col md="4" lg="4"><model-select :options="options2"
                                                 v-model="item2"
                                                 placeholder="Chọn"></model-select>
                                     </b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12">
-                                <b-col md="6">
+                            <b-col md="12" lg="12">
+                                <b-col md="6" lg="6">
                                     <b-form-checkbox-group
                                         v-model="selected"
                                         :options="optionscb"
@@ -90,11 +90,11 @@
                         </b-row>
                     </b-container>               
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                    <b-container>
                        <b-row>
-                            <b-col md="2"><label for="">Password</label></b-col>
-                            <b-col md="4">
+                            <b-col md="2" lg="2"><label for="">Password</label></b-col>
+                            <b-col md="4" lg="4">
                                <VuePassword
                                     v-model="user.password"
                                     :strength="score"
@@ -230,7 +230,7 @@ input[type="text"]{
 div#example-datepicker__outer_{
     width: 85%;
 }
-.col-md-12 {
+.col-md-12,.col-lg-12 {
     margin-top: 15px;
 }
 .ui.fluid.search.selection.dropdown {

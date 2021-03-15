@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-6 col-lg-6">
         <div class="dataTables_length" id="datatable-basic_length">
           <span class="fill1">
             Show 
@@ -32,7 +32,7 @@
             <span >entries</span>        
         </div>
       </div>
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-6 col-lg-6">
         <div id="datatable-basic_filter" class="dataTables_filter">
           <span class="fill1">
             Search:

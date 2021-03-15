@@ -2,58 +2,58 @@
     <div class="infoteacher">
         <b-container>
             <b-row>
-                <b-col md="12">
-                    <b-col md="6" offset="3">
-                           <b-col md="12">
+                <b-col md="12" lg="12">
+                    <b-col md="6" lg="6" offset="3">
+                           <b-col md="12" lg="12">
                                <img src="" alt="">
                            </b-col>
-                           <b-col md="12">
+                           <b-col md="12" lg="12">
                                <h4>Trần Văn Minh</h4>
                            </b-col>
-                           <b-col md="12">
+                           <b-col md="12" lg="12">
                                   <b-row>
-                                      <b-col md="4" offset="4">
+                                      <b-col md="4" lg="4" offset="4">
                                            <input type="button" value="Nhận Tin Mới" class="cs" > 
                                       </b-col>
                                   </b-row>
                            </b-col>
-                           <b-col md="12">
+                           <b-col md="12" lg="12">
                                <b-row>
-                                    <b-col md="12" class="a1">
+                                    <b-col md="12" lg="12" class="a1">
                                         <b-row>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>Số Khóa Học</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>Tài Liệu</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>Câu Hỏi</h4>
                                             </b-col>
                                         </b-row>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <b-row>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <i class="far fa-clipboard fa-4x" ></i>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <i class="far fa-file-alt fa-4x"></i>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <i class="far fa-question-circle fa-4x"></i>
                                             </b-col>
                                         </b-row>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <b-row>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>2</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>0</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4 style="margin-left: 19px;">0</h4>
                                             </b-col>
                                         </b-row>
@@ -62,12 +62,12 @@
                            </b-col>
                     </b-col>
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                     <b-row>
-                        <b-col md="12">
+                        <b-col md="12" lg="12">
                             <h4>Thông Tin Giảng Viên</h4>
                         </b-col>
-                        <b-col md="12">
+                        <b-col md="12" lg="12">
                              <p>
                                  Chức vụ:
 
@@ -89,7 +89,7 @@
 
                              </p>
                         </b-col>
-                        <b-col md="12">
+                        <b-col md="12" lg="12">
 
                         </b-col>
                     </b-row>
@@ -102,7 +102,7 @@
 .a1{
     margin-top: 20px;
 }
-.col-md-12 {
+.col-md-12,.col-lg-12 {
     margin-bottom: 5px;
 }
 h4 {

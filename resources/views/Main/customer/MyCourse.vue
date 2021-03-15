@@ -2,61 +2,61 @@
     <div class="mycourse">
         <b-container>
             <b-row>
-                <b-col md="12">
-                    <b-col md="6" offset="3">
-                           <b-col md="12">
+                <b-col md="12" lg="12">
+                    <b-col md="6" offset="3" lg="6">
+                           <b-col md="12" lg="12">
                                <img src="" alt="">
                            </b-col>
-                           <b-col md="12">
+                           <b-col md="12" lg="12">
                                <h4>minh trần văn / minhcntt29091997@gmail.com</h4>
                            </b-col>
-                           <b-col md="12">
+                           <b-col md="12" lg="12">
                                   <b-row>
-                                      <b-col md="4" offset="2" >
+                                      <b-col md="4" lg="4" offset="2" >
                                            <input type="button" value="Kích Hoạt COD" class="active" > 
                                       </b-col>
-                                      <b-col md="4">
+                                      <b-col md="4" lg="4">
                                            <input type="button" value="Chỉnh Sửa" class="cs" > 
                                       </b-col>
                                   </b-row>
                            </b-col>
-                           <b-col md="12">
+                           <b-col md="12" lg="12">
                                <b-row>
-                                    <b-col md="12" class="a1">
+                                    <b-col md="12" lg="12" class="a1">
                                         <b-row>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>Số Khóa Học</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>Tài Liệu</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>Câu Hỏi</h4>
                                             </b-col>
                                         </b-row>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <b-row>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <i class="far fa-clipboard fa-4x" ></i>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <i class="far fa-file-alt fa-4x"></i>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <i class="far fa-question-circle fa-4x"></i>
                                             </b-col>
                                         </b-row>
                                     </b-col>
-                                    <b-col md="12">
+                                    <b-col md="12" lg="12">
                                         <b-row>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>2</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4>0</h4>
                                             </b-col>
-                                            <b-col md="4">
+                                            <b-col md="4" lg="4">
                                                 <h4 style="margin-left: 19px;">0</h4>
                                             </b-col>
                                         </b-row>
@@ -65,7 +65,7 @@
                            </b-col>
                     </b-col>
                 </b-col>
-                <b-col md="12">
+                <b-col md="12" lg="12">
                     <div>
                         <b-card no-body>
                             <b-tabs card>
@@ -74,53 +74,53 @@
                                         <div class="my-list-course">
                                             <b-container>
                                                 <b-row>
-                                                    <b-col md="4">
+                                                    <b-col md="4" lg="4">
                                                         <div class="card-course">
                                                             <b-container>
                                                                 <b-row>
-                                                                    <b-col md="12">
+                                                                    <b-col md="12" lg="12">
                                                                         <img src="" alt="">
                                                                     </b-col>
-                                                                    <b-col md="12">
+                                                                    <b-col md="12" lg="12">
                                                                         <div class="ct-my-list-cour">
-                                                                            <b-col md="12">
+                                                                            <b-col md="12" lg="12">
                                                                                 <p class="name-c">PhotoShop cho thiết kế Web</p>
                                                                             </b-col>
-                                                                            <b-col md="12">
+                                                                            <b-col md="12" lg="12">
                                                                                 <p class="name-t">Phó Hải Đăng</p>
                                                                             </b-col>
-                                                                            <b-col md="12">
+                                                                            <b-col md="12" lg="12">
                                                                                 <p class="name-t">Thạc Sĩ Khoa Học Máy Tính</p>
                                                                             </b-col>
                                                                         </div>
                                                                     </b-col>
-                                                                    <b-col md="12">
+                                                                    <b-col md="12" lg="12">
                                                                         <b-container>
                                                                                  <b-row>
-                                                                                    <b-col md="6">
+                                                                                    <b-col md="6" lg="6">
                                                                                         Điểm Hiệu Quả
                                                                                     </b-col>
-                                                                                    <b-col md="3" offset="3">
+                                                                                    <b-col md="3" lg="6" offset="3">
                                                                                         <span>0 %<i class="far fa-question-circle" style="margin-left:2px!important"></i></span>
                                                                                     </b-col>
                                                                                 </b-row>
                                                                         </b-container>                                                                     
                                                                     </b-col>
-                                                                    <b-col md="12">
+                                                                    <b-col md="12" lg="12">
                                                                         <b-container>
                                                                                 <b-row>
-                                                                                    <b-col md="12">
+                                                                                    <b-col md="12" lg="12">
                                                                                         <b-progress :value="valueprogress" :max="max" class="mb-3"></b-progress>
                                                                                     </b-col>
                                                                                 </b-row> 
                                                                         </b-container>                                                                                                                                           
                                                                     </b-col>
-                                                                    <b-col md="12">
+                                                                    <b-col md="12" lg="12">
                                                                         <b-row>
-                                                                            <b-col md="4">
+                                                                            <b-col md="4" lg="4">
                                                                                 <input type="button" value="Bắt Đầu Học" class="active" style="margin-top:0px !important">
                                                                             </b-col>
-                                                                            <b-col md="4" offset="2">
+                                                                            <b-col md="4" lg="4" offset="2">
                                                                                 <b-form-rating v-model="value" variant="warning"></b-form-rating>
                                                                             </b-col>
                                                                         </b-row>
@@ -182,7 +182,7 @@ p.name-c{
 .a1{
     margin-top: 20px;
 }
-.col-md-12 {
+.col-md-12,.col-lg-12 {
     margin-bottom: 5px;
 }
 h4 {
