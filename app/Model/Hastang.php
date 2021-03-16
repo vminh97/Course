@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hastang extends Model
 {
-    protected $table = 'category';
+    protected $table = 'hastang';
     /**
      * Get the phone record associated with the user.
      */

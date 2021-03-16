@@ -10,24 +10,24 @@
         <div class="form1">
             <div class="container">
                     <div class="title">
-                    <h1>Add Category</h1>
+                    <h1>Edit Category</h1>
                     </div>
                     <div class="card-body">
                         <form class="needs-validation" novalidate="">
                             <div class="form-row">
                                 <div class="col-lg-5 offset-lg-1  " >
-                                    <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Name Category</label>
+                                    <label class="form-control-label" >Name Category</label>
                                     <input type="text" class="form-control" id="namecategory" v-model='category.Name' placeholder="Name Category" required="">
                                 </div>
                                 <div class="col-lg-5 ">
-                                    <label class="form-control-label" for="validationCustom02" style="margin-top: 5%;">Name Display Category</label>
+                                    <label class="form-control-label">Name Display Category</label>
                                     <input type="text" class="form-control" id="displaycategory" v-model='category.name_Display' placeholder="Name Display Category"  required="">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-1">
                                        <div class="form-group">
-                                            <label class="form-control-label" for="validationCustomUsername">Name Category Main</label>
+                                            <label class="form-control-label" >Name Category Main</label>
                                             <select class="form-control" id="categorymain" v-model='category.parent_id' >
                                                 <option v-for="cate in listCategorydad" :key="cate.id" :value="cate.parent_id" >{{ cate.name_Display }}</option>
                                             </select>
@@ -35,26 +35,24 @@
                                 </div>
                                 <div class="col-lg-3 ">
                                     <div class="col-lg-12">
-                                        <label class="form-control-label" style="margin-left: 80px;" for="validationCustomUsername">Display Category</label>
+                                        <label class="form-control-label ax">Display Category</label>
                                     </div>
                                     <div class="col-lg-12">
-                                        <label class="custom-toggle"  
-                                         :id="category.isDisplay"
-                                         style=" margin-left: 110px;margin-top: 10px;">
-                                            <input type="checkbox"  v-model="checked">
-                                            <span class="custom-toggle-slider rounded-circle" style="border-radius: 10px!important" ></span>
+                                        <label class="custom-toggle bx">
+                                            <input type="checkbox" v-model='category.is_display' checked >
+                                            <span class="custom-toggle-slider rounded-circle cx"   ></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 offset-lg-1">
-                                    <label class="form-control-label" for="validationCustomUsername">Category Status</label>
+                                    <label class="form-control-label">Category Status</label>
                                     <input type="text" class="form-control" v-model='category.category_status' placeholder="category_status" id="slug_url" aria-describedby="inputGroupPrepend" required="" >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-5 sb">
                                     <router-link to="/admin/category/list-category" >
-                                          <button class="btn btn-primary"  @click="createCategory" >Submit</button>
+                                          <button class="btn btn-primary"  @click="updateCategory" >Submit</button>
                                     </router-link>                                      
                                 </div>                                                              
                             </div>
@@ -79,42 +77,39 @@
         category:[],
         categorybyid:[],
         checked: true,
-        valuechecked:''
       }
+    },
+    computed: {
     },
     created: function()
     {
-        this.listcategorymain();
-        this.valuebyid()
+        this.listcategoryid();
     },
-    methods: {
-            isChecked() {
-                if(this.checked==true){  this.valuechecked == 1}
-                else {this.valuechecked == 0}
-            },
-            async listcategorymain()
+    methods: { 
+        async listcategoryid(index)
             {
                 try {
-                            const response = await axios.get('/api/category/categorydad');
-                            this.listCategorydad = response.data;
+                            this.error = null
+                            const index= this.$route.params.id;
+                            const response = await axios.get('/api/category/find/'+index);
+                            this.Category= response.data;
                 } catch (error) 
                 {
                             this.error = error.response.data;
                 } 
             },
-            async valuebyid()
+        async updateCategory(index)
+        {
+            try {
+                        const response = await axios.get('/api/category/update/'+index);
+                        this.listCategorydad = response.data;
+            } catch (error) 
             {
-                try {
-                            const response = await axios.get('/api/category/categorydad');
-                            this.categorybyid = response.data;
-                } catch (error) 
-                {
-                            this.error = error.response.data;
-                } 
-            },
+                        this.error = error.response.data;
+            } 
+        },       
     }
   }
-
 </script>
 <style lang="scss" scoped>
 .form1
@@ -138,5 +133,16 @@ form
 {
     margin-top:2%;
 }
-
+.form-control-label{
+    margin-top: 5%;
+}
+.ax{
+    margin-left: 80px;
+}
+.bx{
+    margin-left: 110px;margin-top: 10px;
+}
+.cx{
+    border-radius: 10px!important;
+}
 </style>

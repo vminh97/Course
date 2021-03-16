@@ -31,7 +31,7 @@ class CreateOrdersTable extends Migration
             $table->string('receiver_name')->nullable();
             $table->string('receiver_phone')->nullable();
             $table->string('receiver_email')->nullable();
-            $table->string('receiver_address')->nullable();
+            $table->LongText('receiver_address')->nullable();
             $table->string('receiver_city')->nullable();
             $table->string('receiver_provice')->nullable();
             $table->string('receiver_tower')->nullable();

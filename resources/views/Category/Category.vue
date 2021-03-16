@@ -101,12 +101,12 @@
                 </td> 
                 <td class="text-right action" >
                     <a type="text" @click="editCategory(row.id)" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit Category'}" >
+                         <router-link :to="{ name: 'Edit Category',params: {id:row.id}}" >
                              <i class="fas fa-user-edit"></i>
                          </router-link>
                     </a>
                     <a type="text" @click="deleteCategory(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <router-link :to="{ name: 'Delete Category'}" >
+                        <router-link :to="{ name: 'Delete Category',params: {id: row.id}}" >
                              <i class="fas fa-trash"></i>
                         </router-link>     
                     </a>
@@ -154,12 +154,12 @@
                 this.error = error.response.data
             }           
         },
-            async editCategory()
+            async editCategory(index)
             {
                    try {
                         this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/category/update/'+id);
+                        const index= this.$route.params.id;
+                        const response = await axios.post('/api/category/update/'+index);
                         if(response.status === 200){
                           this.category = response.data;                                                 
                           console.log(this.category)
@@ -168,19 +168,17 @@
                         console.log(error);
                     }
             },
-            async deleteCategory()
+            async deleteCategory(index)
             {
-                    try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/category/destroy/'+id);
-                        if(response.status === 200){
-                          this.category = this.category.filter(id);                                               
-                          console.log(this.category)
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
+                 axios
+                .delete("/api/category/destroy/" + index)
+                .then(res => {
+                confirm("Are you sure you want to delete this item?") &&
+                this.category.splice(index, 1);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
             }
     }  
 }

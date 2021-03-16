@@ -7,7 +7,7 @@ use Faker\Generator;
         return [
         'hastang_code' =>'s'.str_random(5),
         'hastang_title' => $faker->text,
-        'status' => $faker->text ,
+        'status' => rand(0,1),
         'start_date' =>  new Datetime,
         'end_date' => new Datetime,
         'isDisplay' => rand(0,1),

@@ -20,9 +20,9 @@ class CreateProductsTable extends Migration
             $table->string('name_product');
             $table->integer('teacher_id')->unsigned();
             $table->foreign('teacher_id')->references('id')->on('teachers');
-            $table->string('introduction_product');
-            $table->string('content_product');
-            $table->string('title_procduct');
+            $table->LongText('introduction_product');
+            $table->LongText('content_product');
+            $table->LongText('title_procduct');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('category'); 
             $table->integer('certificate_id')->unsigned();
@@ -35,8 +35,8 @@ class CreateProductsTable extends Migration
             $table->text('product_image');
             $table->text('product_image_text');
             $table->text('video');
-            $table->string('material_name')->nullable();
-            $table->string('hashtag_name')->nullable();
+            $table->LongText('material_name')->nullable();
+            $table->LongText('hashtag_name')->nullable();
             $table->text('search_keywords')->nullable();
             $table->text('list_image')->nullable();
             $table->boolean('isPublic')->nullable();

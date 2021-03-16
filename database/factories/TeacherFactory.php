@@ -7,15 +7,15 @@ $records = [
 ];
 for($i = 0; $i < count($records); $i++)
 	{
-    $factory->define(App\Model\Customer::class, function (Generator  $faker) {
+    $factory->define(App\Model\Teacher::class, function (Generator  $faker) {
         return [
         'customer_name' => $faker->Name,
-        'image_customer' =>$faker->image,
+        'image_teacher' =>$faker->image,
         'birthday' => new Datetime,
         'address' => $faker->Text,
         'email' => $faker->unique()->safeEmail,
-        'isactive' =>str_random(10),
-        'status'=> $faker->Text,
+        'isactive' =>rand(0,1),
+        'status'=> rand(0,4),
         'first_name'=>$faker->name,
         'last_name'=>$faker->name,
         'phone'=> rand(1,11),

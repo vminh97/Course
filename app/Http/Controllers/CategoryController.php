@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Facedes\Excel;
 use App\Exports\TestExport;
 class CategoryController extends Controller
 {
-    use Excel;
+    // use Excel;
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +26,18 @@ class CategoryController extends Controller
             return $e->getMessage();
         }
     }
-
+    public function find($id)
+    {
+        try
+        {
+            $items = Category::select('*')->where('id',$id)->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -66,7 +77,9 @@ class CategoryController extends Controller
             $category->Name = $request['Name'];
             $category->name_Display = $request['name_Display'];
             $category->parent_id=$request['parent_id'];
-            $category->is_display = $request['is_display'];
+            if($request['is_display']==='true') {$request_display=1;}
+            else{$request_display=0; }            
+            $category->is_display = $request_display;
             $category->category_status = $request['category_status'];
             $category->order_number = $request['order_number'];
             $slug_url=str_replace(' ','_',$request['name_Display']);
@@ -78,8 +91,7 @@ class CategoryController extends Controller
             ], 200);
         }
         catch (\Exception $e) {
-            //return error message
-            return $e->getMessage('sai');
+            return $e->getMessage();
         }
     }
 
@@ -89,9 +101,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit($id)
     {
-        //
+        return Category::findOrFail($id);
     }
 
     /**
@@ -108,7 +120,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             // $this->validate($request, [
@@ -119,10 +131,12 @@ class CategoryController extends Controller
             $category->Name = $request->Name;
             $category->name_Display = $request->name_Display;
             $category->parent_id=$request->parent_id;
-            $category->is_display = $request->is_display;
+            if($request->is_display==='true') {$request_display=1;}
+            else{$request_display=0; }            
+            $category->is_display = $request_display;
             $category->category_status = $request->category_status;
             $category->order_number = $request->order_number;
-            $slug_url=str_replace(' ','_',$request['name_Display']);
+            $slug_url=str_replace(' ','_',$request->name_Display);
             $category->slug_url = $slug_url;
             $category->save();
         

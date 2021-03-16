@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Database\Seeder;
 
 class HastangTableSeeder extends Seeder
@@ -10,6 +11,6 @@ class HastangTableSeeder extends Seeder
      */
     public function run()
     {
-           factory(\App\Model\Hastang::class,10)->create();
+        factory(\App\Model\Hastang::class,10)->create();
     }
 }

@@ -109,7 +109,8 @@ export default new Router({
       children:[
         { path: "list-category",name: "List Category",component: ListCategory },
         { path: "add-category",name: "Add Category",component: AddCategory },
-        { path: "edit-category/id",name: "Edit Category",component:  EditCategory },
+        { path: "edit-category/:id",name: "Edit Category",component:  EditCategory },
+        { path: "list-category",name: "Delete Category",component: ListCategory },
       ]
     },
     {

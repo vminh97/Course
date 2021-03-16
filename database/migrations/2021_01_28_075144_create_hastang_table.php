@@ -21,9 +21,9 @@ class CreateHastangTable extends Migration
             $table->dateTime('start_date')->nullable();
             $table->dateTime('end_date')->nullable();
             $table->boolean('isDisplay')->default('1');
-            $table->string('keyword');
-            $table->string('description')->nullable();
-            $table->string('show_order')->nullable();          
+            $table->longText('keyword');
+            $table->longText('description')->nullable();
+            $table->longText('show_order')->nullable();          
             $table->timestamps();
         });
     }
