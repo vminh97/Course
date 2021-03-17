@@ -27,11 +27,9 @@ Route::group(['prefix' => 'category'], function () {
 
     Route::post('/store','CategoryController@store');
 
-    Route::post('/update/{id}','CategoryController@update');
-    
-    Route::post('/edit/{id}','CategoryController@edit');
+    Route::get('/edit/{id}','CategoryController@edit');
 
-    Route::get('/find/{id}','CategoryController@find');
+    Route::put('/update/{id}','CategoryController@update');
 
     Route::delete('/destroy/{id}','CategoryController@destroy');
 
@@ -79,11 +77,13 @@ Route::group(['prefix' => 'teacher'], function () {
 
     Route::post('/store','TeacherController@store');
 
-    Route::post('/edit/{id}','TeacherController@edit');
+    Route::get('/edit/{id}','TeacherController@edit');
+
+    Route::put('/update/{id}','CategoryController@update');
     
     Route::delete('/destroy/{id}','TeacherController@destroy');
 
-    Route::get('/export', 'CategoryController@export')->name('export');
+    Route::get('/export', 'TeacherController@export')->name('export');
 });
 Route::group(['prefix' => 'certificate'], function () {
 

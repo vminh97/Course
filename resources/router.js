@@ -44,7 +44,6 @@ import ListOrder from "@/views/Order/Order.vue";
 
 //admin/teacher
 import ListTeacher from "@/views/Teacher/Teacher.vue";
-import AddTeacher from "@/views/Teacher/AddTeacher.vue";
 import EditTeacher from "@/views/Teacher/EditTeacher.vue";
 
 
@@ -110,7 +109,6 @@ export default new Router({
         { path: "list-category",name: "List Category",component: ListCategory },
         { path: "add-category",name: "Add Category",component: AddCategory },
         { path: "edit-category/:id",name: "Edit Category",component:  EditCategory },
-        { path: "list-category",name: "Delete Category",component: ListCategory },
       ]
     },
     {
@@ -119,7 +117,7 @@ export default new Router({
       component: DashboardLayout,
       children:[
         { path: "list-customer",name: "List Customer",component: ListCustomer },
-        { path: "edit-customer/id",name: "Edit Customer",component:  EditCustomer },
+        { path: "edit-customer/:id",name: "Edit Customer",component:  EditCustomer },
       ]
     },
     {
@@ -146,8 +144,7 @@ export default new Router({
       component: DashboardLayout,
       children:[
         { path: "list-teacher",name: "List Teacher",component:  ListTeacher },
-        { path: "add-teacher",name: "Add Teacher",component: AddTeacher },
-        { path: "edit-teacher/id",name: "Edit Teacher",component:  EditTeacher },
+        { path: "edit-teacher/:id",name: "Edit Teacher",component:  EditTeacher },
       ]
     },
     {
@@ -164,14 +161,14 @@ export default new Router({
         { path: "review-course",name: "Review Course",components: { default: ReviewCourse } }
       ]
     },
-    {
-      path: "admin/user",
-      component: DashboardLayout,
-      name: "User",
-      children: [
-        { path: "user-profile",name: "User Profile",components: { default: UserProfile }},
-        { path: "user-management/list-users",name: "List Users",components: { default: ListUserPage }}
-      ]
-    },
+    // {
+    //   path: "admin/user",
+    //   component: DashboardLayout,
+    //   name: "User",
+    //   children: [
+    //     { path: "user-profile",name: "User Profile",components: { default: UserProfile }},
+    //     { path: "user-management/list-users",name: "List Users",components: { default: ListUserPage }}
+    //   ]
+    // },
   ]
 })

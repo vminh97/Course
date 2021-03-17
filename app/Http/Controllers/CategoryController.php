@@ -103,7 +103,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return Category::findOrFail($id);
+        try {
+            $post = Category::find($id);
+            return response()->json($post);
+        }
+        catch (\Exception $e) {
+            //return error message
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -123,10 +130,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            // $this->validate($request, [
-            //     'Name' => 'required|min:3',
-            //     'name_Display' => 'required|min:3',
-            // ]);              
+            $this->validate($request, [
+                'Name' => 'required|min:3',
+                'name_Display' => 'required|min:3',
+            ]);              
             $category = Category::find($id);
             $category->Name = $request->Name;
             $category->name_Display = $request->name_Display;

@@ -13,7 +13,7 @@
                     <h1>Edit Category</h1>
                     </div>
                     <div class="card-body">
-                        <form class="needs-validation" novalidate="">
+                        <form class="needs-validation" novalidate="" @submit.prevent="updateCategory">
                             <div class="form-row">
                                 <div class="col-lg-5 offset-lg-1  " >
                                     <label class="form-control-label" >Name Category</label>
@@ -52,7 +52,7 @@
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-5 sb">
                                     <router-link to="/admin/category/list-category" >
-                                          <button class="btn btn-primary"  @click="updateCategory" >Submit</button>
+                                          <button class="btn btn-primary" >Submit</button>
                                     </router-link>                                      
                                 </div>                                                              
                             </div>
@@ -73,40 +73,49 @@
     data() {
       return {
         selected: null,
-        listCategorydad:[],
         category:[],
-        categorybyid:[],
         checked: true,
+        listCategorydad:[],
       }
     },
     computed: {
     },
     created: function()
     {
-        this.listcategoryid();
+        this.editCategory();
+        this.listcategorymain();
     },
     methods: { 
-        async listcategoryid(index)
+
+        async editCategory()
             {
                 try {
-                            this.error = null
-                            const index= this.$route.params.id;
-                            const response = await axios.get('/api/category/find/'+index);
-                            this.Category= response.data;
+                    this.error = null
+                    const index= this.$route.params.id;
+                    const response = await axios.get('/api/category/edit/'+index);
+                    this.category= response.data;
                 } catch (error) 
                 {
-                            this.error = error.response.data;
+                    this.error = error.response.data;
                 } 
             },
-        async updateCategory(index)
+        async listcategorymain()
         {
             try {
-                        const response = await axios.get('/api/category/update/'+index);
+                        const response = await axios.get('/api/category/categorydad');
                         this.listCategorydad = response.data;
             } catch (error) 
             {
                         this.error = error.response.data;
             } 
+        },
+        async updateCategory()
+        {
+            const index= this.$route.params.id;
+            let uri = `http://127.0.0.1:8000/api/category/update/`+index;
+            this.axios.post(uri, this.post).then((response) => {
+            this.$router.push({name: 'category'});
+          });
         },       
     }
   }

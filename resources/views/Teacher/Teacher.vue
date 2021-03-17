@@ -18,7 +18,7 @@
                 </div>
             </div>
             </div>
-            <div class="row">
+            <div class="row lx">
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="dataTables_length" id="datatable-basic_length">
                     <span class="fill1">
@@ -33,21 +33,13 @@
                         <span >entries</span>        
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5 col-lg-5">
+                <div class="col-sm-12 col-md-5 col-lg-5 offset-lg-3 offset-md-3 ">
                     <div id="datatable-basic_filter" class="dataTables_filter">
                     <span class="fill1">
                         Search:
                     </span>  
                         <input type="search" class="form-control form-control-sm fill-table" placeholder="" aria-controls="datatable-basic">
                     </div>
-                </div>
-                <div class="col text-right">
-                  <base-button type="danger">                        
-                    <router-link :to="{ name: 'Add Teacher' }" class='add'>
-                        <i class="fas fa-user-edit mr-2"></i>
-                        <span class="btn-inner--text">Add Teacher</span>
-                    </router-link>
-                  </base-button>
                 </div>
             </div>
             <div class="table-responsive">
@@ -59,13 +51,12 @@
                 <template slot="columns">
                     <th><b-form-checkbox
                     id="checkbox-1"
-                    v-model="status1"
                     name="checkbox-1"
                     value="accepted"
                     unchecked-value="not_accepted"
                     ></b-form-checkbox></th>
-                    <th>Name Customer</th>
-                    <th>Image Customer</th>
+                    <th>Name Teacher</th>
+                    <th>Image Teacher</th>
                     <th>Birthday</th>
                     <th>Email</th>
                     <th>Active</th>
@@ -77,9 +68,6 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <b-form-checkbox
-                            id="checkbox-1"
-                            v-model="status"
-                            name="checkbox-1"
                             value="accepted"
                             unchecked-value="not_accepted"
                             ></b-form-checkbox>
@@ -98,22 +86,22 @@
                 <td>
                     {{row.email}}
                 </td>
-                <td>
-                    {{row.isactive}}
+                <td >
+                    <badge class="badge-dot mr-4" >
+                         <i :class="`bg-danger`"></i>
+                    </badge>
                 </td>
                 <td>
                     {{row.status}}
                 </td>
                 <td class="text-right action" >
-                    <a type="text" @click="editCustomer(row.id)" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit Customer'}" >
+                    <a type="text" class="table-action" data-toggle="tooltip">
+                         <router-link :to="{ name: 'Edit Teacher',params: {id:row.id}}" >
                              <i class="fas fa-user-edit"></i>
                          </router-link>
                     </a>
-                    <a type="text" @click="deleteCustomer(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <router-link :to="{ name: 'Delete Customer'}" >
-                             <i class="fas fa-trash"></i>
-                        </router-link>     
+                    <a type="text" @click.prevent="deleteTeacher(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                             <i class="fas fa-trash" ></i>   
                     </a>
                 </td>
                 </template>
@@ -142,9 +130,8 @@
     data() {
       return {
         listTeacher: [],
-        title: 'Customer',
+        title: 'Teacher',
         type:'',
-        status1:''
       }
     },
     created: function()
@@ -160,8 +147,21 @@
                 this.error = error.response.data
             }           
         },
+        async deleteTeacher(index)
+        {  
+            if(confirm("Are you sure you want to delete this item?")){ 
+                axios
+                .delete("/api/teacher/destroy/" + index)
+                .then(res => {
+                        this.teacher.splice(index, 1);
+                        })
+                .catch(err => {
+                    console.log(err);
+                });
+            }
+        }
     }  
-}
+  }
 </script>
 <style >
 select.form-control.form-control-sm.fill-table {
@@ -185,6 +185,7 @@ th,td{
 }
 i.fas.fa-trash {
    margin-right: 30px;
+   color:#007bff;
 }
 a.add {
     color: white;
@@ -195,4 +196,5 @@ a.add:hover{
 button.btn.btn-danger {
     margin-bottom: 20px;
 }
+
 </style>

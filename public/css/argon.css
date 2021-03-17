@@ -24269,6 +24269,10 @@ footer p.ka {
   transition: 0.8;
 }
 
+.lx {
+  margin-top: 25px;
+}
+
 .flatpickr-calendar .flatpickr-day:hover,
 .flatpickr-calendar .flatpickr-day.selected,
 .flatpickr-calendar .flatpickr-day.selected:hover {

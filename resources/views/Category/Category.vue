@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 </div>
-            <div class="row">
+            <div class="row lx">
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="dataTables_length" id="datatable-basic_length">
                     <span class="fill1">
@@ -100,15 +100,13 @@
                     {{row.slug_url}}
                 </td> 
                 <td class="text-right action" >
-                    <a type="text" @click="editCategory(row.id)" class="table-action" data-toggle="tooltip">
+                    <a type="text" class="table-action" data-toggle="tooltip">
                          <router-link :to="{ name: 'Edit Category',params: {id:row.id}}" >
                              <i class="fas fa-user-edit"></i>
                          </router-link>
                     </a>
-                    <a type="text" @click="deleteCategory(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <router-link :to="{ name: 'Delete Category',params: {id: row.id}}" >
-                             <i class="fas fa-trash"></i>
-                        </router-link>     
+                    <a type="text" @click.prevent="deleteCategory(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                             <i class="fas fa-trash" ></i>   
                     </a>
                 </td>
                 </template>
@@ -154,32 +152,19 @@
                 this.error = error.response.data
             }           
         },
-            async editCategory(index)
-            {
-                   try {
-                        this.error = null
-                        const index= this.$route.params.id;
-                        const response = await axios.post('/api/category/update/'+index);
-                        if(response.status === 200){
-                          this.category = response.data;                                                 
-                          console.log(this.category)
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-            },
-            async deleteCategory(index)
-            {
-                 axios
+        async deleteCategory(index)
+        {  
+            if(confirm("Are you sure you want to delete this item?")){ 
+                axios
                 .delete("/api/category/destroy/" + index)
                 .then(res => {
-                confirm("Are you sure you want to delete this item?") &&
-                this.category.splice(index, 1);
-                })
+                        this.category.splice(index, 1);
+                        })
                 .catch(err => {
                     console.log(err);
                 });
             }
+        }
     }  
 }
 </script>
@@ -205,6 +190,10 @@ th,td{
 }
 i.fas.fa-trash {
    margin-right: 30px;
+   color:#007bff;
+}
+i.fas.fa-trash:hover{
+    cursor: pointer;
 }
 a.add {
     color: white;

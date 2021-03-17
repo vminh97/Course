@@ -2,16 +2,14 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use Illuminate\Database\Seeder;
 use Faker\Generator;
-$records = [
-    ['1', '2','3','4']
-];
-for($i = 0; $i < count($records); $i++)
-	{
+
     $factory->define(App\Model\Teacher::class, function (Generator  $faker) {
         return [
         'customer_name' => $faker->Name,
+        'gender' => rand(0,1),
+        'password' => str_random(15),
         'image_teacher' =>$faker->image,
-        'birthday' => new Datetime,
+        'birthday' => date("Y-m-d"),
         'address' => $faker->Text,
         'email' => $faker->unique()->safeEmail,
         'isactive' =>rand(0,1),
@@ -23,4 +21,3 @@ for($i = 0; $i < count($records); $i++)
         'updated_at'=> new Datetime,
         ];
     });
-}

@@ -18,7 +18,7 @@
                 </div>
             </div>
             </div>
-            <div class="row">
+            <div class="row lx">
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="dataTables_length" id="datatable-basic_length">
                     <span class="fill1">
@@ -55,11 +55,10 @@
                         :class="type === 'dark' ? 'table-dark': ''"
                         :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
                         tbody-classes="list"
-                        :data="listProduct">
+                        :data="listCustomer">
                 <template slot="columns">
                     <th><b-form-checkbox
                     id="checkbox-1"
-                    v-model="status"
                     name="checkbox-1"
                     value="accepted"
                     unchecked-value="not_accepted"
@@ -77,9 +76,6 @@
                     <div class="media align-items-center">
                         <div class="media-body">
                             <b-form-checkbox
-                            id="checkbox-1"
-                            v-model="status"
-                            name="checkbox-1"
                             value="accepted"
                             unchecked-value="not_accepted"
                             ></b-form-checkbox>
@@ -105,15 +101,13 @@
                     {{row.status}}
                 </td>
                 <td class="text-right action" >
-                    <a type="text" @click="editCustomer(row.id)" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit Customer'}" >
+                    <a type="text" class="table-action" data-toggle="tooltip">
+                         <router-link :to="{ name: 'Edit Customer',params: {id:row.id}}" >
                              <i class="fas fa-user-edit"></i>
                          </router-link>
                     </a>
-                    <a type="text" @click="deleteCustomer(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <router-link :to="{ name: 'Delete Customer'}" >
-                             <i class="fas fa-trash"></i>
-                        </router-link>     
+                    <a type="text" @click.prevent="deleteCustomer(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                             <i class="fas fa-trash" ></i>   
                     </a>
                 </td>
                 </template>
@@ -141,7 +135,7 @@
     },
     data() {
       return {
-        listProduct: [],
+        listCustomer: [],
         title: 'Customer',
         type:'',
       }
@@ -159,36 +153,20 @@
                 this.error = error.response.data
             }           
         },
-            async editProduct()
-            {
-                   try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/customer/update/'+id);
-                        if(response.status === 200){
-                          this.product = response.data;                                                 
-                          console.log(this.customer);
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-            },
-            async deleteCustomer()
-            {
-                    try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/customer/destroy/'+id);
-                        if(response.status === 200){
-                          this.customer = this.customer.filter(id);                                               
-                          console.log(this.customer)
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-            }
+        async deleteCustomer(index)
+        {
+            axios
+            .delete("/api/customer/destroy/" + index)
+            .then(res => {
+            confirm("Are you sure you want to delete this item?") &&
+            this.customer.splice(index, 1);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
     }  
-}
+  }
 </script>
 <style >
 select.form-control.form-control-sm.fill-table {
@@ -212,6 +190,7 @@ th,td{
 }
 i.fas.fa-trash {
    margin-right: 30px;
+   color:#007bff;
 }
 a.add {
     color: white;
