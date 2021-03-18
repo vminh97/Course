@@ -119,7 +119,16 @@ Route::group(['prefix' => 'customer'], function () {
     
     Route::delete('/destroy/{id}','CustomerController@destroy');
 
-    Route::get('/export', 'CategoryController@export')->name('export');
+    Route::get('/export', 'CustomerController@export')->name('export');
+
+    Route::get('/sumrecord', 'CustomerController@sumrecord');
+
+    Route::get('/sumrecordindate', 'CustomerController@SumRecordInDate');
+
+    Route::get('/sumrecordinmonth', 'CustomerController@SumRecordInMonth');
+
+    Route::get('/monthlygrowthrate', 'CustomerController@MonthlyGrowthRate');
+
 
 });
 

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Model\Customer;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facedes\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TestExport;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class CustomerController extends Controller
 {
     // use Excel;
@@ -155,6 +157,67 @@ class CustomerController extends Controller
     }
     public function export()
     {  
-        return Excel::dowload(new TestExport(), 'categorys.xlxs');
+        return Excel::download(new CustomerExport, 'customer'.'_'.time().'.xlsx');
+    }
+    public function SumRecord()
+    {
+        try
+        {
+            $users =  Customer::count();
+            return response()->json($users);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }     
+    }
+    public function SumRecordInDate()
+    {
+        try
+        {
+            $datetoday=date('y-m-d');
+            $users =  Customer::select('*')->whereDate('created_at',$datetoday)->get();
+            $count = count($users);
+            return response()->json($count);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }     
+    }
+    public function SumRecordInMonth()
+    {
+        try
+        {
+
+                $datemonth=date('m');
+                $dateyear=date('y');
+                $year='20'.$dateyear;
+                $sum=Customer::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+                $count = count($sum);
+                return response()->json($count);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }     
+    }
+    public function MonthlyGrowthRate()
+    {
+        try
+        {
+                $users =  Customer::count();
+                $datemonth=date('m');
+                $dateyear=date('y');
+                $year='20'.$dateyear;
+                $sum=Customer::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+                $count = count($sum);
+                $rate=(round($count/$users,2)) * 100;
+                return response()->json($rate);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }   
     }
 }

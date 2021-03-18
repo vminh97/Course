@@ -161,4 +161,65 @@ class CommentController extends Controller
             return $e->getMessage();
         }
     }
+    public function SumRecord()
+    {
+        try
+        {
+            $users =  Comment::count();
+            return response()->json($users);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }     
+    }
+    public function SumRecordInDate()
+    {
+        try
+        {
+            $datetoday=date('y-m-d');
+            $users =  Comment::select('*')->whereDate('created_at',$datetoday)->get();
+            $count = count($users);
+            return response()->json($count);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }     
+    }
+    public function SumRecordInMonth()
+    {
+        try
+        {
+
+                $datemonth=date('m');
+                $dateyear=date('y');
+                $year='20'.$dateyear;
+                $sum=Comment::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+                $count = count($sum);
+                return response()->json($count);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }     
+    }
+    public function MonthlyGrowthRate()
+    {
+        try
+        {
+                $users =  Comment::count();
+                $datemonth=date('m');
+                $dateyear=date('y');
+                $year='20'.$dateyear;
+                $sum=Comment::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+                $count = count($sum);
+                $rate=(round($count/$users,2)) * 100;
+                return response()->json($rate);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }   
+    }
 }

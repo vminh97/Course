@@ -16,35 +16,35 @@ import InfoTeacherHl from "@/views/Main/teacher/InfoTeacher-Hl.vue";
 import Cart from "@/views/Main/cart/Cart.vue";
 
 //admin/course
-import ListCourse from "@/views/Course/Course.vue";
-import AddCourse from "@/views/Course/AddCourse.vue";
-import EditCourse from "@/views/Course/EditCourse.vue";
-import FavoriteCourses from "@/views/Course/FavoriteCourses.vue";
-import KeywordSearch from "@/views/Course/KeywordSearch.vue";
-import RankCourse from "@/views/Course/RankCourse.vue";
-import ReviewCourse from "@/views/Course/ReviewCourse.vue";
+import ListCourse from "@/views/Admin/Course/Course.vue";
+import AddCourse from "@/views/Admin/Course/AddCourse.vue";
+import EditCourse from "@/views/Admin/Course/EditCourse.vue";
+import FavoriteCourses from "@/views/Admin/Course/FavoriteCourses.vue";
+import KeywordSearch from "@/views/Admin/Course/KeywordSearch.vue";
+import RankCourse from "@/views/Admin/Course/RankCourse.vue";
+import ReviewCourse from "@/views/Admin/Course/ReviewCourse.vue";
 
 //admin/category
-import ListCategory from "@/views/Category/Category.vue";
-import AddCategory from "@/views/Category/AddCategory.vue";
-import EditCategory from "@/views/Category/EditCategory.vue";
+import ListCategory from "@/views/Admin/Category/Category.vue";
+import AddCategory from "@/views/Admin/Category/AddCategory.vue";
+import EditCategory from "@/views/Admin/Category/EditCategory.vue";
 
 
 //admin/customer
-import ListCustomer from "@/views/Customer/Customer.vue";
-import EditCustomer from "@/views/Customer/EditCustomer.vue";
+import ListCustomer from "@/views/Admin/Customer/Customer.vue";
+import EditCustomer from "@/views/Admin/Customer/EditCustomer.vue";
 
 //admin/new
-import ListNew from "@/views/New/New.vue";
-import AddNew from "@/views/New/AddNew.vue";
-import EditNew from "@/views/New/EditNew.vue";
+import ListNew from "@/views/Admin/New/New.vue";
+import AddNew from "@/views/Admin/New/AddNew.vue";
+import EditNew from "@/views/Admin/New/EditNew.vue";
 
 //admin/course
-import ListOrder from "@/views/Order/Order.vue";
+import ListOrder from "@/views/Admin/Order/Order.vue";
 
 //admin/teacher
-import ListTeacher from "@/views/Teacher/Teacher.vue";
-import EditTeacher from "@/views/Teacher/EditTeacher.vue";
+import ListTeacher from "@/views/Admin/Teacher/Teacher.vue";
+import EditTeacher from "@/views/Admin/Teacher/EditTeacher.vue";
 
 
 
@@ -96,7 +96,7 @@ export default new Router({
         {
           path: '/dashboard',
           name: 'dashboard',
-          component: require('./views/Dashboard.vue'),
+          component: require('./views/Admin/Dashboard.vue'),
 
         },
       ]
