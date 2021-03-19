@@ -1,8 +1,6 @@
 <template>
     <div class="d">
-      
-    </div>
-    <!-- <base-nav class="navbar-top navbar-dark"
+          <!-- <base-nav class="navbar-top navbar-dark"
               id="navbar-main"
               :show-toggle-button="false"
               expand>
@@ -47,7 +45,9 @@
                 </base-dropdown>
             </li>
         </ul>
-    </base-nav> -->
+          </base-nav> -->
+    </div>
+
 </template>
 <script>
   export default {

@@ -1,5 +1,6 @@
 <template>
-    <div class="header_m">
+    <b-col md="12" lg="12">
+            <div class="header_m">
                 <div class="header_m_top">
                     <span class="logo"><i>
                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +193,9 @@
                     </div>
                 </div>
                 <CarouselHlCourse />        
-    </div>
+            </div>
+    </b-col>
+    
 </template>
 <script>
 import CarouselHlCourse from "@/Views/Main/course/CarouselHlCourse.vue"

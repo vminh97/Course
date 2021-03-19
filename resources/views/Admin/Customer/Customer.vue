@@ -35,10 +35,8 @@
                 </div>
                 <div class="col-sm-12 col-md-5 col-lg-5">
                     <div id="datatable-basic_filter" class="dataTables_filter">
-                    <span class="fill1">
-                        Search:
-                    </span>  
-                        <input type="search" class="form-control form-control-sm fill-table" placeholder="" aria-controls="datatable-basic">
+                        <span class="fill1">Search:</span>  
+                        <input type="search" class="form-control form-control-sm fill-table" v-model="row">
                     </div>
                 </div>
 
@@ -65,44 +63,44 @@
                     <th>Action</th>
                 </template>
                 <template slot-scope="{row}">
-                <th scope="row">
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <b-form-checkbox
-                            value="accepted"
-                            unchecked-value="not_accepted"
-                            ></b-form-checkbox>
+                    <td scope="row">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <b-form-checkbox
+                                value="accepted"
+                                unchecked-value="not_accepted"
+                                ></b-form-checkbox>
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <td class="budget">
-                    {{row.customer_name}}
-                </td>
-                <td>
-                   <img src="" alt="">
-                </td>
-                <td>
-                    {{row.birthday}}
-                </td>
-                <td>
-                    {{row.email}}
-                </td>
-                <td>
-                    {{row.isactive}}
-                </td>
-                <td>
-                    {{row.status}}
-                </td>
-                <td class="text-right action" >
-                    <a type="text" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit Customer',params: {id:row.id}}" >
-                             <i class="fas fa-user-edit"></i>
-                         </router-link>
-                    </a>
-                    <a type="text" @click.prevent="deleteCustomer(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                             <i class="fas fa-trash" ></i>   
-                    </a>
-                </td>
+                    </td>
+                    <td class="budget">
+                        {{row.customer_name}}
+                    </td>
+                    <td>
+                    <img src="" alt="">
+                    </td>
+                    <td>
+                        {{row.birthday}}
+                    </td>
+                    <td>
+                        {{row.email}}
+                    </td>
+                    <td>
+                        {{row.isactive}}
+                    </td>
+                    <td>
+                        {{row.status}}
+                    </td>
+                    <td class="text-right action" >
+                        <a type="text" class="table-action" data-toggle="tooltip">
+                            <router-link :to="{ name: 'Edit Customer',params: {id:row.id}}" >
+                                <i class="fas fa-user-edit"></i>
+                            </router-link>
+                        </a>
+                        <a type="text" @click.prevent="deleteCustomer(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                                <i class="fas fa-trash" ></i>   
+                        </a>
+                    </td>
                 </template>
 
             </base-table>
@@ -126,6 +124,8 @@
     },
     data() {
       return {
+        search:'',
+        row:'',
         listCustomer: [],
         title: 'Customer',
         type:'',
@@ -134,6 +134,8 @@
         totalmonth:50,
         rate:'34,5',
       }
+    },
+    computed: {
     },
     created: function()
     {

@@ -1,5 +1,5 @@
 <template>
-                    <div class="most-teacher">
+        <div class="most-teacher">
                     <b-container>
                         <b-row>
                             <b-col md="4" lg="4">

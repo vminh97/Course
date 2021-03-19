@@ -23010,7 +23010,7 @@ main,
 }
 
 .header_m {
-  width: 100%;
+  max-width: 100%;
   -webkit-box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
           box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
   border-bottom: 1px solid lightgray;
@@ -23018,7 +23018,7 @@ main,
 }
 
 .header_m .header_m_top {
-  width: 100%;
+  max-width: 100%;
   height: 100px;
   margin-top: -20px;
 }
@@ -23046,7 +23046,7 @@ main,
 }
 
 .header_m .header_m_top input.search {
-  width: 450px;
+  max-width: 450px;
   border-radius: 15px;
   position: relative;
   padding-left: 45px;
@@ -23071,7 +23071,7 @@ main,
 .header_m .header_m_top input.active {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -23090,7 +23090,7 @@ main,
 .header_m .header_m_top input.register {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -23111,7 +23111,7 @@ main,
 .header_m .header_m_top input.login {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -23132,7 +23132,7 @@ main,
 .header_m .header_m_top input.google {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -23141,7 +23141,7 @@ main,
   color: gray;
   margin-right: 10px;
   margin-top: 10px;
-  width: 435px !important;
+  max-width: 435px !important;
   border: 1px solid gray !important;
 }
 
@@ -23151,14 +23151,14 @@ main,
 }
 
 .header_m svg#Capa_1 {
-  width: 30px;
+  max-width: 30px;
   left: 0px;
   top: 4px;
   position: absolute;
 }
 
 .header_m svg#Capa_2 {
-  width: 29px;
+  max-width: 29px;
   left: 106px;
   top: -226px;
   position: absolute;
@@ -23194,12 +23194,12 @@ main,
 }
 
 .menu_m {
-  width: 100%;
+  max-width: 100%;
   height: 481px;
 }
 
 .menu_m span.menu_m_left {
-  width: 300px;
+  max-width: 300px;
   height: 100%;
   border: 1px solid #a8a8a8;
   margin-left: 110px;
@@ -23217,13 +23217,13 @@ main,
 .menu_m span.menu_m_left ul li i {
   color: #50ad4e;
   margin-left: 30px;
-  width: 10px;
+  max-width: 10px;
 }
 
 .menu_m span.menu_m_left ul li i.c {
   color: #a8a8a8;
   margin-right: 5px;
-  width: 20px;
+  max-width: 20px;
 }
 
 .menu_m span.menu_m_left ul li a {
@@ -23231,7 +23231,7 @@ main,
   font-size: 15px;
   text-decoration: none;
   margin-left: 20px;
-  width: 60px;
+  max-width: 60px;
 }
 
 .menu_m span.menu_m_left ul li:hover {
@@ -23256,7 +23256,7 @@ main,
 }
 
 .menu_m span.banner_m .banner {
-  width: 815px;
+  max-width: 815px;
   margin-left: 440px;
 }
 
@@ -23283,7 +23283,7 @@ main,
 }
 
 .menu_m span.banner_m .banner_hl span.banner_hl_1 {
-  width: 250px;
+  max-width: 250px;
   margin-right: 33px;
 }
 
@@ -23320,7 +23320,7 @@ main,
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 1090px;
+  max-width: 1090px;
 }
 
 .card-carousel--overflow-container {
@@ -23333,7 +23333,7 @@ main,
 .card-carousel--nav__left,
 .card-carousel--nav__right {
   display: inline-block;
-  width: 15px;
+  max-width: 15px;
   height: 15px;
   padding: 10px;
   -webkit-box-sizing: border-box;
@@ -23379,7 +23379,7 @@ main,
   z-index: 9998;
   top: 0;
   left: 0;
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: table;
@@ -23435,7 +23435,7 @@ main,
       -ms-user-select: none;
           user-select: none;
   height: 130px;
-  width: 256px;
+  max-width: 256px;
   position: relative;
 }
 
@@ -23451,7 +23451,7 @@ main,
 .card-carousel--cards .card-carousel--card--footer input.learn-test {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -23460,7 +23460,7 @@ main,
   color: white;
   margin-right: 10px;
   border: 1px solid #a8a8a8;
-  width: 90px;
+  max-width: 90px;
   opacity: 0.9;
 }
 
@@ -23486,7 +23486,7 @@ main,
   background: rgba(189, 187, 187, 0.4);
   top: 106px;
   left: 0px;
-  width: 256px;
+  max-width: 256px;
 }
 
 .card-carousel--cards .card-carousel--card--footer .content-course span.count-video {
@@ -23522,7 +23522,7 @@ main,
 }
 
 .card-carousel--cards .card-carousel--card--footer .teacher-m img {
-  width: 50px;
+  max-width: 50px;
   border-radius: 50%;
   height: 50px;
 }
@@ -23562,7 +23562,7 @@ main,
   position: absolute;
   top: 0;
   left: -12px;
-  width: 0;
+  max-width: 0;
   height: 0;
   border-color: transparent rgba(40, 44, 53, 0.06) transparent transparent;
   border-style: solid;
@@ -23584,7 +23584,7 @@ main,
   top: 8px;
   left: -3px;
   float: left;
-  width: 4px;
+  max-width: 4px;
   height: 4px;
   border-radius: 2px;
   background: white;
@@ -23611,7 +23611,7 @@ h1 {
   margin-top: 0px;
   padding-top: 15px;
   border: 1px solid #d0eec2;
-  width: 180px;
+  max-width: 180px;
   margin-bottom: 20px;
   color: black;
   background: #9beb9b;
@@ -23633,7 +23633,7 @@ h1 {
 .most-teacher .card-teacher .teacher-most-tt {
   height: 50px;
   background-color: #50ad4e;
-  width: 100%;
+  max-width: 100%;
 }
 
 .most-teacher .card-teacher .teacher-most-tt .a.col-md-4.offset-4 {
@@ -23668,7 +23668,7 @@ h1 {
 
 .most-teacher .card-teacher .career .a.col-md-4 .tt-career .circle-ht {
   text-align: center;
-  width: 70px;
+  max-width: 70px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.31;
@@ -23696,7 +23696,7 @@ h1 {
   opacity: 0.8;
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -23739,7 +23739,7 @@ footer .fa-google {
 footer .fa {
   padding: 14px;
   font-size: 24px;
-  width: 50px;
+  max-width: 50px;
   height: 50px;
   text-decoration: none;
   margin: 2px 2px;
@@ -23799,7 +23799,7 @@ footer p.ka {
 .category .filter-category button#dropdown-1__BV_toggle_ {
   background: white !important;
   color: black !important;
-  width: 170px !important;
+  max-width: 170px !important;
   padding-bottom: 6px !important;
 }
 
@@ -23902,7 +23902,7 @@ footer p.ka {
       -ms-user-select: none;
           user-select: none;
   height: 130px;
-  width: 247px;
+  max-width: 247px;
   margin-left: -15px;
   position: relative;
 }
@@ -23918,7 +23918,7 @@ footer p.ka {
 .category .list-course .card-course .btn-redirct input.watchfast {
   outline: none;
   height: 33px;
-  width: 97px;
+  max-width: 97px;
   border: 1px solid white;
   border-radius: 15px;
   font-size: 13px;
@@ -23937,7 +23937,7 @@ footer p.ka {
 .category .list-course .card-course .btn-redirct input.watchdetail {
   outline: none;
   height: 33px;
-  width: 97px;
+  max-width: 97px;
   border: 1px solid white;
   border-radius: 15px;
   font-size: 13px;
@@ -23963,7 +23963,7 @@ footer p.ka {
   background: #545252;
   top: -24px;
   left: 0px;
-  width: 247px;
+  max-width: 247px;
 }
 
 .category .list-course .card-course .user-course span.count-video {
@@ -24030,7 +24030,7 @@ footer p.ka {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  max-width: 100%;
   background-image: url("/img/product/cover-lap-trinh-web.jpg");
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -24080,7 +24080,7 @@ footer p.ka {
 
 .introduce-course .card-box-title .title-1 {
   position: relative;
-  width: 220px;
+  max-width: 220px;
   background-color: white;
   border-radius: 10px;
   border: 1px solid #a8a8a8;
@@ -24100,7 +24100,7 @@ footer p.ka {
 .introduce-course .card-box-title .title-1 .manipulation input.addcourse {
   outline: none;
   height: 40px;
-  width: 175px;
+  max-width: 175px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 13px;
@@ -24114,7 +24114,7 @@ footer p.ka {
 .introduce-course .card-box-title .title-1 .manipulation input.addcart {
   outline: none;
   height: 40px;
-  width: 175px;
+  max-width: 175px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 13px;
@@ -24137,7 +24137,7 @@ footer p.ka {
 .introduce-course .card-box-title .title-2 {
   position: relative;
   margin-top: 20px;
-  width: 220px;
+  max-width: 220px;
   background-color: white;
   border-radius: 1px 1px 10px 10px;
   border: 1px solid #a8a8a8;
@@ -24160,7 +24160,7 @@ footer p.ka {
   color: #50ad4e;
   margin-right: 3px;
   margin-left: 25px;
-  width: 10px;
+  max-width: 10px;
   margin-right: 15px !important;
 }
 
@@ -24206,7 +24206,7 @@ footer p.ka {
 .mycourse input.cs {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -24228,7 +24228,7 @@ footer p.ka {
 .mycourse input.active {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -24248,7 +24248,7 @@ footer p.ka {
 .infoteacher input.cs {
   outline: none;
   height: 40px;
-  width: 130px;
+  max-width: 130px;
   border: 1px solid white;
   border-radius: 10px;
   font-size: 14px;
@@ -24258,7 +24258,7 @@ footer p.ka {
   margin-right: 10px;
   border: 1px solid #a8a8a8;
   opacity: 0.8;
-  width: 245px !important;
+  max-width: 245px !important;
   margin-top: 20px;
   margin-left: -40px;
 }
