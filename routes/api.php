@@ -131,6 +131,12 @@ Route::group(['prefix' => 'customer'], function () {
 
 
 });
+Route::group(['middleware' => ['web']], function () {
+    Route::get('loginsocial/facebook', 'SocialLogin');
+    Route::get('loginsocial/facebook/callback', 'SocialLoginCallback');
+});
+
+    
 
 
 Route::group(['prefix' => 'user'], function () {

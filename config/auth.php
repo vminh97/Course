@@ -46,7 +46,12 @@ return [
             'provider' => 'users',
         ],
     ],
-
+    'socialite' => [
+        'drivers' => [
+            'google',
+            'facebook',
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | User Providers
