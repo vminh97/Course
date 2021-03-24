@@ -165,7 +165,7 @@ html,main,.app_m{background: $colorwhite;}
             cursor: pointer;
         }
         span.cart {
-            margin-left: 35px;
+            margin-left: -3px;
             margin-right: 35px;
             i {
                 cursor: pointer;
@@ -176,10 +176,10 @@ html,main,.app_m{background: $colorwhite;}
             border-radius: 15px !important;   
         }
         input.search {
-            max-width: 450px;
+            width: 100%;
             border-radius: 15px;
             position: relative;
-            padding-left: 45px;
+            padding-left: 18px;
             @include border;
             height: 36px;
             outline: none;
@@ -193,13 +193,14 @@ html,main,.app_m{background: $colorwhite;}
         }
         span.dt {
             border: 1px solid $colorgray;
-            margin-right: 15px;
+            margin-left: 13px;
         } 
         @include btn-active();
         @include btn-register();
         input.login{
             @include button(#439141,white);
             opacity: 0.8;
+            margin-left: -21px;
             @include hoverbtn();
         }
         input.fb,input.google{
@@ -212,12 +213,7 @@ html,main,.app_m{background: $colorwhite;}
            }
         }
     }
-    svg#Capa_1 {
-      max-width: 30px;
-    left: 0px;
-    top: 4px;
-    position: absolute;
-    }
+
     svg#Capa_2 {
       max-width: 29px;
       left: 106px;
@@ -1023,7 +1019,9 @@ footer{
 .lx{
   margin-top: 25px;
 }
-@media only screen and (max-width: 576px) {  }
+@media only screen and (max-width: 576px) { 
+
+ }
 
 // Medium devices (tablets, 768px and up)
 @media only screen and (max-width: 768px) and (min-width:577px ) { }

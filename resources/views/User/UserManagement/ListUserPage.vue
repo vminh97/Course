@@ -80,12 +80,6 @@ export default {
     };
   },
   methods: {
-    onProFeature() {
-      this.$notify({
-        type: "danger",
-        message: "This is a PRO feature.",
-      });
-    },
   },
 };
 </script>

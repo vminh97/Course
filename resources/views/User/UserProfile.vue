@@ -45,14 +45,10 @@ export default {
     };
   },
   created() {
-    this.getProfile();
+   
   },
 
   methods: {
-    async getProfile() {
-      // await this.$store.dispatch("profile/me");
-      // this.user = await { ...this.$store.getters["profile/me"] };
-    },
   },
 };
 </script>

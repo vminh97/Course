@@ -112,13 +112,6 @@
                             this.error = error.response.data;
                 } 
             },
-            // async deletePost(id)
-            // {              
-            //     let uri = `http://127.0.0.1:8000/api/category/destroy/${id}`;
-            //     this.axios.delete(uri).then(response => {
-            //     this.category.splice(this.category.indexOf(id), 1);
-            //     });
-            // },
             async createCategory() {
                 try {
                     const response = await axios.post('http://127.0.0.1:8000/api/category/store', {
