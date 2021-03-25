@@ -1,13 +1,15 @@
 <template>
-    <div class="customer">
+    <div class="customer" style="width=100%">
         <b-container>
-            <b-row class="box">
-                <b-col md="12" lg="12" >
-                    <h3>Chỉnh Sửa Thông Tin Cá Nhân</h3>
+            <b-col cols="12" md="12" lg="12">
+                <b-row class="box">
+                <b-col md="12" lg="12"  >
+                    <p class="title-keyword">
+                        Từ Khóa Nổi Bật
+                    </p>
                 </b-col>
                 <b-col md="12" lg="12" >
-                    <b-col md="5" lg="5" offset="4">
-                        <div class="c-field">
+                    <b-col md="5" lg="5" offset-lg="4" cols="4">
                                 <div
                                     :class="{'has-file': showRemovedBtn}"
                                     class="c-file-input js-file-input">
@@ -25,60 +27,59 @@
                                         <span class="c-file-input__remove__icon c-icon c-icon--remove-circle"></span>
                                     </div>
                                 </div>
-                        </div>
                         <svg height="15" class="plus" viewBox="0 0 469.33333 469.33333" width="15" xmlns="http://www.w3.org/2000/svg"><path d="m437.332031 192h-160v-160c0-17.664062-14.335937-32-32-32h-21.332031c-17.664062 0-32 14.335938-32 32v160h-160c-17.664062 0-32 14.335938-32 32v21.332031c0 17.664063 14.335938 32 32 32h160v160c0 17.664063 14.335938 32 32 32h21.332031c17.664063 0 32-14.335937 32-32v-160h160c17.664063 0 32-14.335937 32-32v-21.332031c0-17.664062-14.335937-32-32-32zm0 0"/></svg>
                     </b-col>                  
                 </b-col>
                 <b-col md="12" lg="12">
                     <b-container>
                         <b-row>
-                            <b-col md="12" lg="12">
+                            <b-col md="12" lg="12" cols="12">
                             <b-row>
-                                <b-col md="2" lg="2"><label for="">Họ Tên</label></b-col>
-                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
-                                <b-col md="2" lg="2"><label for="">Email</label></b-col>
-                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2" cols="12"><label for="">Họ Tên</label></b-col>
+                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2" cols="12"><label for="">Email</label></b-col>
+                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12" lg="12">
+                            <b-col md="12" lg="12" cols="12">
+                              <b-row>
+                                  <b-col md="2" lg="2" cols="12"><label for="">Giới Tính</label></b-col>
+                                  <b-col md="4" lg="4" cols="12"><b-form-radio-group
+                                                  v-model="selected1"
+                                                  :options="options1"
+                                                  class="mb-3"
+                                                  value-field="value"
+                                                  text-field="text">
+                                                  </b-form-radio-group>
+                                      </b-col>
+                                  <b-col md="2" lg="2" cols="12"><label for="example-datepicker">Birthday</label></b-col>
+                                  <b-col md="4" lg="4" cols="12"><b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker></b-col>
+                              </b-row>
+                            </b-col>
+                            <b-col md="12" lg="12" cols="12">
                             <b-row>
-                                <b-col md="2" lg="2"><label for="">Giới Tính</label></b-col>
-                                <b-col md="4" lg="4"><b-form-radio-group
-                                                v-model="selected1"
-                                                :options="options1"
-                                                class="mb-3"
-                                                value-field="value"
-                                                text-field="text">
-                                                </b-form-radio-group>
-                                    </b-col>
-                                <b-col md="2" lg="2"><label for="example-datepicker">Birthday</label></b-col>
-                                <b-col md="4" lg="4"><b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker></b-col>
+                                <b-col md="2" lg="2" cols="12"><label for="">Địa Chỉ</label></b-col>
+                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
+                                <b-col md="2" lg="2" cols="12"><label for="example-datepicker">Số Điện Thoại</label></b-col>
+                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12" lg="12">
+                            <b-col md="12" lg="12" cols="12">
                             <b-row>
-                                <b-col md="2" lg="2"><label for="">Địa Chỉ</label></b-col>
-                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
-                                <b-col md="2" lg="2"><label for="example-datepicker">Số Điện Thoại</label></b-col>
-                                <b-col md="4" lg="4"><input type="text" name="" id=""></b-col>
-                            </b-row>
-                            </b-col>
-                            <b-col md="12" lg="12">
-                            <b-row>
-                                <b-col md="2" lg="2"><label for="">Tỉnh/Thành Phố</label></b-col>
-                                <b-col md="4" lg="4"><model-select :options="options2"
+                                <b-col md="2" lg="2" cols="12"><label for="">Tỉnh/Thành Phố</label></b-col>
+                                <b-col md="4" lg="4" cols="12"><model-select :options="options2"
                                                 v-model="item2"
                                                 placeholder="Chọn"></model-select>
                                     </b-col>
-                                    <b-col md="2" lg="2"><label for="">Quận/Huyện</label></b-col>
-                                    <b-col md="4" lg="4"><model-select :options="options2"
+                                    <b-col md="2" lg="2" cols="12" ><label for="">Quận/Huyện</label></b-col>
+                                    <b-col md="4" lg="4" cols="12"><model-select :options="options2"
                                                 v-model="item2"
                                                 placeholder="Chọn"></model-select>
                                     </b-col>
                             </b-row>
                             </b-col>
-                            <b-col md="12" lg="12">
-                                <b-col md="6" lg="6">
+                            <b-col md="12" lg="12" cols="12">
+                                <b-col md="6" lg="6" cols="12">
                                     <b-form-checkbox-group
                                         v-model="selected"
                                         :options="optionscb"
@@ -90,11 +91,11 @@
                         </b-row>
                     </b-container>               
                 </b-col>
-                <b-col md="12" lg="12">
+                <b-col md="12" lg="12" cols="12">
                    <b-container>
                        <b-row>
-                            <b-col md="2" lg="2"><label for="">Password</label></b-col>
-                            <b-col md="4" lg="4">
+                            <b-col md="2" lg="2" cols="12"><label for="">Password</label></b-col>
+                            <b-col md="4" lg="4" cols="12" >
                                <VuePassword
                                     v-model="user.password"
                                     :strength="score"
@@ -104,7 +105,8 @@
                        </b-row>
                    </b-container>
                 </b-col>
-            </b-row>
+                </b-row>
+            </b-col>
         </b-container>
     </div>
 </template>
@@ -217,139 +219,34 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-input[type="text"]{
-    width: 85%;
-    border:1px solid rgba(34,36,38,.15);
-    height: 37px;
-    border-radius: 4px;
-    &:focus{
-        border:1px solid rgb(132, 132, 253);
-        outline:none; 
-    }
+@media all and(max-width: 576px) { 
+  .c-file-input.js-file-input[data-v-66da31d2] {
+    margin-left: 0px!important;
+  }
+  svg.plus {
+    left: 116px!important;
+  }
+  input[type="text"]{
+    width: 100%;
+  }
+  .ui.fluid.search.selection.dropdown {
+    width: 100%;
+  }
+
 }
-div#example-datepicker__outer_{
-    width: 85%;
-}
-.col-md-12,.col-lg-12 {
-    margin-top: 15px;
-}
-.ui.fluid.search.selection.dropdown {
-    width: 85%;
-}
-h3 {
-    text-align: center;
+// Medium devices (tablets, 768px and up)
+@media all and (max-width: 768px) and (min-width:577px ) {
+    
+ }
+
+// Large devices (desktops, 992px and up)
+@media all and (max-width:992px ) and (min-width:769px ) { 
+
 }
 
-////
-.o-container {
-  padding-top: 40px;
-  padding-bottom: 40px;
+// Extra large devices (large desktops, 1200px and up)
+@media all and (min-width:1200px ) { 
+  
 }
-.c-field__error {
-  font-size: 12px;
-  color: #d71149;
-}
-.c-file-input {
-  position: relative;
-  display: block;
-  height: 36px;
-  border: 1px dashed #ddd;
-  background-color: #fff;
-}
-.c-file-input:invalid,
-.c-field--error .c-file-input {
-  background-color: #ffe6e9;
-  border-color: #ff566a;
-}
-.c-file-input:invalid:focus,
-.c-field--error .c-file-input:focus {
-  background-color: #ffe6e9;
-  border-color: #ff566a;
-}
-.c-file-input__label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-left: 36px;
-  padding-right: 36px;
-  line-height: 36px;
-  color: #999;
-  font-size: 12px;
-  overflow: hidden;
-  word-wrap: break-word;
-  z-index: 1;
-}
-.c-file-input__field {
-  position: absolute !important;
-  height: 1px !important;
-  width: 1px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  z-index: -1;
-}
-.c-file-input__field:focus {
-  outline: none;
-}
-.c-file-input__indicator {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 36px;
-  z-index: 2;
-}
-.c-file-input__indicator__icon {
-  color: #bbb;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-       -o-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  left: 4px;
-  font-size: 20px;
-}
-.has-file .c-file-input__indicator__icon {
-  color: #d71149;
-}
-.c-file-input__remove {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 36px;
-  z-index: 2;
-}
-.has-file > .c-file-input__remove {
-  display: block;
-}
-.c-file-input__remove__icon {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-      -ms-transform: translate(0, -50%);
-       -o-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  left: 4px;
-  font-size: 20px;
-  color: #ff566a;
-}
-.c-file-input.js-file-input {
-    height: 62px !important;
-    margin-left: 69px !important;
-    width: 220px;
-}
-svg.plus{
-    position: absolute;
-    top: 26px;
-    left: 186px;
-}
-.box{
-border: 1px solid rgba(34, 36, 38, 0.15);
-    margin-top: 35px;
-}
+
 </style>

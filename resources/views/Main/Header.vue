@@ -4,7 +4,7 @@
                     <b-row>
                         <b-col lg="12" cols="12">
                             <b-row>
-                                <b-col lg="2" cols="2" xl="2">
+                                <b-col lg="2" cols="2">
                                         <span class="logo"><i>
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                             width="150" height="150" viewBox="0 0 250.000000 80.000000"
@@ -66,7 +66,7 @@
                                             </svg>
                                         </i></span>
                                 </b-col>
-                                <b-col lg="5" cols="2" class="p12">
+                                <b-col lg="5" cols="10" class="p12">
                                     <span class="search">
                                         <b-row>
                                             <b-col lg="8" xl="8" offset-lg="2" offset-xl="2">
@@ -102,7 +102,7 @@
                                         <b-col lg="3" cols="5" offset="1" sm="2" md="2">
                                             <input type="button" value="Đăng Kí" class="register" @click="click('register')" >  
                                         </b-col>
-                                        <b-col lg="4" cols="5"  sm="5" md="5"> 
+                                        <b-col lg="4" cols="5" offset="1" sm="5" md="5"> 
                                             <input type="button"  value="Đăng Nhập" class="login" @click="click('login')">
                                         </b-col>
                                     </b-row>                        
@@ -267,46 +267,57 @@ methods: {
 <style lang="scss">
 
 @media all and(max-width: 576px) { 
-    .header_m .header_m_top span.logo{
-        margin-left: 75px;
-    }
-    .header_m .header_m_top span.btnsearch {
-        left: 280px;
-        top: -92px;
+    .header_m{
+        .header_m_top{
+            span.logo{
+                margin-left: 60px;
+            }
+            input.search{
+                visibility: hidden;
+            }
+            span.search{
+                left: 221px;
+                top: 56px;
+                svg#Capa_1
+                {
+                    left: -80px;
+                    top: 19px;
+                    width: 23px;
+                    height: 23px;
+                    position: absolute;
+                }
+            }
+            span.cart{
+                margin-left: -3px;
+                margin-right: 35px;
+                position: absolute;
+                top: 21px;
+                left: 236px;
+                svg#cart{
+                    width: 27px;
+                    height: 27px;
+                }
+            }
+            input.active{
+                visibility: hidden;
+            }
+            span.dt{
+                visibility: hidden;
+            }
+            .col-sm-2.col-md-2.col-lg-3.col-5.offset-1 {
+                margin-top: -65px;
+                input.register {
+                width: 125px;
+                }
+            }
+            .col-sm-5.col-md-5.col-lg-4.col-5.offset-1 {
+                margin-top: -65px;
+                input.login {
+                width: 125px;
+                }
+            }
         }
-    .header_m .header_m_top input.search {
-        visibility: hidden;
-    }
-    svg#Capa_1{
-        left: -28px;
-        top: 4px;
-        width: 23px;
-        height: 23px;
-        position: absolute;
-    }
-    svg#cart{
-        width: 27px;
-        height: 27px;
-        margin-left: 30px;
-        margin-top: 6px;
-    }
-    span.cart{
-        margin-left: -3px;
-        margin-right: 35px;
-        position: absolute;
-        top: -133px;
-        left: 320px;
-    }
-    .header_m .header_m_top input.active{
-        visibility: hidden;
-    }
-    .header_m .header_m_top input.register {
-    width: 125px;
-    }
-     .header_m .header_m_top input.login {
-    width: 125px;
-    margin-left: -9px;
-    }
+    } 
  }
 // Medium devices (tablets, 768px and up)
 @media all and (max-width: 768px) and (min-width:577px ) {

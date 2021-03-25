@@ -122,7 +122,9 @@ methods: {
 </script>
 <style lang="scss">
 @media all and(max-width: 576px) { 
-
+    .carousel-hl-course{
+        visibility: hidden;
+    }
 }
 // Medium devices (tablets, 768px and up)
 @media all and (max-width: 768px) and (min-width:577px ) {

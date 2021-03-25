@@ -102,6 +102,9 @@ methods: {
 </script>
 <style lang="scss">
 @media all and(max-width: 576px) { 
+    span.title-keyword{
+        text-align: center;
+    }
 
 }
 // Medium devices (tablets, 768px and up)

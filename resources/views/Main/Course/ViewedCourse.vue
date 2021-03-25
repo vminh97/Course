@@ -10,42 +10,45 @@
                 <div id="v-carousel">
                     <div class="card-carousel-wrapper">
                         <div class="card-carousel--nav__left" @click="moveCarousel(-1)" :disabled="atHeadOfList">
-
                         </div>
-                        <div class="card-carousel">
-                            <div class="card-carousel--overflow-container" >
-                                <div class="card-carousel--cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
-                                    <div class="card-carousel--card" v-for="item in items" :key="item.id">
-                                        <img src="img/banner/image_url-1607591256.jpg" alt="">                                            
-                                        <div class="card-carousel--card--footer">
-                                            <div class="content-course">
-                                                <span class="count-video">
-                                                    <i class="fa fa-book"></i><span>34</span>
-                                                </span>
-                                                <span class="star">
-                                                <i class="fa fa-star"></i><span>34</span>
-                                                </span>                                              
-                                            </div>
-                                            <p>{{ item.name }}</p>
-                                            <div class="teacher-m">
-                                                <img src="img/banner/image_url-1607485822.jpg" alt="">
-                                                <span class="title">
-                                                    <div class="name-teacher">
-                                                        Đoàn Tiến Hùng
+                        <b-row>
+                            <b-col cols="12">
+                                    <div class="card-carousel">
+                                        <div class="card-carousel--overflow-container" >
+                                            <div class="card-carousel--cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
+                                                <div class="card-carousel--card" v-for="item in items" :key="item.id">
+                                                    <img src="img/banner/image_url-1607591256.jpg" alt="">                                            
+                                                    <div class="card-carousel--card--footer">
+                                                        <div class="content-course">
+                                                            <span class="count-video">
+                                                                <i class="fa fa-book"></i><span>34</span>
+                                                            </span>
+                                                            <span class="star">
+                                                            <i class="fa fa-star"></i><span>34</span>
+                                                            </span>                                              
+                                                        </div>
+                                                        <p>{{ item.name }}</p>
+                                                        <div class="teacher-m">
+                                                            <img src="img/banner/image_url-1607485822.jpg" alt="">
+                                                            <span class="title">
+                                                                <div class="name-teacher">
+                                                                    Đoàn Tiến Hùng
+                                                                </div>
+                                                                <div class="name-teacher">
+                                                                    Giảng Viên Youtobe
+                                                                </div>
+                                                            </span>
+                                                        </div>
+                                                        <input type="button" value="Học Thử" class="learn-test">
+                                                        <span class="price">390.000đ</span>
+                                                    
                                                     </div>
-                                                    <div class="name-teacher">
-                                                        Giảng Viên Youtobe
-                                                    </div>
-                                                </span>
-                                            </div>
-                                            <input type="button" value="Học Thử" class="learn-test">
-                                            <span class="price">390.000đ</span>
-                                        
+                                                </div>
+                                            </div>                                    
                                         </div>
                                     </div>
-                                </div>                                    
-                            </div>
-                        </div>
+                            </b-col>
+                        </b-row>
                         <div class="card-carousel--nav__right" @click="moveCarousel(1)" :disabled="atEndOfList"></div>
                     </div>                    
                 </div>
@@ -102,7 +105,9 @@ methods: {
 </script>
 <style lang="scss">
 @media all and(max-width: 576px) { 
-
+    .card-carousel--nav__left {
+    display: none;
+}
 }
 // Medium devices (tablets, 768px and up)
 @media all and (max-width: 768px) and (min-width:577px ) {

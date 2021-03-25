@@ -2,14 +2,14 @@
         <div class="most-teacher">
                     <b-container>
                         <b-row>
-                            <b-col md="4" lg="4">
-                                <h3>Đội Ngũ Giảng Viên</h3>
+                            <b-col md="12" lg="12" cols="12"> 
+                                <p class="title-keyword">Đội Ngũ Giảng Viên</p>
                             </b-col>
                         </b-row>
                         <b-row>
-                            <b-col md="12" lg="12">
+                            <b-col md="12" lg="12" cols="12">
                                <b-row>
-                                   <b-col md="4" lg="4">
+                                   <b-col md="4" lg="4" cols="12">
                                        <div class="card-teacher">
                                            <div class="teacher-most-tt">
                                                <b-row>
@@ -35,35 +35,43 @@
                                             <div class="career">
                                                 <b-container>
                                                     <b-row>
-                                                        <b-col md="4" lg="4" class="a" >
-                                                            <div class="tt-career">
-                                                                <p>Số khóa học</p>
-                                                                <div class="circle-ht">
-                                                                    12
-                                                                </div>
-                                                            </div>
+                                                        <b-col md="12" lg="12" cols="12">
+                                                            <b-row>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Số Khóa Học</p>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Tổng Giờ Dạy</p>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Tổng Khóa Học</p>
+                                                                </b-col>
+                                                            </b-row>
                                                         </b-col>
-                                                        <b-col md="4" lg="4" class="a">
-                                                            <div class="tt-career">
-                                                                    <p>Tổng giờ dạy</p>
+                                                        <b-col md="12" lg="12" cols="12">
+                                                            <b-row>
+                                                                <b-col md="4" lg="4" cols="4" >
                                                                     <div class="circle-ht">
-                                                                        999+
+                                                                            12
                                                                     </div>
-                                                            </div>
-                                                        </b-col>
-                                                        <b-col md="4" lg="4" class="a">
-                                                            <div class="tt-career">
-                                                               <p>Tổng câu hỏi</p>
-                                                                <div class="circle-ht">
-                                                                     120
-                                                                </div>
-                                                            </div>
-                                                        </b-col>                                                                                                                                                               
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4" >
+                                                                    <div class="circle-ht">
+                                                                            199+
+                                                                    </div>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4" >
+                                                                    <div class="circle-ht">
+                                                                            15
+                                                                    </div>
+                                                                </b-col>
+                                                            </b-row>
+                                                        </b-col>                                                                                                                                                            
                                                     </b-row>
                                                 </b-container>
                                             </div>
                                             <b-row>
-                                                <b-col md="3" lg="3" offset="4">
+                                                <b-col md="3" lg="3" cols="12" offset="4">
                                                     <router-link to="/infoteacherhl">
                                                        <input type="button" class="readmore" value="Xem Thêm">
                                                     </router-link>
@@ -71,7 +79,7 @@
                                             </b-row>                                            
                                        </div>
                                    </b-col>
-                                   <b-col md="4" lg="4">
+                                   <b-col md="4" lg="4" cols="12">
                                        <div class="card-teacher">
                                            <div class="teacher-most-tt">
                                                <b-row>
@@ -97,35 +105,43 @@
                                             <div class="career">
                                                 <b-container>
                                                     <b-row>
-                                                        <b-col md="4" lg="4" class="a" >
-                                                            <div class="tt-career">
-                                                                <p>Số khóa học</p>
-                                                                <div class="circle-ht">
-                                                                    12
-                                                                </div>
-                                                            </div>
+                                                        <b-col md="12" lg="12" cols="12">
+                                                            <b-row>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Số Khóa Học</p>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Tổng Giờ Dạy</p>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Tổng Khóa Học</p>
+                                                                </b-col>
+                                                            </b-row>
                                                         </b-col>
-                                                        <b-col md="4" lg="4" class="a">
-                                                            <div class="tt-career">
-                                                                    <p>Tổng giờ dạy</p>
+                                                        <b-col md="12" lg="12" cols="12">
+                                                            <b-row>
+                                                                <b-col md="4" lg="4" cols="4" >
                                                                     <div class="circle-ht">
-                                                                        999+
+                                                                            12
                                                                     </div>
-                                                            </div>
-                                                        </b-col>
-                                                        <b-col md="4" lg="4" class="a">
-                                                            <div class="tt-career">
-                                                               <p>Tổng câu hỏi</p>
-                                                                <div class="circle-ht">
-                                                                     120
-                                                                </div>
-                                                            </div>
-                                                        </b-col>                                                                                                                                                               
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4" >
+                                                                    <div class="circle-ht">
+                                                                            199+
+                                                                    </div>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4" >
+                                                                    <div class="circle-ht">
+                                                                            15
+                                                                    </div>
+                                                                </b-col>
+                                                            </b-row>
+                                                        </b-col>                                                                                                                                                            
                                                     </b-row>
                                                 </b-container>
                                             </div>
                                             <b-row>
-                                                <b-col md="3" lg="3" offset="4">
+                                                <b-col md="3" lg="3" cols="12" offset="4">
                                                     <router-link to="/infoteacherhl">
                                                        <input type="button" class="readmore" value="Xem Thêm">
                                                     </router-link>
@@ -133,7 +149,7 @@
                                             </b-row>                                            
                                        </div>
                                    </b-col>
-                                   <b-col md="4" lg="4">
+                                   <b-col md="4" lg="4" cols="12">
                                        <div class="card-teacher">
                                            <div class="teacher-most-tt">
                                                <b-row>
@@ -159,35 +175,43 @@
                                             <div class="career">
                                                 <b-container>
                                                     <b-row>
-                                                        <b-col md="4" lg="4" class="a" >
-                                                            <div class="tt-career">
-                                                                <p>Số khóa học</p>
-                                                                <div class="circle-ht">
-                                                                    12
-                                                                </div>
-                                                            </div>
+                                                        <b-col md="12" lg="12" cols="12">
+                                                            <b-row>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Số Khóa Học</p>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Tổng Giờ Dạy</p>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4">
+                                                                    <p>Tổng Khóa Học</p>
+                                                                </b-col>
+                                                            </b-row>
                                                         </b-col>
-                                                        <b-col md="4" lg="4" class="a">
-                                                            <div class="tt-career">
-                                                                    <p>Tổng giờ dạy</p>
+                                                        <b-col md="12" lg="12" cols="12">
+                                                            <b-row>
+                                                                <b-col md="4" lg="4" cols="4" >
                                                                     <div class="circle-ht">
-                                                                        999+
+                                                                            12
                                                                     </div>
-                                                            </div>
-                                                        </b-col>
-                                                        <b-col md="4" lg="4" class="a">
-                                                            <div class="tt-career">
-                                                               <p>Tổng câu hỏi</p>
-                                                                <div class="circle-ht">
-                                                                     120
-                                                                </div>
-                                                            </div>
-                                                        </b-col>                                                                                                                                                               
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4" >
+                                                                    <div class="circle-ht">
+                                                                            199+
+                                                                    </div>
+                                                                </b-col>
+                                                                <b-col md="4" lg="4" cols="4" >
+                                                                    <div class="circle-ht">
+                                                                            15
+                                                                    </div>
+                                                                </b-col>
+                                                            </b-row>
+                                                        </b-col>                                                                                                                                                            
                                                     </b-row>
                                                 </b-container>
                                             </div>
                                             <b-row>
-                                                <b-col md="3" lg="3" offset="4">
+                                                <b-col md="3" lg="3" cols="12" offset="4">
                                                     <router-link to="/infoteacherhl">
                                                        <input type="button" class="readmore" value="Xem Thêm">
                                                     </router-link>
@@ -195,9 +219,72 @@
                                             </b-row>                                            
                                        </div>
                                    </b-col>
+
                                </b-row>
                             </b-col>
                         </b-row>
                     </b-container>
                 </div>
 </template>
+<style lang="scss">
+@media all and(max-width: 576px) { 
+  .career{
+      margin: 0;
+      padding: 0;   
+        p{
+          text-align: center;
+           font-size: 15px;
+        }
+        .circle-ht {
+            margin-left: 13px;
+        }
+  }
+  input.readmore{
+      width: 150px;
+  }
+}
+// Medium devices (tablets, 768px and up)
+@media all and (max-width: 768px) and (min-width:577px ) {
+    .career{
+    margin: 0;
+    padding: 0;   
+    p {
+        text-align: center;
+        font-size: 16px;
+     }
+    }
+    input.readmore{
+        width: 150px;
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media all and (max-width:992px ) and (min-width:769px ) { 
+    .career{
+    margin: 0;
+    padding: 0;   
+    p {
+        text-align: center;
+        font-size: 16px;
+     }
+    }
+    input.readmore{
+        width: 150px;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media all and (min-width:1200px ) { 
+        .career{
+    margin: 0;
+    padding: 0;   
+    p {
+        text-align: center;
+        font-size: 1px;
+     }
+    }
+    input.readmore{
+        width: 150px;
+    }
+}
+</style>
