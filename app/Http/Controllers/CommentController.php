@@ -48,7 +48,6 @@ class CommentController extends Controller
         try{
             $this->validate($request, [
                 'customer_id' => 'required|min:5',
-                'customers_code' => 'required',
                 'customers_name' => 'required',
                 'content_comment' => 'required',
                 'star_comment' => 'required',

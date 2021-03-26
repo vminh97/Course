@@ -43,13 +43,14 @@ class CertificateController extends Controller
      */
     public function store(Request $request,$id)
     {
+
+        $this->validate($request, [
+            'name_certificate' => 'required|min:5',
+            'type_certificate' => 'required|numeric',
+            'title_certificate' => 'required',
+            'content_certificate' => 'required',
+        ]);
         try{
-            $this->validate($request, [
-                'name_certificate' => 'required|min:5',
-                'type_certificate' => 'required',
-                'title_certificate' => 'required',
-                'content_certificate' => 'required',
-            ]);
         
             $certificate = Certificates::find($id);
             $certificate->name_certificate = $request->input('name_certificate');

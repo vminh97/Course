@@ -23406,6 +23406,15 @@ h1 {
   transition: 0.8;
 }
 
+.cs1 {
+  margin-top: -15px;
+}
+
+i.fa.fa-list,
+i.fa.fa-filter {
+  margin-right: 10px;
+}
+
 footer {
   background: #f2f2f2;
   padding: 45px 0 35px;
@@ -23481,11 +23490,6 @@ footer p.ka {
   -webkit-box-shadow: 0 1px 1px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
           box-shadow: 0 1px 1px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
   border-bottom: 1px solid lightgray;
-}
-
-.category .filter-category .icon-filter {
-  margin-top: 15px;
-  margin-left: 49px;
 }
 
 .category .filter-category button#dropdown-1__BV_toggle_ {
@@ -23581,6 +23585,7 @@ footer p.ka {
   opacity: 1;
   -webkit-transition: 0.9;
   transition: 0.9;
+  margin-left: 10px;
 }
 
 .category .list-course .card-course img {
@@ -23597,6 +23602,8 @@ footer p.ka {
   max-width: 247px;
   margin-left: -15px;
   position: relative;
+  width: 245px;
+  margin-top: -15px;
 }
 
 .category .list-course .card-course .btn-redirct {
@@ -23655,14 +23662,11 @@ footer p.ka {
   background: #545252;
   top: -24px;
   left: 0px;
-  max-width: 247px;
-}
-
-.category .list-course .card-course .user-course span.count-video {
-  margin-left: 15px;
+  width: 100%;
 }
 
 .category .list-course .card-course .user-course span.count-video i {
+  margin-left: 10px;
   background-color: #545252;
   color: white;
 }
@@ -23670,10 +23674,6 @@ footer p.ka {
 .category .list-course .card-course .user-course span.count-video span {
   margin-left: 5px;
   color: white;
-}
-
-.category .list-course .card-course .user-course span.star {
-  margin-left: 119px;
 }
 
 .category .list-course .card-course .user-course span.star i {
@@ -23691,6 +23691,7 @@ footer p.ka {
   margin-top: 13px;
   line-height: 20px;
   height: 60px;
+  text-align: center;
 }
 
 .category .list-course .card-course .title-m {
@@ -23909,6 +23910,7 @@ footer p.ka {
   border: 1px solid #a8a8a8;
   opacity: 0.8;
   margin-top: 20px;
+  width: 120px !important;
 }
 
 .mycourse input.cs:hover {
@@ -23930,6 +23932,7 @@ footer p.ka {
   margin-right: 10px;
   opacity: 0.8;
   margin-top: 20px;
+  width: 120px !important;
 }
 
 .mycourse input.active:hover {
@@ -24116,6 +24119,84 @@ svg.plus {
 .box {
   border: 1px solid rgba(34, 36, 38, 0.15);
   margin-top: 35px;
+}
+
+p.name-t {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: -7px;
+}
+
+p.name-c {
+  font-size: 17px;
+  font-weight: 600;
+  color: #439141;
+  line-height: 15px;
+}
+
+.a1 {
+  margin-top: 20px;
+}
+
+.col-md-12,
+.col-lg-12 {
+  margin-bottom: 5px;
+}
+
+h4 {
+  text-align: center;
+}
+
+i {
+  margin-left: 47px;
+}
+
+i.far.fa-clipboard.fa-4x {
+  color: #439141;
+}
+
+i.far.fa-file-alt.fa-4x {
+  color: #fb6a00;
+}
+
+i.far.fa-question-circle.fa-4x {
+  color: yellow;
+  margin-left: 27%;
+}
+
+h4.count {
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+output {
+  border: 1px solid white;
+}
+
+.mb-3.progress {
+  height: 15px !important;
+}
+
+.card-course {
+  border: 1px solid #a8a8a8;
+  border-radius: 5px;
+}
+
+.card-course:hover {
+  -webkit-box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.15), 0 2px 2px 0 rgba(40, 44, 53, 0.15);
+          box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.15), 0 2px 2px 0 rgba(40, 44, 53, 0.15);
+}
+
+span.b-rating-icon {
+  height: 10px !important;
+  margin-right: -5px !important;
+  margin-top: -10px !important;
+}
+
+span.b-rating-star {
+  margin-left: -4px;
 }
 
 @media all and (max-width: 576px) {

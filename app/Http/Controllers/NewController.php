@@ -169,7 +169,7 @@ class NewController extends Controller
     {
         try
         {
-            $users =  New::count();
+            $users =  News::count();
             return response()->json($users);   
         }
         catch (\Exception $e)
@@ -182,7 +182,7 @@ class NewController extends Controller
         try
         {
             $datetoday=date('y-m-d');
-            $users =  New::select('*')->whereDate('created_at',$datetoday)->get();
+            $users =  News::select('*')->whereDate('created_at',$datetoday)->get();
             $count = count($users);
             return response()->json($count);   
         }
@@ -199,7 +199,7 @@ class NewController extends Controller
                 $datemonth=date('m');
                 $dateyear=date('y');
                 $year='20'.$dateyear;
-                $sum=New::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+                $sum=News::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
                 $count = count($sum);
                 return response()->json($count);   
         }
@@ -212,11 +212,11 @@ class NewController extends Controller
     {
         try
         {
-                $users =  New::count();
+                $users =  News::count();
                 $datemonth=date('m');
                 $dateyear=date('y');
                 $year='20'.$dateyear;
-                $sum=New::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+                $sum=News::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
                 $count = count($sum);
                 $rate=(round($count/$users,2)) * 100;
                 return response()->json($rate);   

@@ -6,6 +6,7 @@ use App\Model\Teacher;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facedes\Excel;
 use App\Exports\TestExport;
+use Illuminate\Support\Facades\Hash;
 class TeacherController extends Controller
 {
     // use Excel;
@@ -56,18 +57,35 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        try {   
-            $request->validate([
-                'image_teacher' => 'mimes:jpg,jepg,png|max:2048',
-            ]);          
+        $this->validate($request, [
+            'teacher_name' => 'required|min:3',
+            'image_customer'=> 'required|required|image',
+            'gender'=>'required',
+            'birthday'=>'required|date',
+            'address'=>'required|min:10',
+            'status'=>'required',
+            'email'=>'required|email|unique:customers',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'phone'=>'required|numeric|digits:10',
+        ]);
+        try {             
             $teacher = new Teacher();
             $teacher->customer_name = $request['customer_name'];
             $teacher->gender = $request['gender'];
-            $teacher->image_customer = $request['image_customer']->getClientOriginalName();
-            $teacher->image_teacher = $data;
+            $teacher->password = Hash::make($request->password);
             $teacher->birthday = $request['birthday'];
+            if($request->file('image_teacher'))
+            {
+               $filename = $request['image_teacher'];
+               $name = 'customer_'.time().'.'.$filename->getClientOriginalExtension();
+               $destinationPath = public_path('/img/teacher');
+               $filename->move($destinationPath, $name);
+               $teacher->image_teacher=$name;
+            }
             $teacher->address=$request['address'];
             $teacher->email = $request['email'];
+            $teacher->isactive='0';
             $teacher->status = $request['status'];
             $teacher->first_name = $request['first_name'];
             $teacher->last_name = $request['last_name'];
@@ -75,7 +93,7 @@ class TeacherController extends Controller
             $teacher->save();
         
             return response([
-                'teacher' => $teacher
+                'teachers' => $teacher
             ], 200);
         }
         catch (\Exception $e) {
@@ -117,9 +135,31 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {          
+        $this->validate($request, [
+            'teacher_name' => 'required|min:3',
+            'image_customer'=> 'required|required|image',
+            'gender'=>'required',
+            'birthday'=>'required|date',
+            'address'=>'required|min:10',
+            'status'=>'required',
+            'email'=>'required|email|unique:customers',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'phone'=>'required|numeric|digits:10',
+        ]); 
+        try {                
             $teacher = Teacher::find($id);
             $teacher->customer_name = $request->customer_name;
+            $teacher->gender = $request['gender'];
+            $teacher->password = Hash::make($request->password);
+            if($request->file('image_teacher'))
+            {
+               $filename = $request['image_teacher'];
+               $name = 'teacher_'.time().'.'.$filename->getClientOriginalExtension();
+               $destinationPath = public_path('/img/teacher');
+               $filename->move($destinationPath, $name);
+               $teacher->image_teacher=$name;
+            }
             $teacher->birthday = $request->birthday;
             $teacher->address=$request->address;
             $teacher->email = $request->email;

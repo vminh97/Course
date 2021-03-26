@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TestExport;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 class CustomerController extends Controller
 {
     // use Excel;
@@ -58,12 +59,35 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'customer_name' => 'required|min:3',
+            'image_customer'=> 'required|required|image',
+            'gender'=>'required',
+            'birthday'=>'required|date',
+            'address'=>'required|min:10',
+            'status'=>'required',
+            'email'=>'required|email|unique:customers',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'phone'=>'required|numeric|digits:10',
+        ]);
         try {             
             $customer = new Customer();
             $customer->customer_name = $request['customer_name'];
+            $customer->gender = $request['gender'];
+            $customer->password = Hash::make($request->password);
             $customer->birthday = $request['birthday'];
+            if($request->file('image_customer'))
+            {
+               $filename = $request['image_customer'];
+               $name = 'customer_'.time().'.'.$filename->getClientOriginalExtension();
+               $destinationPath = public_path('/img/customer');
+               $filename->move($destinationPath, $name);
+               $customer->image_customer=$name;
+            }
             $customer->address=$request['address'];
             $customer->email = $request['email'];
+            $customer->isactive='0';
             $customer->status = $request['status'];
             $customer->first_name = $request['first_name'];
             $customer->last_name = $request['last_name'];
@@ -71,7 +95,7 @@ class CustomerController extends Controller
             $customer->save();
         
             return response([
-                'teacher' => $customer
+                'customer' => $customer
             ], 200);
         }
         catch (\Exception $e) {
@@ -113,6 +137,18 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'customer_name' => 'required|min:3',
+            'image_customer'=> 'required|required|image',
+            'gender'=>'required',
+            'birthday'=>'required|date',
+            'address'=>'required|min:10',
+            'status'=>'required',
+            'email'=>'required|email|unique:customers',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'phone'=>'required|numeric|digits:10',
+        ]);
         try {          
             $customer = Customer::find($id);
             $customer->customer_name = $request->customer_name;

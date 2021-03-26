@@ -68,11 +68,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'Name' => 'required|min:3',
-                'name_Display' => 'required|min:3',
-            ]);              
+        $this->validate($request, [
+            'Name' => 'required|min:3',
+            'name_Display'=>  'required|min:3',
+            'parent_id'=>'required|numeric',
+            'is_display'=>'required|numeric',
+            'category_status'=>'required',
+            'order_number'=>'required|numeric',
+        ]); 
+        try {             
             $category = new Category();
             $category->Name = $request['Name'];
             $category->name_Display = $request['name_Display'];
@@ -129,11 +133,15 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            $this->validate($request, [
-                'Name' => 'required|min:3',
-                'name_Display' => 'required|min:3',
-            ]);              
+        $this->validate($request, [
+            'Name' => 'required|min:3',
+            'name_Display'=>  'required|min:3',
+            'parent_id'=>'required|numeric',
+            'is_display'=>'required|numeric',
+            'category_status'=>'required',
+            'order_number'=>'required|numeric',
+        ]); 
+        try {             
             $category = Category::find($id);
             $category->Name = $request->Name;
             $category->name_Display = $request->name_Display;

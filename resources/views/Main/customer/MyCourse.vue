@@ -2,20 +2,20 @@
     <div class="mycourse">
         <b-container>
             <b-row>
-                <b-col md="12" lg="12">
-                    <b-col md="6" offset="3" lg="6">
-                           <b-col md="12" lg="12">
+                <b-col md="12" lg="12" cols="12">
+                    <b-col md="6" offset-lg="3" lg="6" cols="12">
+                           <b-col md="12" lg="12" cols="12">
                                <img src="" alt="">
                            </b-col>
-                           <b-col md="12" lg="12">
-                               <h4>minh trần văn / minhcntt29091997@gmail.com</h4>
+                           <b-col md="12" lg="12" cols="12">
+                               <h4 class="title-mycourse">minh trần văn / minhcntt29091997@gmail.com</h4>
                            </b-col>
-                           <b-col md="12" lg="12">
+                           <b-col md="12" lg="12" cols="12">
                                   <b-row>
-                                      <b-col md="4" lg="4" offset="2" >
+                                      <b-col md="4" lg="4" offset-lg="2" cols="6" >
                                            <input type="button" value="Kích Hoạt COD" class="active" > 
                                       </b-col>
-                                      <b-col md="4" lg="4">
+                                      <b-col md="4" lg="4" cols="6">
                                            <input type="button" value="Chỉnh Sửa" class="cs" > 
                                       </b-col>
                                   </b-row>
@@ -25,39 +25,19 @@
                                     <b-col md="12" lg="12" class="a1">
                                         <b-row>
                                             <b-col md="4" lg="4">
-                                                <h4>Số Khóa Học</h4>
-                                            </b-col>
-                                            <b-col md="4" lg="4">
-                                                <h4>Tài Liệu</h4>
-                                            </b-col>
-                                            <b-col md="4" lg="4">
-                                                <h4>Câu Hỏi</h4>
-                                            </b-col>
-                                        </b-row>
-                                    </b-col>
-                                    <b-col md="12" lg="12">
-                                        <b-row>
-                                            <b-col md="4" lg="4">
+                                                <h4 class="title-count">Số Khóa Học</h4>
                                                 <i class="far fa-clipboard fa-4x" ></i>
+                                                 <h4 class="count">22</h4>
                                             </b-col>
                                             <b-col md="4" lg="4">
+                                                <h4 class="title-count">Tài Liệu Học Tập</h4>
                                                 <i class="far fa-file-alt fa-4x"></i>
+                                                <h4 class="count">20</h4>
                                             </b-col>
                                             <b-col md="4" lg="4">
+                                                <h4 class="title-count">Câu Hỏi Bài Giảng</h4>
                                                 <i class="far fa-question-circle fa-4x"></i>
-                                            </b-col>
-                                        </b-row>
-                                    </b-col>
-                                    <b-col md="12" lg="12">
-                                        <b-row>
-                                            <b-col md="4" lg="4">
-                                                <h4>2</h4>
-                                            </b-col>
-                                            <b-col md="4" lg="4">
-                                                <h4>0</h4>
-                                            </b-col>
-                                            <b-col md="4" lg="4">
-                                                <h4 style="margin-left: 19px;">0</h4>
+                                                <h4 class="count">20</h4>
                                             </b-col>
                                         </b-row>
                                     </b-col>
@@ -94,19 +74,19 @@
                                                                             </b-col>
                                                                         </div>
                                                                     </b-col>
-                                                                    <b-col md="12" lg="12">
+                                                                    <b-col md="12" lg="12" cols="12">
                                                                         <b-container>
                                                                                  <b-row>
-                                                                                    <b-col md="6" lg="6">
+                                                                                    <b-col md="6" lg="6" cols="8">
                                                                                         Điểm Hiệu Quả
                                                                                     </b-col>
-                                                                                    <b-col md="3" lg="6" offset="3">
+                                                                                    <b-col md="3" lg="6" offset-lg="3" cols="4">
                                                                                         <span>0 %<i class="far fa-question-circle" style="margin-left:2px!important"></i></span>
                                                                                     </b-col>
                                                                                 </b-row>
                                                                         </b-container>                                                                     
                                                                     </b-col>
-                                                                    <b-col md="12" lg="12">
+                                                                    <b-col md="12" lg="12" class="abc">
                                                                         <b-container>
                                                                                 <b-row>
                                                                                     <b-col md="12" lg="12">
@@ -115,13 +95,13 @@
                                                                                 </b-row> 
                                                                         </b-container>                                                                                                                                           
                                                                     </b-col>
-                                                                    <b-col md="12" lg="12">
+                                                                    <b-col md="12" lg="12" class="bcd">
                                                                         <b-row>
-                                                                            <b-col md="4" lg="4">
+                                                                            <b-col md="4" lg="4" cols="8"  offset-lg="1" offset="2">
                                                                                 <input type="button" value="Bắt Đầu Học" class="active" style="margin-top:0px !important">
                                                                             </b-col>
-                                                                            <b-col md="4" lg="4" offset="2">
-                                                                                <b-form-rating v-model="value" variant="warning"></b-form-rating>
+                                                                            <b-col md="4" lg="4" offset-lg="2">
+                                                                                 <b-form-rating v-model="value" variant="warning" class="mb-2"></b-form-rating>
                                                                             </b-col>
                                                                         </b-row>
                                                                     </b-col>
@@ -159,7 +139,7 @@
 export default {
     data() {
       return {
-        value:'1',
+        value:'0',
         max:'100',
         valueprogress:'30',
       }
@@ -168,59 +148,86 @@ export default {
 </script>
 
 <style scoped lang="scss">
-p.name-t {
-    font-size: 13px;
-    font-weight: 400;
-    margin-top: -7px;
-}
-p.name-c{
-    font-size: 17px;
-    font-weight: 600;
-    color: #439141;
-    line-height: 15px;
-}
-.a1{
-    margin-top: 20px;
-}
-.col-md-12,.col-lg-12 {
-    margin-bottom: 5px;
-}
-h4 {
-    text-align: center;
-}
-i{
-    margin-left: 47px;
-}
-i.far.fa-clipboard.fa-4x {
-    color: #439141;
-}
-i.far.fa-file-alt.fa-4x {
-    color: #fb6a00;
-}
-i.far.fa-question-circle.fa-4x {
-    color: yellow;
-}
-output {
-    border: 1px solid white;
-}
-.mb-3.progress {
-    height: 15px!important;
-}
-.card-course{
-    border: 1px solid #a8a8a8;
-    border-radius: 5px;
-    &:hover{
-             box-shadow: 0 4px 15px 0 rgba(40,44,53,.15), 0 2px 2px 0 rgba(40,44,53,.15);
+@media all and(max-width: 374px) and (min-width:320px) { 
+    .mycourse{   
+        input.active{
+          margin-left: -10px !important;
+        }
+        i.fa-clipboard,i.fa-file-alt{
+            margin-left: 40% !important;
+        }
+        i.far.fa-question-circle.fa-4x{
+            margin-left: 36% !important;
+        }
+
     }
 }
-span.b-rating-star.flex-grow-1.b-rating-star-full {
-    height: 10px !important;
-    margin-right: -5px !important;
-    margin-top: -10px !important;
+@media all and(max-width: 576px) { 
+    .mycourse{
+        h4.title-mycourse{
+            font-size: 17px;
+        }
+        input.active{
+            width: 115px;
+            margin-left: 15%;
+        }
+        input.cs{
+            width: 115px;
+            margin-right: 15%;
+        }
+        i.fa-clipboard,i.fa-file-alt{
+            margin-left: 42%;
+        }
+        i.far.fa-question-circle.fa-4x {
+            color: yellow;
+            margin-left: 39%;
+        }
+        .ct-my-list-cour{
+            p.name-c,p.name-t {
+                text-align: center;
+            }
+        }
+        .abc.col-md-12.col-lg-12 {
+            margin-top: -10px;
+        }
+        .bcd.col-md-12.col-lg-12 {
+            margin-top: -10px;
+            margin-bottom: 10px;
+            input.active{
+                margin-bottom: 10px;
+            }
+            svg.bi-star-fill.b-icon.bi.text-warning {
+                margin-top: 58%;
+            }
+        }
+    }
 }
-span.b-rating-icon {
-    height: 10px !important;
-    margin-right: -5px !important;
-    margin-top: -10px !important;
+// Medium devices (tablets, 768px and up)
+@media all and (max-width: 768px) and (min-width:577px ) {
+    
+ }
+
+// Large devices (desktops, 992px and up)
+@media all and (max-width:992px ) and (min-width:769px ) { 
+    h4.title-count{
+    height: 75px;
+    }
+    .b-rating {
+    text-align: center;
+    width: 115px;
+    margin-left: -15px;
+}
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media all and (min-width:1200px ) { 
+    h4.title-count{
+        height: 75px;
+        }
+    .b-rating {
+    text-align: center;
+    width: 115px;
+    margin-left: -15px;
+    }
 }
 </style>

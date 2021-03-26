@@ -652,6 +652,12 @@ html,main,.app_m{background: $colorwhite;}
        }
      }
    }
+.cs1{
+  margin-top: -15px;
+}
+i.fa.fa-list,i.fa.fa-filter {
+    margin-right: 10px;
+}
 footer{
   background: #f2f2f2;
   padding: 45px 0 35px;
@@ -702,8 +708,6 @@ footer{
     box-shadow: 0 1px 1px 0 rgba(40,44,53,.06), 0 2px 2px 0 rgba(40,44,53,.08);
     border-bottom: 1px solid lightgray;
     .icon-filter {
-      margin-top: 15px;
-      margin-left: 49px;
     }
     button#dropdown-1__BV_toggle_ {
       background: white !important;
@@ -754,6 +758,7 @@ footer{
           .btn-redirct{
             opacity: 1;
             transition: 0.9;
+            margin-left: 10px;
           }
         }
        img{
@@ -766,6 +771,8 @@ footer{
         max-width: 247px;
         margin-left: -15px;
         position: relative;
+        width: 245px;
+        margin-top: -15px;
        }
       .btn-redirct{
         opacity: 0;
@@ -798,10 +805,10 @@ footer{
         background: #545252;
         top: -24px;
         left: 0px;
-        max-width: 247px;
+        width: 100%;
         span.count-video{
-          margin-left: 15px;
           i{
+            margin-left: 10px;
               background-color: #545252;
               color:white;
           }
@@ -811,7 +818,6 @@ footer{
           }
         }
         span.star {
-          margin-left: 119px;
           i{
               // color:white;
               color: rgb(241, 241, 8);
@@ -829,6 +835,7 @@ footer{
         margin-top: 13px;
         line-height: 20px;
         height: 60px;
+        text-align: center;
       }
       .title-m{
         font-size: 13px;
@@ -986,12 +993,14 @@ footer{
     border: 1px solid $colorgray;
     opacity: 0.8;
     margin-top: 20px;
+    width: 120px !important;
     @include hoverbtn();
   }
     input.active{
       @include button(#fb6a00,white) ;
       opacity: 0.8;
       margin-top: 20px;
+      width: 120px !important;
       &:hover{
         background: #d37533;
         opacity: 1;
@@ -1147,6 +1156,67 @@ svg.plus{
 .box{
 border: 1px solid rgba(34, 36, 38, 0.15);
   margin-top: 35px;
+}
+p.name-t {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: -7px;
+}
+p.name-c{
+  font-size: 17px;
+  font-weight: 600;
+  color: #439141;
+  line-height: 15px;
+}
+.a1{
+  margin-top: 20px;
+}
+.col-md-12,.col-lg-12 {
+  margin-bottom: 5px;
+}
+h4 {
+  text-align: center;
+}
+i{
+  margin-left: 47px;
+}
+i.far.fa-clipboard.fa-4x {
+  color: #439141;
+}
+i.far.fa-file-alt.fa-4x {
+  color: #fb6a00;
+}
+i.far.fa-question-circle.fa-4x {
+  color: yellow;
+  margin-left: 27%;
+}
+h4.count{
+  border-bottom: 1px solid;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+    padding-top: 10px;
+}
+output {
+  border: 1px solid white;
+}
+.mb-3.progress {
+  height: 15px!important;
+}
+.card-course{
+  border: 1px solid #a8a8a8;
+  border-radius: 5px;
+  &:hover{
+           box-shadow: 0 4px 15px 0 rgba(40,44,53,.15), 0 2px 2px 0 rgba(40,44,53,.15);
+  }
+}
+
+span.b-rating-icon {
+  height: 10px !important;
+  margin-right: -5px !important;
+  margin-top: -10px !important;
+}
+span.b-rating-star{
+  margin-left: -4px;
 }
 @media all and(max-width: 576px) { 
   p.title-keyword{
