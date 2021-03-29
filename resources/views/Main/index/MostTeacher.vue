@@ -242,6 +242,9 @@
   input.readmore{
       width: 150px;
   }
+      .most-teacher .card-teacher {
+    height: 395px;
+    }
 }
 // Medium devices (tablets, 768px and up)
 @media all and (max-width: 768px) and (min-width:577px ) {
@@ -255,6 +258,9 @@
     }
     input.readmore{
         width: 150px;
+    }
+    .most-teacher .card-teacher {
+    height: 395px;
     }
  }
 
@@ -271,6 +277,9 @@
     input.readmore{
         width: 150px;
     }
+    .most-teacher .card-teacher {
+    height: 395px;
+    }
 }
 
 // Extra large devices (large desktops, 1200px and up)
@@ -280,11 +289,18 @@
     padding: 0;   
     p {
         text-align: center;
-        font-size: 1px;
+        font-size: 13px;
      }
     }
     input.readmore{
         width: 150px;
+    }
+    .circle-ht {
+
+        margin-left: 9px;
+    }
+    .most-teacher .card-teacher {
+    height: 395px;
     }
 }
 </style>

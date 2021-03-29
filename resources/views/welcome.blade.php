@@ -15,7 +15,7 @@
     <link href="{{ mix('css/argon.css') }}" rel="stylesheet">
     <script src="https://kit.fontawesome.com/eaf0009a40.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body  class="bm-overlay">
 <div id="app">
 
 </div>

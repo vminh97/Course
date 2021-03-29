@@ -1,23 +1,25 @@
 <template>
     <div class="carousel-hl-course">
-                        <div class="header_m_bottom">
-                    <span class="title-list" style="margin-left: 109px;">
-                      Danh Sach Khóa Học
-                    </span>
-                    <span class="title-hl">
-                        <span class="tt-hl-ht" v-on:mouseover="mouseOver">
-                            <i class="far fa-thumbs-up as"  ></i><span class="i">Bán chạy nhất</span>
-                        </span>
-                        <span class="tt-hl-ht" >
-                            <i class="fas fa-eye as"  ></i><span class="i">Khóa học đã xem</span>
-                        </span>
-                        <span class="tt-hl-ht" >
-                            <i class="fa fa-book-open as"></i><span class="i">Tất cả khóa học</span>
-                        </span>
-                        <span class="tt-hl-ht"  >
-                           <i class="fab fa-wikipedia-w as"></i><span class="i">Blog</span>
-                        </span>
-                    </span>
+                <div class="header_m_bottom">
+                    <b-container>
+                        <b-row>
+                            <b-col md="4" lg="4">
+                                <span class="title-list" >
+                                Danh Sach Khóa Học
+                                </span>
+                            </b-col>
+                            <b-col md="4" lg="4">
+                                <span class="tt-hl-ht" v-on:mouseover="mouseOver">
+                                    <i class="far fa-thumbs-up as"  ></i><span class="i">Bán Chạy Nhất</span>
+                                </span>
+                            </b-col>
+                            <b-col md="4" lg="4">
+                                <span class="tt-hl-ht" >
+                                    <i class="far fa-thumbs-up as"  ></i><span class="i">Tất Cả Khóa Học</span>
+                                </span>
+                            </b-col>
+                        </b-row>
+                    </b-container>
                 </div>
                 <div class="header_m_carousel" v-show="activehl">
                         <transition>
