@@ -166,6 +166,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -229,6 +230,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
+
     ],
 
 ];

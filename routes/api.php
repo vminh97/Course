@@ -133,11 +133,9 @@ Route::group(['prefix' => 'customer'], function () {
 });
 Route::group(['middleware' => ['web']], function () {
     Route::get('loginsocial/facebook', 'SocialLogin');
-    Route::get('loginsocial/facebook/callback', 'SocialLoginCallback');
+    Route::get('loginsocial/facebook/callback', 'SocialLogin@handerredirct');
 });
-
-    
-
+   
 
 Route::group(['prefix' => 'user'], function () {
     
@@ -155,14 +153,8 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::delete('/users/{id}','AuthController@delete');
     //send gmail
-    Route::post('/sentmail', 'ResetPasswordController@sendMail');
-    //infomation user
-    Route::get('/find/{token}', 'ResetPasswordController@find');
+    Route::post('/sentmail', 'UserController@sendMail');
     //reset password
-    Route::post('/reset', 'ResetPasswordController@resetPassword');
-    //login social
-    Route::post('/loginsocical','UserController@handleProviderCallback');
-
-
+    Route::post('/reset/{token}', 'UserController@resetPassword');
 
 });

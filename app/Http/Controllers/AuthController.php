@@ -29,6 +29,7 @@ class AuthController extends Controller
             $user->save();
 
             //return successful response
+            $user->notify(new LetterRegister());
             return response()->json(['user' => $user, 'message' => 'success'], 200);
 
         } catch (\Exception $e) {
@@ -45,8 +46,6 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-
         $email    = $request->input('email');
         try {
             $login = User::where('email', $email)->first();
@@ -98,7 +97,7 @@ class AuthController extends Controller
     }
     public function sendPasswordResetLink(Request $request)
     {
-    return $this->sendResetLinkEmail($request);
+        return $this->sendResetLinkEmail($request);
     }
     protected function sendResetLinkResponse(Request $request, $response)
     {

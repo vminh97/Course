@@ -99,11 +99,31 @@
                                             <input type="button" value="Kích Hoạt COD" class="active" >                     
                                             <span class="dt"></span>
                                         </b-col>
+                                      
                                         <b-col lg="3" cols="5" offset="1" sm="2" md="2">
-                                            <input type="button" value="Đăng Kí" class="register" @click="click('register')" >  
+                                            <div v-if="ischeck">
+                                               <input type="button" value="Đăng Kí" class="register" @click="click('login')" >
+                                            </div>
+                                            <div v-else>
+                                                <b-col lg="12" md="12">
+                                                    <b-container>
+                                                        <b-row>
+                                                            <b-col lg="6">
+                                                                <h6>Xin Chào!</h6><br>
+                                                                <span class="name-lg">Minh nè</span>
+                                                            </b-col>
+                                                            <b-col lg="6">
+                                                                <img src="" alt="">
+                                                            </b-col>
+                                                        </b-row>
+                                                    </b-container>
+                                                </b-col>
+                                            </div>     
                                         </b-col>
-                                        <b-col lg="4" cols="5" offset="1" sm="5" md="5"> 
-                                            <input type="button"  value="Đăng Nhập" class="login" @click="click('login')">
+                                        <b-col lg="4" cols="5" offset="1" sm="5" md="5">
+                                            <div v-if="ischeck"> 
+                                              <input type="button"  value="Đăng Nhập" class="login" @click="click('login')">
+                                            </div>
                                         </b-col>
                                     </b-row>                        
                               </b-col>  
@@ -114,107 +134,56 @@
                                 <transition name="model">
                                     <b-container>
                                         <b-row>
-                                            <div class="modal-mask">
-                                                <div class="modal-wrapper">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <b-col md="12" lg="12">  
-                                                                <div class="modal-header">
-                                                                    <h3 style="margin-left: 33%;">Đăng Nhập</h3>
-                                                                    <button type="button" class="close" @click="login=false"><span aria-hidden="true">&times;</span></button>
-                                                                </div>
-                                                            </b-col>   
-                                                            <div class="modal-body">
-                                                                <b-col md="12" lg="12">
-                                                                    <div class="form-group">
-                                                                    <input type="button" class="fb" value="Đăng Nhập Bằng Facebook">
-                                                                    <svg class="fb" version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 112.196 112.196" style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve"><g><circle style="fill:#3B5998;" cx="56.098" cy="56.098" r="56.098"/><path style="fill:#FFFFFF;" d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
-                                                                    </div>
-                                                                </b-col>
-                                                                <b-col md="12" lg="12">
-                                                                    <div class="form-group">
-                                                                        <input type="button" class="google" value="Đăng Nhập Bằng Google">
-                                                                        <svg id="Capa_2" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308h-86.308c-34.255 44.488-52.823 98.707-52.823 155.785s18.568 111.297 52.823 155.785h86.308v-86.308c-12.142-20.347-19.131-44.11-19.131-69.477z" fill="#fbbd00"/><path d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216c-20.525 12.186-44.388 19.039-69.569 19.039z" fill="#0f9d58"/><path d="m139.131 325.477-86.308 86.308c6.782 8.808 14.167 17.243 22.158 25.235 48.352 48.351 112.639 74.98 181.019 74.98v-120c-49.624 0-93.117-26.72-116.869-66.523z" fill="#31aa52"/><path d="m512 256c0-15.575-1.41-31.179-4.192-46.377l-2.251-12.299h-249.557v120h121.452c-11.794 23.461-29.928 42.602-51.884 55.638l86.216 86.216c8.808-6.782 17.243-14.167 25.235-22.158 48.352-48.353 74.981-112.64 74.981-181.02z" fill="#3c79e6"/><path d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606c-48.352-48.352-112.639-74.981-181.02-74.981l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z" fill="#cf2d48"/><path d="m256 120v-120c-68.38 0-132.667 26.629-181.02 74.98-7.991 7.991-15.376 16.426-22.158 25.235l86.308 86.308c23.753-39.803 67.246-66.523 116.87-66.523z" fill="#eb4132"/></g></svg>
-                                                                    </div>
-                                                                </b-col>
-                                                                <b-col md="12" lg="12">
-                                                                    <div class="form-group">
-                                                                        <label>Email</label>
-                                                                        <input type="text" class="form-control"/>
-                                                                    </div>
-                                                                </b-col>
-                                                                <b-col md="12" lg="12">
-                                                                    <div class="form-group">
-                                                                        <label>Password</label>
-                                                                        <input type="text" class="form-control"/>
-                                                                    </div>
-                                                                </b-col>                               
-                                                                <b-col md="12" lg="12">
-                                                                    <input type="hidden" />
-                                                                    <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="login=false" />
-                                                                    <p style="margin-top:10px">Chưa có tài khoản <a href="">Đăng kí</a></p>
-                                                                </b-col>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </b-row>
-                                    </b-container>                          
-                                </transition>
-                            </div>
-                            <div v-if="register">
-                                    <transition name="model">
-                                        <b-container>
-                                            <b-row>
-                                                <div class="modal-mask">
+                                            <b-col lg="6" offset-lg="3">
+                                                <div class="modal-mask" >
                                                     <div class="modal-wrapper">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <b-col md="12" lg="12">  
                                                                     <div class="modal-header">
-                                                                        <h3 style="margin-left: 33%;">Đăng kí</h3>
-                                                                        <button type="button" class="close" @click="register=false"><span aria-hidden="true">&times;</span></button>
+                                                                        <button type="button" class="close" @click="login=false"><span aria-hidden="true">&times;</span></button>
                                                                     </div>
                                                                 </b-col>   
                                                                 <div class="modal-body">
-                                                                    <b-col md="12" lg="12" style="display:none">
+                                                                    <b-col md="12" lg="12">
                                                                         <div class="form-group">
-                                                                        <input type="button" class="fb" value="Đăng Nhập Bằng Facebook">
+                                                                        <input type="button" class="fb" value="Đăng Nhập Bằng Facebook" @click="loginsocial('facebook')">
                                                                         <svg class="fb" version="1.1" id="Capa_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 112.196 112.196" style="enable-background:new 0 0 112.196 112.196;" xml:space="preserve"><g><circle style="fill:#3B5998;" cx="56.098" cy="56.098" r="56.098"/><path style="fill:#FFFFFF;" d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
                                                                         </div>
                                                                     </b-col>
-                                                                    <b-col md="12" lg="12" style="display:none">
+                                                                    <b-col md="12" lg="12">
                                                                         <div class="form-group">
-                                                                            <input type="button" class="google" value="Đăng Nhập Bằng Google">
+                                                                            <input type="button" class="google" value="Đăng Nhập Bằng Google" @click="loginsocial('google')">
                                                                             <svg id="Capa_2" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m120 256c0-25.367 6.989-49.13 19.131-69.477v-86.308h-86.308c-34.255 44.488-52.823 98.707-52.823 155.785s18.568 111.297 52.823 155.785h86.308v-86.308c-12.142-20.347-19.131-44.11-19.131-69.477z" fill="#fbbd00"/><path d="m256 392-60 60 60 60c57.079 0 111.297-18.568 155.785-52.823v-86.216h-86.216c-20.525 12.186-44.388 19.039-69.569 19.039z" fill="#0f9d58"/><path d="m139.131 325.477-86.308 86.308c6.782 8.808 14.167 17.243 22.158 25.235 48.352 48.351 112.639 74.98 181.019 74.98v-120c-49.624 0-93.117-26.72-116.869-66.523z" fill="#31aa52"/><path d="m512 256c0-15.575-1.41-31.179-4.192-46.377l-2.251-12.299h-249.557v120h121.452c-11.794 23.461-29.928 42.602-51.884 55.638l86.216 86.216c8.808-6.782 17.243-14.167 25.235-22.158 48.352-48.353 74.981-112.64 74.981-181.02z" fill="#3c79e6"/><path d="m352.167 159.833 10.606 10.606 84.853-84.852-10.606-10.606c-48.352-48.352-112.639-74.981-181.02-74.981l-60 60 60 60c36.326 0 70.479 14.146 96.167 39.833z" fill="#cf2d48"/><path d="m256 120v-120c-68.38 0-132.667 26.629-181.02 74.98-7.991 7.991-15.376 16.426-22.158 25.235l86.308 86.308c23.753-39.803 67.246-66.523 116.87-66.523z" fill="#eb4132"/></g></svg>
                                                                         </div>
                                                                     </b-col>
                                                                     <b-col md="12" lg="12">
                                                                         <div class="form-group">
                                                                             <label>Email</label>
-                                                                            <input type="text" class="form-control"/>
+                                                                            <input type="text" class="form-control" id="email" style="width:100%!important"/>
                                                                         </div>
                                                                     </b-col>
                                                                     <b-col md="12" lg="12">
                                                                         <div class="form-group">
                                                                             <label>Password</label>
-                                                                            <input type="text" class="form-control"/>
+                                                                            <input type="text" class="form-control" id="password" style="width:100%!important"/>
                                                                         </div>
                                                                     </b-col>                               
                                                                     <b-col md="12" lg="12">
                                                                         <input type="hidden" />
-                                                                        <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="register=false" />
+                                                                        <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="login=false" />
                                                                         <p style="margin-top:10px">Chưa có tài khoản <a href="">Đăng kí</a></p>
+                                                                        <p style="margin-top:10px">Đã có tài khoản <a href="">Quên Mật Khẩu</a></p>
                                                                     </b-col>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </b-row>
-                                        </b-container>                          
-                                    </transition>
+                                            </b-col>
+                                        </b-row>
+                                    </b-container>                          
+                                </transition>
                             </div>
                         </b-col>
                     </b-row>
@@ -224,6 +193,7 @@
 </template>
 <script>
 import CarouselHlCourse from "@/Views/Main/course/CarouselHlCourse.vue"
+import axios from 'axios';
 export default {
     components: {
     'CarouselHlCourse': CarouselHlCourse,   
@@ -235,7 +205,6 @@ data(){
           hide:'',
           name:'Đăng Nhập',
           text:['Email','Password'],
-          col:2,
           recdirt:'Đăng Kí',
           text2:'Chưa Có Tài Khoản'
         },
@@ -244,28 +213,75 @@ data(){
           hide:'style="display:none"',
           name:'Đăng Kí',
           text:['Email',' Họ Và Tên','Password'],
-          col:3,
           recdirt:'Đăng Nhập',
           text2:'Chưa Có Tài Khoản'
         },
         active:false,
         login:false,
-        register:false,
+        ischeck:false,
    }
 },
-computed: {
-},   
+mounted() {
+    window.addEventListener('message', this.onMessage, false)
+},
+
+beforeDestroy() {
+    window.removeEventListener('message', this.onMessage)
+},  
 methods: {
     click(value)
     {
-        if(value=="register"){this.register=true}
-        else if (value=="login"){this.login=true}else{alert('kích hoạt');}
-    }
-  },
-}
-</script>
-<style lang="scss">
+        if (value=="login"){this.login=true}
+        else{alert('kích hoạt');}
+    },
+    loginsocial(provide) {
+              axios.get('api/loginsocial/'+provide)
+                    .then(response => {
+                      newWindow.location.href = response.data;
+                    })
+                    .catch(function (error) {
+                      console.error(error);
+                    });
+              },
+            //   // This method save the new token and username
+            //   onMessage (e) {
+            //     if (e.origin !== window.origin || !e.data.token) {
+            //       return
+            //     }
+            //     localStorage.setItem('user',e.data.name)
+            //     localStorage.setItem('jwt',e.data.token)
 
+            //     this.$router.go('/board')
+            //   }
+    },
+    async login() {
+                try {
+                    const response = await axios.post('locahost:8000/api/user/login', {
+                      email: this.user.email,
+                      password:this.user.password
+                    })
+                    console.log(response.data)
+                } catch (error) {
+                    console.log(error)
+                }
+            },
+    async register(){
+        try {
+                const response = await axios.post('locahost:8000/api/user/register', {
+                      email: this.user.email,
+                      password:this.user.password
+                    })
+                    console.log(response.data)
+                } catch (error) {
+                    console.log(error)
+                }
+    }
+
+  }
+
+</script>
+
+<style lang="scss">
 @media all and(max-width: 576px) { 
     .header_m{
         .header_m_top{
@@ -318,7 +334,7 @@ methods: {
             }
         }
     } 
- }
+}
 // Medium devices (tablets, 768px and up)
 @media all and (max-width: 768px) and (min-width:577px ) {
     
@@ -344,8 +360,8 @@ methods: {
             margin-left: -3px;
             margin-right: 35px;
     }
-    svg#cart{
-
+    .bm-burger-button {
+        top: -97px !important;
     }
     svg#Capa_1{
         width: 20px;
@@ -357,5 +373,9 @@ methods: {
     top: 15px;
     position: absolute;
    }
+   input.active,input.register,input.login {
+    margin-top: 35px;
+   }
 }
+
 </style>

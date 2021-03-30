@@ -1,6 +1,8 @@
 <template>
     <main>
         <div class="app_m">
+          <!-- <div class="fb-login-button" data-width="" data-size="small" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="false"></div> -->
+          <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
             <Header />          
             <Menu />
             <div class="body_m">

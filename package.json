@@ -12,6 +12,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^26.0.0",
     "@ckeditor/ckeditor5-vue2": "^1.0.5",
+    "@websanova/vue-auth": "^4.1.1",
     "bootstrap": "4.5.0",
     "bootstrap-vue": "2.15.0",
     "chart.js": "2.9.3",

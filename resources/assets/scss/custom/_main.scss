@@ -48,7 +48,7 @@ $width:280px;
 {
     outline: none;
     height: 40px;
-    max-width: 130px;
+    width: 130px;
     border: 1px solid white;
     border-radius: 10px;
     font-size: 14px;
@@ -61,7 +61,7 @@ $width:280px;
 @mixin button3($bg,$color){
     outline: none;
     height: 40px;
-    max-width: 175px;
+    width: 175px;
     border: 1px solid white;
     border-radius: 10px;
     font-size: 13px;
@@ -101,7 +101,7 @@ $width:280px;
   }
 }
 @mixin box($width,$height:$width) {
-    max-width: $width;
+    width: $width;
     height: $height;
 }
 @mixin space($margin,$padding) {
@@ -151,7 +151,7 @@ h1,h2,h3,h4,h5,h6{margin: 0;padding: 0;}
 html,main,.app_m{background: $colorwhite;}
 
 .header_m{
-    max-width: 100%;
+    width: 100%;
     box-shadow: 0 4px 15px 0 rgba(40,44,53,.06), 0 2px 2px 0 rgba(40,44,53,.08);
     border-bottom: 1px solid lightgray;
     margin-bottom: 10px;
@@ -206,7 +206,7 @@ html,main,.app_m{background: $colorwhite;}
         input.fb,input.google{
            @include button(white,gray);
            margin-top: 10px;
-           max-width: 435px !important;
+           width: 421px !important;
            border: 1px solid gray !important;
            &:hover{
             border: 2px solid #439141 !important;
@@ -215,7 +215,7 @@ html,main,.app_m{background: $colorwhite;}
     }
 
     svg#Capa_2 {
-      max-width: 29px;
+      width: 29px;
       left: 106px;
       top: -226px;
       position: absolute;
@@ -274,7 +274,7 @@ html,main,.app_m{background: $colorwhite;}
               transition: .5s;
               border-radius: 2%;
               width: 0px;
-              z-index: 1000;
+              z-index: 1;
               .bm-menu-list{
                   ul{
                     li{
@@ -286,17 +286,17 @@ html,main,.app_m{background: $colorwhite;}
                         i{
                             @include green();
                             margin-left: 30px;
-                            max-width: 10px;
+                            width: 10px;
                         }
                         i.c{
                             color:$colorgray;
                             margin-right: 5px;
-                            max-width: 20px;
+                            width: 20px;
                         }
                         a{
                             @include link;
                             margin-left: 20px;
-                            max-width: 60px;
+                            width: 60px;
                         }
                         &:hover{
                             background-color: #bdf1bd;
@@ -323,7 +323,7 @@ html,main,.app_m{background: $colorwhite;}
         }
         span.banner_m{
             .banner{
-                max-width: 815px;
+                width: 815px;
                 div#carousel-1{
                     border-radius: 50%;
                     .carousel-inner{
@@ -342,7 +342,7 @@ html,main,.app_m{background: $colorwhite;}
                 margin-top: 20px;
                 display: flex;
                 span.banner_hl_1{
-                    max-width: 250px;
+                    width: 250px;
                     margin-right: 33px;
                     div#carousel-1{
                         border-radius: 50%;
@@ -408,22 +408,22 @@ html,main,.app_m{background: $colorwhite;}
     //   }
     // }
 
-    // .modal-mask {
-    //   position: fixed;
-    //   z-index: 9998;
-    //   top: 0;
-    //   left: 0;
-    //   max-width: 100%;
-    //   height: 100%;
-    //   background-color: rgba(0, 0, 0, .5);
-    //   display: table;
-    //   transition: opacity .3s ease;
-    // }
+    .modal-mask {
+      position: fixed;
+      z-index: 9998;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      display: table;
+      transition: opacity .3s ease;
+    }
  
-    // .modal-wrapper {
-    //   display: table-cell;
-    //   vertical-align: middle;
-    // }
+    .modal-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+    }
 
     // .card-carousel--cards {
     //   display: flex;
@@ -596,7 +596,7 @@ h1 {
           margin-top: 0px;
           padding-top: 15px;
           border: 1px solid #d0eec2;
-          max-width: 180px;
+          width: 180px;
           margin-bottom: 20px;
           color: black;
           background: rgb(155, 235, 155);
@@ -617,7 +617,7 @@ h1 {
        .teacher-most-tt{
         height: 50px;
         background-color: #50ad4e ;
-        max-width: 100%;
+        width: 100%;
         .a.col-md-4.offset-4{
           padding: 0;
           img{
@@ -638,7 +638,7 @@ h1 {
           .circle-ht
           {
             text-align: center;
-            max-width: 70px;
+            width: 70px;
             font-size: 16px;
             font-weight: 500;
             line-height: 1.31;
@@ -693,7 +693,7 @@ footer{
   .fa {
     padding: 14px;
     font-size: 24px;
-    max-width: 50px;
+    width: 50px;
     height: 50px;
     text-decoration: none;
     margin: 2px 2px;
@@ -723,7 +723,7 @@ footer{
     button#dropdown-1__BV_toggle_ {
       background: white !important;
       color: black !important;
-      max-width: 170px !important;
+      width: 170px !important;
       padding-bottom: 6px !important;
     }  
   }
@@ -779,7 +779,7 @@ footer{
         transition: opacity 150ms linear;
         user-select: none;
         height: 130px;
-        max-width: 247px;
+        width: 247px;
         margin-left: -15px;
         position: relative;
         width: 245px;
@@ -875,7 +875,7 @@ footer{
       content: "";
       position: absolute;
       top: 0; left: 0;
-      max-width: 100%;
+      width: 100%;
       @include background('/img/product/cover-lap-trinh-web.jpg');
       background-position: 50%;
       background-repeat: no-repeat;
@@ -907,7 +907,7 @@ footer{
    
     .title-1{
       position: relative;    
-      max-width: 220px;
+      width: 220px;
       background-color: white;
       border-radius: 10px;
       border: 1px solid $colorgray;
@@ -939,7 +939,7 @@ footer{
     .title-2{
       position: relative;   
       margin-top: 20px;
-      max-width: 220px;
+      width: 220px;
       background-color: white;
       border-radius: 1px 1px 10px 10px;
       border: 1px solid $colorgray;
@@ -958,7 +958,7 @@ footer{
         i.ts{
           @include i-especially(); 
           margin-left: 25px;
-          max-width: 10px;
+          width: 10px;
           margin-right: 15px !important;
          }   
       }
@@ -1024,7 +1024,7 @@ footer{
     @include button(white,#439141);
     border: 1px solid $colorgray;
     opacity: 0.8;
-    max-width: 245px !important;
+    width: 245px !important;
     margin-top: 20px;
     margin-left: -40px;
     @include hoverbtn();
@@ -1351,7 +1351,6 @@ span.b-rating-star{
     height: 20px !important;
     left: 36px !important;
     position: absolute;
-    top: -145px !important;
     width: 22px !important;
     &:focus{
       .bm-menu{
