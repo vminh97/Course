@@ -129,6 +129,17 @@ Route::group(['prefix' => 'customer'], function () {
 
     Route::get('/monthlygrowthrate', 'CustomerController@MonthlyGrowthRate');
 
+    Route::post('/register','CustomerController@register');
+
+    Route::post('/login','CustomerController@login');
+
+    Route::get('/logout','CustomerController@logout');
+
+    //send gmail
+    Route::post('/sentmail', 'CustomerController@sendMail');
+    //reset password
+    Route::post('/reset/{token}', 'CustomerController@resetPassword');
+
 
 });
 Route::group(['middleware' => ['web']], function () {

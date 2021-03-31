@@ -1097,6 +1097,43 @@ overflow: hidden;
 word-wrap: break-word;
 z-index: 1;
 }
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+  width: 100% !important;
+  margin-top: 17px !important;
+}
+img.avatar-m{
+  border-radius: 50%;
+  margin-left: -2px;
+  margin-top: -2px;
+  width: 45px;
+  &:hover{
+    .tcn
+    {
+      visibility: 1;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+}
+.hvor{
+  cursor: pointer;
+  margin-top: -8px;
+  &:hover{
+    .tcn
+    {
+      visibility: 1;
+      position: absolute;
+      z-index: 1;
+    }
+  }
+}
+
+img.arrow-down{
+  width: 10px;
+  margin-left: 16px;
+  margin-top: 14px;
+}
 .c-file-input__field {
 position: absolute !important;
 height: 1px !important;
@@ -1172,6 +1209,11 @@ p.name-t {
   font-size: 13px;
   font-weight: 400;
   margin-top: -7px;
+}
+span.name-lg {
+  color: black;
+  font-size: 25px;
+  margin-top: 29px;
 }
 p.name-c{
   font-size: 17px;

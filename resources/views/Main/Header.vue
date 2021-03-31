@@ -93,40 +93,48 @@
                                         </b-row>
                                     </span>
                                 </b-col>
-                                <b-col lg="3" cols="12" sm="12" md="12" offset-lg="1" class="p12">
+                                <b-col lg="5" cols="12" sm="12" md="12"  class="p12">
                                     <b-row>
                                         <b-col lg="3" sm="5" md="5">
                                             <input type="button" value="Kích Hoạt COD" class="active" >                     
                                             <span class="dt"></span>
                                         </b-col>
-                                      
-                                        <b-col lg="3" cols="5" offset="1" sm="2" md="2">
-                                            <div v-if="ischeck">
-                                               <input type="button" value="Đăng Kí" class="register" @click="click('login')" >
-                                            </div>
-                                            <div v-else>
-                                                <b-col lg="12" md="12">
-                                                    <b-container>
+                                        <div v-if="ischeck">
+                                            <b-col lg="3" cols="5"  sm="2" md="2">
+                                                <div v-if="ischeck">
+                                                <input type="button" value="Đăng Kí" class="register" @click="click('login')" >
+                                                </div>    
+                                            </b-col>
+                                            <b-col lg="4" cols="5" sm="5" md="5">
+                                                <div v-if="ischeck"> 
+                                                <input type="button"  value="Đăng Nhập" class="login" @click="click('login')">
+                                                </div>
+                                            </b-col>
+                                        </div>
+                                        <div v-else class="col-lg-6 col-md-6" >
+                                              <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
+                                                <template #button-content>
                                                         <b-row>
-                                                            <b-col lg="6">
-                                                                <h6>Xin Chào!</h6><br>
+                                                            <b-col lg="4" class="hvor">
+                                                                <span>Xin Chào!</span><br>
                                                                 <span class="name-lg">Minh nè</span>
                                                             </b-col>
-                                                            <b-col lg="6">
-                                                                <img src="" alt="">
+                                                            <b-col lg="1">
+                                                                <img src="img/svg/down-arrow.svg" class="arrow-down">
+                                                            </b-col>
+                                                            <b-col lg="4">
+                                                                 <img src="img/customer/default.png" class="avatar-m">
                                                             </b-col>
                                                         </b-row>
-                                                    </b-container>
-                                                </b-col>
-                                            </div>     
-                                        </b-col>
-                                        <b-col lg="4" cols="5" offset="1" sm="5" md="5">
-                                            <div v-if="ischeck"> 
-                                              <input type="button"  value="Đăng Nhập" class="login" @click="click('login')">
-                                            </div>
-                                        </b-col>
+                                                </template>
+                                                <b-dropdown-item href="#">Khóa Học Của tôi</b-dropdown-item>
+                                                <b-dropdown-item href="#">Quản Lí Đơn Hàng</b-dropdown-item>
+                                                <b-dropdown-item href="#">Chỉnh Sửa Thông Tin</b-dropdown-item>
+                                                <b-dropdown-item href="#">Đăng Xuất</b-dropdown-item>
+                                            </b-dropdown>
+                                        </div>  
                                     </b-row>                        
-                              </b-col>  
+                                </b-col>    
                             </b-row>
                         </b-col>                 
                         <b-col lg="12">
@@ -171,7 +179,8 @@
                                                                     </b-col>                               
                                                                     <b-col md="12" lg="12">
                                                                         <input type="hidden" />
-                                                                        <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="login=false" />
+                                                                        <input type="button" class="btn btn-success btn-xs" value="Đăng Nhập" @click="login()" />
+                                                                        <input type="button" class="btn btn-success btn-xs" value="Đăng kí" @click="register()" />
                                                                         <p style="margin-top:10px">Chưa có tài khoản <a href="">Đăng kí</a></p>
                                                                         <p style="margin-top:10px">Đã có tài khoản <a href="">Quên Mật Khẩu</a></p>
                                                                     </b-col>
@@ -234,7 +243,7 @@ methods: {
         if (value=="login"){this.login=true}
         else{alert('kích hoạt');}
     },
-    loginsocial(provide) {
+    async loginsocial(provide) {
               axios.get('api/loginsocial/'+provide)
                     .then(response => {
                       newWindow.location.href = response.data;
@@ -256,9 +265,9 @@ methods: {
     },
     async login() {
                 try {
-                    const response = await axios.post('locahost:8000/api/user/login', {
-                      email: this.user.email,
-                      password:this.user.password
+                    const response = await axios.post('locahost:8000/api/customer/login', {
+                      email: this.customer.email,
+                      password:this.customer.password
                     })
                     console.log(response.data)
                 } catch (error) {
@@ -267,9 +276,9 @@ methods: {
             },
     async register(){
         try {
-                const response = await axios.post('locahost:8000/api/user/register', {
-                      email: this.user.email,
-                      password:this.user.password
+                const response = await axios.post('locahost:8000/api/customer/register', {
+                      email: this.customer.email,
+                      password:this.customer.password
                     })
                     console.log(response.data)
                 } catch (error) {
