@@ -31,7 +31,7 @@
                                 <b-col lg="5" cols="12" sm="12" md="12"  class="p12">
                                     <b-row>
                                         <b-col lg="3" sm="5" md="5">
-                                            <input type="button" value="Kích Hoạt COD" class="active" >                     
+                                            <input type="button" value="Kích Hoạt COD" @click="click('COD')" class="active" >                     
                                             <span class="dt"></span>
                                         </b-col>
                                         <div v-if="ischeck" class="col-lg-6 col-md-6" >
@@ -93,37 +93,41 @@
                                                                         <b-col md="12" lg="12">
                                                                             <div class="form-group">
                                                                                 <label>Tên Đăng Nhập</label>
-                                                                                <input type="text" class="form-control" id="customer_name" style="width:100%!important"/>
+                                                                                <input type="text" class="form-control" v-model='customer.customer_name' id="customer_name" style="width:100%!important"/>
                                                                             </div>
                                                                         </b-col>                                                                     
                                                                     </div>
                                                                     <div v-else>
                                                                         <b-col md="12" lg="12">
                                                                             <h3 class="title-position">Đăng Nhập</h3>
-                                                                        </b-col>    
-                                                                        <b-col md="12" lg="12">
-                                                                            <div class="form-group">
-                                                                                <input type="button" class="fb" value="Đăng Nhập Bằng Facebook" @click="loginsocial('facebook')">
-                                                                                <img src="img/svg/facebook.svg" id="Capa_3" alt="">
-                                                                            </div>
-                                                                        </b-col>
-                                                                        <b-col md="12" lg="12">
-                                                                            <div class="form-group">
-                                                                                <input type="button" class="google" value="Đăng Nhập Bằng Google" @click="loginsocial('google')">
-                                                                            <img src="img/svg/google.svg"  id="Capa_2" alt="">
-                                                                            </div>
-                                                                        </b-col>
+                                                                        </b-col>  
+                                                                        <div v-if="socical">  
+                                                                            <b-col md="12" lg="12">
+                                                                                <div class="form-group">
+                                                                                    <input type="button" class="fb" value="Đăng Nhập Bằng Facebook" @click="loginsocial('facebook')">
+                                                                                    <img src="img/svg/facebook.svg" id="Capa_3" alt="">
+                                                                                </div>
+                                                                            </b-col>
+                                                                            <b-col md="12" lg="12">
+                                                                                <div class="form-group">
+                                                                                    <input type="button" class="google" value="Đăng Nhập Bằng Google" @click="loginsocial('google')">
+                                                                                <img src="img/svg/google.svg"  id="Capa_2" alt="">
+                                                                                </div>
+                                                                            </b-col>
+                                                                        </div>
+                                                                        <div v-else>
+                                                                        </div>
                                                                     </div>
                                                                     <b-col md="12" lg="12">
                                                                         <div class="form-group">
                                                                             <label>Email</label>
-                                                                            <input type="text" class="form-control" id="email" style="width:100%!important"/>
+                                                                            <input type="text" class="form-control" v-model='customer.email' id="email" style="width:100%!important"/>
                                                                         </div>
                                                                     </b-col>
                                                                     <b-col md="12" lg="12">
                                                                         <div class="form-group">
                                                                             <label>Password</label>
-                                                                            <input type="text" class="form-control" id="password" style="width:100%!important"/>
+                                                                            <input type="text" class="form-control" v-model='customer.password' id="password" style="width:100%!important"/>
                                                                         </div>
                                                                     </b-col>                               
                                                                     <b-col md="12" lg="12">
@@ -137,6 +141,40 @@
                                                                         </div>                                                                                                                                              
                                                                         <p class="p-link" >Đã có tài khoản <a href="">Quên Mật Khẩu</a></p>
                                                                     </b-col>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </b-col>
+                                        </b-row>
+                                    </b-container>                          
+                                </transition>
+                            </div>
+                            <div v-else-if="kh">
+                                 <transition name="model">
+                                    <b-container>
+                                        <b-row>
+                                            <b-col lg="6" offset-lg="3">
+                                                <div class="modal-mask" >
+                                                    <div class="modal-wrapper">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <b-col md="12" lg="12">  
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" @click="action=false"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                </b-col>   
+                                                                <div class="modal-body">                                                                  
+                                                                    <b-col md="12" lg="12">
+                                                                        <div class="form-group">
+                                                                            <h3 class="title-position">Kích Hoạt Khóa Học</h3>
+                                                                            <h4>Bước 1: Nhập mã thẻ kích hoạt COD</h4>
+                                                                            <h4>Mã kích hoạt là 1 dãy ký tự mà chúng tôi đã cung cấp cho bạn.</h4>
+                                                                            <input type="text" class="form-control" style="width:100%!important"/>
+                                                                            <h4>Liên hệ hotline 1900633507 nếu bạn gặp vấn đề về kích hoạt khóa học.</h4>
+                                                                        </div>
+                                                                    </b-col>                                                                  
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -165,7 +203,9 @@ data(){
         active:false,
         action:false,
         ischeck:false,
-        isregister:true
+        isregister:true,
+        customer:[],
+        socical:true,
    }
 },
 mounted() {
@@ -180,69 +220,76 @@ methods: {
     {
         if (value=="login"){this.action=true, this.isregister=false}
         else if(value=="register"){this.action=true,this.isregister=true}
-        else{alert('kích hoạt');}
+        else{this.action=false}
     },
-    async loginsocial(provide) {
-        // axios.defaults.headers = {
-        // 'Content-Type': 'application/json',
-        // Authorization: 'myspecialpassword'
-        // }
-            // var config = {
-            //     headers: { 
-            //     'Content-Type': 'application/json',
-            //     'Access-Control-Allow-Methods':'HEAD, GET, POST, PUT, PATCH, DELETE',
-            //     'Access-Control-Allow-Origin':'*',
-            //     'Access-Control-Expose-Headers':'Location'
-            //      },
-            //     };
-            axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-            axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'HEAD, GET, POST, PUT, PATCH, DELETE';
-            axios.defaults.headers.common['Access-Control-Expose-Headers'] = 'Location';
-            axios.defaults.headers.common['Content-Type'] = 'application/json';
-            axios.get('api/loginsocial/'+provide)
-                .then(response => {
-                    newWindow.location.href = response.data;
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
-            },
-            //   // This method save the new token and username
-            //   onMessage (e) {
-            //     if (e.origin !== window.origin || !e.data.token) {
-            //       return
-            //     }
-            //     localStorage.setItem('user',e.data.name)
-            //     localStorage.setItem('jwt',e.data.token)
-
-            //     this.$router.go('/board')
-            //   }
-    },
-    async logincustomer() {
+        async logincustomer() {
                 try {
                     const response = await axios.post('http://127.0.0.1:8000/api/customer/login', {
                       email: this.customer.email,
                       password:this.customer.password
                     })
+                    this.action=false;
+                    this.isregister=false;
                     console.log(response.data)
                 } catch (error) {
                     console.log(error)
                 }
             },
-    async registercustomer(){
-        try {
-                const response = await axios.post('http://127.0.0.1:8000/api/customer/register', {
-                      email: this.customer.email,
-                      password:this.customer.password,
-                      customer_name:this.customer.customer_name
+        async registercustomer(){
+            try {
+                    const response = await axios.post('http://127.0.0.1:8000/api/customer/register', {
+                        email: this.customer.email,
+                        password:this.customer.password,
+                        customer_name:this.customer.customer_name
+                        })
+                        alert('Chúc Mừng Bạn Đăng Kí Thành Viên Thành Công!')
+                        this.action=true,
+                        this.socical=false, 
+                        this.isregister=false
+                    } catch (error) {
+                        console.log(error)
+                    }
+        },
+        async loginsocial(provide) {
+            // axios.defaults.headers = {
+            // 'Content-Type': 'application/json',
+            // Authorization: 'myspecialpassword'
+            // }
+                // var config = {
+                //     headers: { 
+                //     'Content-Type': 'application/json',
+                //     'Access-Control-Allow-Methods':'HEAD, GET, POST, PUT, PATCH, DELETE',
+                //     'Access-Control-Allow-Origin':'*',
+                //     'Access-Control-Expose-Headers':'Location'
+                //      },
+                //     };
+                axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+                axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'HEAD, GET, POST, PUT, PATCH, DELETE';
+                axios.defaults.headers.common['Access-Control-Expose-Headers'] = 'Location';
+                axios.defaults.headers.common['Content-Type'] = 'application/json';
+                axios.get('api/loginsocial/'+provide)
+                    .then(response => {
+                        newWindow.location.href = response.data;
                     })
-                    console.log(response.data)
-                } catch (error) {
-                    console.log(error)
-                }
-    }
+                    .catch(function (error) {
+                        console.error(error);
+                    });
+                //   // This method save the new token and username
+                //   onMessage (e) {
+                //     if (e.origin !== window.origin || !e.data.token) {
+                //       return
+                //     }
+                //     localStorage.setItem('user',e.data.name)
+                //     localStorage.setItem('jwt',e.data.token)
 
-  }
+                //     this.$router.go('/board')
+                //   }
+                },
+
+        },
+
+
+}
 
 </script>
 
