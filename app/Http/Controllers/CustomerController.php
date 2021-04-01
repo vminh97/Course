@@ -155,19 +155,32 @@ class CustomerController extends Controller
             'lastname'=>'required',
             'phone'=>'required|numeric|digits:10',
         ]);
-        try {          
+        try {             
             $customer = Customer::find($id);
-            $customer->customer_name = $request->customer_name;
-            $customer->birthday = $request->birthday;
-            $customer->address=$request->address;
-            $customer->email = $request->email;
-            $customer->status = $request->status;
-            $customer->first_name = $request->first_name;
-            $customer->last_name = $request->last_name;
-            $customer->phone = $request->phone;
+            $customer->customer_name = $request['customer_name'];
+            $customer->gender = $request['gender'];
+            $customer->password = Hash::make($request->password);
+            $customer->birthday = $request['birthday'];
+            if($request->file('image_customer'))
+            {
+               $filename = $request['image_customer'];
+               $name = 'customer_'.time().'.'.$filename->getClientOriginalExtension();
+               $destinationPath = public_path('/img/customer');
+               $filename->move($destinationPath, $name);
+               $customer->image_customer=$name;
+            }
+            $customer->address=$request['address'];
+            $customer->email = $request['email'];
+            $customer->isactive='0';
+            $customer->status = $request['status'];
+            $customer->first_name = $request['first_name'];
+            $customer->last_name = $request['last_name'];
+            $customer->phone = $request['phone'];
             $customer->save();
         
-            return response()->json(['message'=>"successful"]);
+            return response([
+                'customer' => $customer
+            ], 200);
         }
         catch (\Exception $e) {
             return $e->getMessage();
@@ -326,22 +339,22 @@ class CustomerController extends Controller
     {
         //validate incoming request
         $this->validate($request, [
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'customer_name' => 'required|string',
+            'email' => 'required|email|unique:customers',
             'password' => 'required',
         ]);
         try {
             $user = new Customer;
-            $user->name = $request->input('name');
+            $user->customer_name = $request->input('customer_name');
             $user->email = $request->input('email');
             $plainPassword = $request->input('password');
             $user->password = app('hash')->make($plainPassword);
 
             $user->save();
 
-            //return successful response
-            $user->notify(new LetterRegister());
-            return response()->json(['user' => $user, 'message' => 'success'], 200);
+            // //return successful response
+            // $user->notify(new LetterRegister());
+            return response()->json(['customer' => $user, 'message' => 'success'], 200);
 
         } catch (\Exception $e) {
             //return error message
@@ -349,6 +362,7 @@ class CustomerController extends Controller
         }
 
     }
+
 
     public function login(Request $request)
     {

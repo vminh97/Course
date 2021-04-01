@@ -23151,10 +23151,10 @@ main,
   border: 2px solid #439141 !important;
 }
 
-.header_m svg#Capa_2 {
+.header_m img#Capa_2 {
   width: 29px;
   left: 106px;
-  top: -226px;
+  top: 15px;
   position: absolute;
 }
 
@@ -24181,10 +24181,22 @@ img.arrow-down {
   width: 220px;
 }
 
-svg.plus {
+img.plus {
   position: absolute;
   top: 26px;
   left: 186px;
+}
+
+h3.title-position {
+  text-align: center;
+  font-size: 45px;
+  margin-top: -75px;
+}
+
+p.p-link {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .box {

@@ -214,10 +214,10 @@ html,main,.app_m{background: $colorwhite;}
         }
     }
 
-    svg#Capa_2 {
+    img#Capa_2 {
       width: 29px;
       left: 106px;
-      top: -226px;
+      top: 15px;
       position: absolute;
     }
     .header_m_bottom
@@ -1196,10 +1196,20 @@ color: #ff566a;
   margin-left: 69px !important;
   width: 220px;
 }
-svg.plus{
+img.plus{
   position: absolute;
   top: 26px;
   left: 186px;
+}
+h3.title-position{
+    text-align: center;
+    font-size: 45px;
+    margin-top: -75px;
+}
+p.p-link{
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 600;
 }
 .box{
 border: 1px solid rgba(34, 36, 38, 0.15);

@@ -143,8 +143,8 @@ Route::group(['prefix' => 'customer'], function () {
 
 });
 Route::group(['middleware' => ['web']], function () {
-    Route::get('loginsocial/facebook', 'SocialLogin');
-    Route::get('loginsocial/facebook/callback', 'SocialLogin@handerredirct');
+    Route::get('loginsocial/{provide}', 'SocialLogin');
+    Route::get('loginsocial/{provide}/callback', 'SocialLogin@handerredirct');
 });
    
 

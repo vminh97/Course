@@ -28,8 +28,8 @@ class AuthController extends Controller
 
             $user->save();
 
-            //return successful response
-            $user->notify(new LetterRegister());
+            // //return successful response
+            // $user->notify(new LetterRegister());
             return response()->json(['user' => $user, 'message' => 'success'], 200);
 
         } catch (\Exception $e) {
