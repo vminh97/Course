@@ -23,6 +23,14 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    }
+    public function user()
+    {
+        return response()->json(auth('api')->user());
+    }
     public function index()
     {
         try
@@ -383,7 +391,7 @@ class CustomerController extends Controller
                             $res['status'] = true;
                             $res['message'] = 'Success login';
                             $res['data'] =  $login;
-                            return response($res, 200);
+                            return response()->json(auth('api')->user())->header('Authorization', $token);
                         } catch (\Illuminate\Database\QueryException $ex) {
                             $res['status'] = false;
                             $res['message'] = $ex->getMessage();

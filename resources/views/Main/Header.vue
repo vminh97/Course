@@ -31,7 +31,7 @@
                                 <b-col lg="5" cols="12" sm="12" md="12"  class="p12">
                                     <b-row>
                                         <b-col lg="3" sm="5" md="5">
-                                            <input type="button" value="Kích Hoạt COD" @click="click('COD')" class="active" >                     
+                                            <input type="button" value="Kích Hoạt COD" @click="click('cod')" class="active" >                     
                                             <span class="dt"></span>
                                         </b-col>
                                         <div v-if="ischeck" class="col-lg-6 col-md-6" >
@@ -91,9 +91,11 @@
                                                                             <h3 class="title-position">Đăng Kí</h3>
                                                                         </b-col>
                                                                         <b-col md="12" lg="12">
-                                                                            <div class="form-group">
+                                                                            <div class="form-group"  :class="{ 'form-group--error': $v.customer_name.$error }">
                                                                                 <label>Tên Đăng Nhập</label>
-                                                                                <input type="text" class="form-control" v-model='customer.customer_name' id="customer_name" style="width:100%!important"/>
+                                                                                <input type="text" class="form-control" v-model.trim="$v.customer_name.$model" id="customer_name" style="width:100%!important"/>
+                                                                                  <div class="error" v-if="!$v.customer_name.required">Tên Đăng Nhập Không Được Để Trống!</div>
+                                                                                  <div class="error" v-if="!$v.customer_name.minLength">Tên Đăng Nhập Không Dưới {{$v.customer_name.$params.minLength.min}} Kí Tự</div>                                                                              
                                                                             </div>
                                                                         </b-col>                                                                     
                                                                     </div>
@@ -119,27 +121,40 @@
                                                                         </div>
                                                                     </div>
                                                                     <b-col md="12" lg="12">
-                                                                        <div class="form-group">
+                                                                        <div class="form-group"  :class="{ 'form-group--error': $v.email.$error }">
                                                                             <label>Email</label>
-                                                                            <input type="text" class="form-control" v-model='customer.email' id="email" style="width:100%!important"/>
+                                                                            <input type="text" class="form-control" v-model.trim="$v.email.$model" id="email" style="width:100%!important"/>
+                                                                            <div class="error" v-if="!$v.email.email">Bạn không Nhập Đúng Định Dạng Email</div>
+                                                                            <div class="error" v-if="!$v.email.required">Email Không Được Để Trống!</div>
                                                                         </div>
                                                                     </b-col>
                                                                     <b-col md="12" lg="12">
-                                                                        <div class="form-group">
+                                                                        <div class="form-group"  :class="{ 'form-group--error': $v.password.$error }">
                                                                             <label>Password</label>
-                                                                            <input type="text" class="form-control" v-model='customer.password' id="password" style="width:100%!important"/>
+                                                                            <input type="text" class="form-control" v-model.trim="$v.password.$model" id="password" style="width:100%!important"/>
+                                                                            <div class="error" v-if="!$v.password.minLength">Mật Khẩu Không Dưới {{$v.customer_name.$params.minLength.min}} Kí Tự</div>
+                                                                            <div class="error" v-if="!$v.password.required">Mật Khẩu Không Được Để Trống!</div>
                                                                         </div>
-                                                                    </b-col>                               
+                                                                    </b-col>
+                                                                     <div v-if="isregister">
+                                                                        <b-col md="12" lg="12">
+                                                                            <div class="form-group"  :class="{ 'form-group--error': $v.repeatPassword.$error }">
+                                                                                <label>Nhập Lại Mật khẩu</label>
+                                                                                <input type="text" class="form-control" v-model.trim="$v.repeatPassword.$model" id="repeatPassword" style="width:100%!important"/>
+                                                                                  <div class="error" v-if="!$v.repeatPassword.sameAsPassword">Mật Khẩu Không Trùng Nhau</div>                                                                              
+                                                                            </div>
+                                                                        </b-col>                                                                     
+                                                                    </div>                               
                                                                     <b-col md="12" lg="12">
                                                                         <input type="hidden" />
                                                                         <div v-if="isregister">
                                                                             <button class="btn btn-success btn-xs"   @click="registercustomer()" >Đăng kí</button>
                                                                         </div>
                                                                         <div v-else>
-                                                                            <button class="btn btn-success btn-xs"   @click="logincustomer()" >Đăng Nhập</button>
-                                                                            <p class="p-link">Chưa có tài khoản <a href="">Đăng kí</a></p>
+                                                                            <button class="btn btn-success btn-xs"   @click="logincustomer()" >Đăng Nhập</button>                                      
+                                                                            <p class="p-link">Chưa Có Tài Khoản <input type="url" value="Đăng Kí" @click="click('register')"></p>
                                                                         </div>                                                                                                                                              
-                                                                        <p class="p-link" >Đã có tài khoản <a href="">Quên Mật Khẩu</a></p>
+                                                                       <p class="p-link">Đã Có Tài Khoản<input type="url" value="Quên Mật Khẩu" @click="click('mk')"></p>
                                                                     </b-col>
                                                                 </div>
                                                             </div>
@@ -151,7 +166,7 @@
                                     </b-container>                          
                                 </transition>
                             </div>
-                            <div v-else-if="kh">
+                            <div v-else-if="cod">
                                  <transition name="model">
                                     <b-container>
                                         <b-row>
@@ -162,17 +177,74 @@
                                                             <div class="modal-content">
                                                                 <b-col md="12" lg="12">  
                                                                     <div class="modal-header">
-                                                                        <button type="button" class="close" @click="action=false"><span aria-hidden="true">&times;</span></button>
+                                                                        <button type="button" class="close" @click="cod=false"><span aria-hidden="true">&times;</span></button>
                                                                     </div>
                                                                 </b-col>   
                                                                 <div class="modal-body">                                                                  
                                                                     <b-col md="12" lg="12">
                                                                         <div class="form-group">
-                                                                            <h3 class="title-position">Kích Hoạt Khóa Học</h3>
-                                                                            <h4>Bước 1: Nhập mã thẻ kích hoạt COD</h4>
-                                                                            <h4>Mã kích hoạt là 1 dãy ký tự mà chúng tôi đã cung cấp cho bạn.</h4>
-                                                                            <input type="text" class="form-control" style="width:100%!important"/>
-                                                                            <h4>Liên hệ hotline 1900633507 nếu bạn gặp vấn đề về kích hoạt khóa học.</h4>
+                                                                            <b-row>
+                                                                                <b-col md="12" lg="12">
+                                                                                    <h3 class="title-position">Kích Hoạt Khóa Học</h3>
+                                                                                </b-col>
+                                                                                <b-col md="12" lg="12">
+                                                                                    <h4> Nhập mã thẻ kích hoạt COD</h4>
+                                                                                    <h4>Mã kích hoạt là 1 dãy ký tự mà chúng tôi đã cung cấp cho bạn.</h4>
+                                                                                </b-col>
+                                                                                <b-col md="12" lg="12">
+                                                                                    <input type="text" class="form-control" style="width:100%!important"/>
+                                                                                </b-col>
+                                                                                <b-col md="8" lg="12" offset-lg="4">                                                              
+                                                                                    <input type="button" value="Kích Hoạt" class="register" > 
+                                                                                </b-col>
+                                                                                <b-col md="12" lg="12">
+                                                                                   <h4>Liên hệ hotline 1900633507 nếu bạn gặp vấn đề về kích hoạt khóa học.</h4>
+                                                                                </b-col> 
+                                                                            </b-row>                                                                                                                                            
+                                                                        </div>
+                                                                    </b-col>                                                                  
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </b-col>
+                                        </b-row>
+                                    </b-container>                          
+                                </transition>
+                            </div>
+                            <div v-else-if="mk">
+                                 <transition name="model">
+                                    <b-container>
+                                        <b-row>
+                                            <b-col lg="6" offset-lg="3">
+                                                <div class="modal-mask" >
+                                                    <div class="modal-wrapper">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <b-col md="12" lg="12">  
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" @click="mk=false"><span aria-hidden="true">&times;</span></button>
+                                                                    </div>
+                                                                </b-col>   
+                                                                <div class="modal-body">                                                                  
+                                                                    <b-col md="12" lg="12">
+                                                                        <div class="form-group">
+                                                                            <b-row>
+                                                                                <b-col md="12" lg="12">
+                                                                                    <h3 class="title-position">Quên Mật Khẩu</h3>
+                                                                                </b-col>
+                                                                                <b-col>
+                                                                                    <h4>Nhập lại Email đã đăng kí thành viên, chúng tôi sẽ gửi bạn 1  sau đó bạn có thể đăng kí lại mật khẩu</h4>
+                                                                                    <div class="form-group"  :class="{ 'form-group--error': $v.email.$error }">
+                                                                                        <label>Email</label>
+                                                                                        <input type="text" class="form-control" v-model.trim="$v.email.$model" id="email" style="width:100%!important"/>
+                                                                                        <div class="error" v-if="!$v.email.email">Bạn không Nhập Đúng Định Dạng Email</div>
+                                                                                        <div class="error" v-if="!$v.email.required">Email Không Được Để Trống!</div>
+                                                                                    </div>
+                                                                                    <input type="button"  @click="resetpassword()" value="Lấy Mật Khẩu" class="register" > 
+                                                                                </b-col>
+                                                                            </b-row>
                                                                         </div>
                                                                     </b-col>                                                                  
                                                                 </div>
@@ -192,6 +264,7 @@
             </div>   
 </template>
 <script>
+import { required, minLength,email,sameAs  } from 'vuelidate/lib/validators'
 import CarouselHlCourse from "@/Views/Main/course/CarouselHlCourse.vue"
 import axios from 'axios';
 export default {
@@ -206,7 +279,31 @@ data(){
         isregister:true,
         customer:[],
         socical:true,
+        kh:false,
+        customer_name:'',
+        email:'',
+        password:'',
+        repeatPassword:'',
+        mk:false,
+        cod:false
    }
+},
+validations: {
+    customer_name: {
+      required,
+      minLength: minLength(8)
+    },
+    email: {
+      email,
+      required
+    },
+    password: {
+      required,
+      minLength: minLength(8)
+    },
+    repeatPassword: {
+      sameAsPassword: sameAs('password'),
+    }
 },
 mounted() {
     window.addEventListener('message', this.onMessage, false)
@@ -216,81 +313,92 @@ beforeDestroy() {
     window.removeEventListener('message', this.onMessage)
 },  
 methods: {
-    click(value)
-    {
-        if (value=="login"){this.action=true, this.isregister=false}
-        else if(value=="register"){this.action=true,this.isregister=true}
-        else{this.action=false}
-    },
-        async logincustomer() {
-                try {
-                    const response = await axios.post('http://127.0.0.1:8000/api/customer/login', {
-                      email: this.customer.email,
-                      password:this.customer.password
-                    })
-                    this.action=false;
-                    this.isregister=false;
-                    console.log(response.data)
-                } catch (error) {
-                    console.log(error)
-                }
+            async click(value)
+            {
+                if (value=="login"){this.action=true, this.isregister=false}
+                else if(value=="register"){this.action=true,this.isregister=true}
+                else if(value=="cod"){this.cod=true}
+                else if(value=="mk"){this.mk=true,this.action=false}
             },
-        async registercustomer(){
-            try {
-                    const response = await axios.post('http://127.0.0.1:8000/api/customer/register', {
-                        email: this.customer.email,
-                        password:this.customer.password,
-                        customer_name:this.customer.customer_name
+            async logincustomer() {
+                    try {
+                        const response = await axios.post('http://127.0.0.1:8000/api/customer/login', {
+                        email: this.email,
+                        password:this.password
                         })
-                        alert('Chúc Mừng Bạn Đăng Kí Thành Viên Thành Công!')
-                        this.action=true,
-                        this.socical=false, 
-                        this.isregister=false
+                        alert("Chúc mừng bạn đã đăng nhập thành công!");
+                        this.action=false
+                        this.ischeck=true
+                        console.log(response.data)
                     } catch (error) {
                         console.log(error)
                     }
+            },
+            async registercustomer(){
+                try {
+                        const response = await axios.post('http://127.0.0.1:8000/api/customer/register', {
+                            email: this.email,
+                            password:this.password,
+                            customer_name:this.customer_name
+                            })
+                            alert('Chúc Mừng Bạn Đăng Kí Thành Viên Thành Công!')
+                            this.action=true,
+                            this.socical=false, 
+                            this.isregister=false,
+                            this.password=''
+                        } catch (error) {
+                            console.log(error)
+                        }
+            },
+            async loginsocial(provide) {
+                // axios.defaults.headers = {
+                // 'Content-Type': 'application/json',
+                // Authorization: 'myspecialpassword'
+                // }
+                    // var config = {
+                    //     headers: { 
+                    //     'Content-Type': 'application/json',
+                    //     'Access-Control-Allow-Methods':'HEAD, GET, POST, PUT, PATCH, DELETE',
+                    //     'Access-Control-Allow-Origin':'*',
+                    //     'Access-Control-Expose-Headers':'Location'
+                    //      },
+                    //     };
+                    axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+                    axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'HEAD, GET, POST, PUT, PATCH, DELETE';
+                    axios.defaults.headers.common['Access-Control-Expose-Headers'] = 'Location';
+                    axios.defaults.headers.common['Content-Type'] = 'application/json';
+                    axios.get('api/loginsocial/'+provide)
+                        .then(response => {
+                            newWindow.location.href = response.data;
+                        })
+                        .catch(function (error) {
+                            console.error(error);
+                        });
+                    //   // This method save the new token and username
+                    //   onMessage (e) {
+                    //     if (e.origin !== window.origin || !e.data.token) {
+                    //       return
+                    //     }
+                    //     localStorage.setItem('user',e.data.name)
+                    //     localStorage.setItem('jwt',e.data.token)
+
+                    //     this.$router.go('/board')
+                    //   }
+            },
+            async resetpassword(){
+                        try {
+                        const response = await axios.post('http://127.0.0.1:8000/api/customer/sentmail', {
+                            email: this.email,
+                            })
+                            alert('Chúng tôi đã gửi bạn 1 đường link trong gmail bạn đã đăng kí, hãy nhấp vào đường link để có thể lấy lại mật khẩu !')
+                        } catch (error) {
+                            console.log(error)
+                        }
+            },
+            async logout(){
+            }
         },
-        async loginsocial(provide) {
-            // axios.defaults.headers = {
-            // 'Content-Type': 'application/json',
-            // Authorization: 'myspecialpassword'
-            // }
-                // var config = {
-                //     headers: { 
-                //     'Content-Type': 'application/json',
-                //     'Access-Control-Allow-Methods':'HEAD, GET, POST, PUT, PATCH, DELETE',
-                //     'Access-Control-Allow-Origin':'*',
-                //     'Access-Control-Expose-Headers':'Location'
-                //      },
-                //     };
-                axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-                axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'HEAD, GET, POST, PUT, PATCH, DELETE';
-                axios.defaults.headers.common['Access-Control-Expose-Headers'] = 'Location';
-                axios.defaults.headers.common['Content-Type'] = 'application/json';
-                axios.get('api/loginsocial/'+provide)
-                    .then(response => {
-                        newWindow.location.href = response.data;
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-                //   // This method save the new token and username
-                //   onMessage (e) {
-                //     if (e.origin !== window.origin || !e.data.token) {
-                //       return
-                //     }
-                //     localStorage.setItem('user',e.data.name)
-                //     localStorage.setItem('jwt',e.data.token)
-
-                //     this.$router.go('/board')
-                //   }
-                },
-
-        },
-
-
 }
-
 </script>
 
 <style lang="scss">

@@ -135,8 +135,9 @@ Route::group(['prefix' => 'customer'], function () {
 
     Route::get('/logout','CustomerController@logout');
 
+    Route::get('/user','CustomerController@logout');
     //send gmail
-    Route::post('/sentmail', 'CustomerController@sendMail');
+    Route::post('/sentmail', 'CustomerController@user');
     //reset password
     Route::post('/reset/{token}', 'CustomerController@resetPassword');
 

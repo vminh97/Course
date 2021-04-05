@@ -22973,6 +22973,18 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+input[type="url"] {
+  border: 1px solid #ffffff;
+  color: #42b883;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 li {
   list-style: none;
 }
@@ -23007,6 +23019,21 @@ html,
 main,
 .app_m {
   background: white;
+}
+
+svg.bi-calendar {
+  position: absolute !important;
+  top: -5px !important;
+}
+
+bi-calendar-fill {
+  position: absolute !important;
+  top: -5px !important;
+}
+
+svg.bi-calendar:hover {
+  position: absolute !important;
+  top: -5px !important;
 }
 
 .header_m {
@@ -23310,6 +23337,81 @@ main,
   border-radius: 2%;
 }
 
+.card-carousel-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0 40px;
+  color: #666a73;
+}
+
+.card-carousel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-width: 1090px;
+}
+
+.card-carousel--overflow-container {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card-carousel--nav__left,
+.card-carousel--nav__right {
+  display: inline-block;
+  max-width: 15px;
+  height: 15px;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-top: 2px solid #42b883;
+  border-right: 2px solid #42b883;
+  cursor: pointer;
+  margin: 0 20px;
+  -webkit-transition: -webkit-transform 150ms linear;
+  transition: -webkit-transform 150ms linear;
+  transition: transform 150ms linear;
+  transition: transform 150ms linear, -webkit-transform 150ms linear;
+}
+
+.card-carousel--nav__left[disabled],
+.card-carousel--nav__right[disabled] {
+  opacity: 0.2;
+  border-color: black;
+}
+
+.card-carousel--nav__left {
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+}
+
+.card-carousel--nav__left:active {
+  -webkit-transform: rotate(-135deg) scale(0.9);
+          transform: rotate(-135deg) scale(0.9);
+}
+
+.card-carousel--nav__right {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.card-carousel--nav__right:active {
+  -webkit-transform: rotate(45deg) scale(0.9);
+          transform: rotate(45deg) scale(0.9);
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -23326,6 +23428,82 @@ main,
 .modal-wrapper {
   display: table-cell;
   vertical-align: middle;
+}
+
+img#banner-products {
+  width: 303px;
+}
+
+div#v-carousel {
+  width: 100%;
+}
+
+.card-carousel--cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: -webkit-transform 350ms ease-out;
+  transition: -webkit-transform 350ms ease-out;
+  transition: transform 350ms ease-out;
+  transition: transform 350ms ease-out, -webkit-transform 350ms ease-out;
+  -webkit-transform: translatex(0px);
+          transform: translatex(0px);
+}
+
+.card-carousel--cards .card-carousel--card {
+  margin: 0 10px;
+  cursor: pointer;
+  -webkit-box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
+          box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
+  background-color: #fff;
+  border-radius: 4px;
+  z-index: 3;
+  margin-bottom: 2px;
+  height: 400px;
+  border: 1px solid #a8a8a8;
+}
+
+img#teacher-m {
+  border-radius: 50%;
+  height: 70px;
+}
+
+.db {
+  padding: 0;
+  margin-top: -15px !important;
+}
+
+input.learn-test {
+  outline: none;
+  height: 40px;
+  width: 130px;
+  border: 1px solid white;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #439141;
+  color: white;
+  margin-right: 10px;
+  border: 1px solid #a8a8a8;
+  max-width: 90px;
+  opacity: 0.9;
+}
+
+input.learn-test:hover {
+  opacity: 1;
+  -webkit-transition: 0.8;
+  transition: 0.8;
+}
+
+span.price {
+  color: orange;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.card-carousel {
+  height: 400px;
 }
 
 h1 {

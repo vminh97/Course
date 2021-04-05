@@ -19,7 +19,6 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './registerServiceWorker'
-import VueAuth from '@websanova/vue-auth'
 import ArgonDashboard from './plugins/argon-dashboard'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -27,6 +26,8 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-search-select/dist/VueSearchSelect.css'
 import VuePassword from 'vue-password';
 import CKEditor from 'ckeditor4-vue';
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 Vue.config.productionTip = false
 
 Vue.use(VuePassword)
@@ -34,8 +35,8 @@ Vue.use(VuePassword)
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-Vue.use( CKEditor );
-
+Vue.use( CKEditor )
+Vue.use(Vuelidate)
 Vue.use(ArgonDashboard)
 new Vue({
   router,

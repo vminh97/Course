@@ -5,7 +5,7 @@
                 <b-row class="box">
                 <b-col md="12" lg="12"  >
                     <p class="title-keyword">
-                        Từ Khóa Nổi Bật
+                        Thông tin Cá Nhân
                     </p>
                 </b-col>
                 <b-col md="12" lg="12" >
@@ -36,9 +36,20 @@
                             <b-col md="12" lg="12" cols="12">
                             <b-row>
                                 <b-col md="2" lg="2" cols="12"><label for="">Họ Tên</label></b-col>
-                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
+                                <b-col md="4" lg="4">
+                                  <div class="form-group"  :class="{ 'form-group--error': $v.customer_name.$error }">
+                                        <input type="text" class="form-control" v-model.trim="$v.customer_name.$model" id="customer_name" style="width:100%!important"/>
+                                        <div class="error" v-if="!$v.customer_name.required">Tên Đăng Nhập Không Được Để Trống!</div>
+                                        <div class="error" v-if="!$v.customer_name.minLength">Tên Đăng Nhập Không Dưới {{$v.customer_name.$params.minLength.min}} Kí Tự</div> 
+                                  </div>      
+                                </b-col>                                     
                                 <b-col md="2" lg="2" cols="12"><label for="">Email</label></b-col>
-                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
+                                <b-col md="4" lg="4" cols="12">
+                                  <div class="form-group"  :class="{ 'form-group--error': $v.email.$error }">
+                                        <input type="text" class="form-control" v-model.trim="$v.email.$model" id="email" style="width:100%!important"/>
+                                        <div class="error" v-if="!$v.email.email">Bạn không Nhập Đúng Định Dạng Email</div>
+                                  </div>
+                                </b-col>
                             </b-row>
                             </b-col>
                             <b-col md="12" lg="12" cols="12">
@@ -59,9 +70,20 @@
                             <b-col md="12" lg="12" cols="12">
                             <b-row>
                                 <b-col md="2" lg="2" cols="12"><label for="">Địa Chỉ</label></b-col>
-                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
+                                <b-col md="4" lg="4" cols="12">
+                                  <div class="form-group"  :class="{ 'form-group--error': $v.address.$error }">
+                                        <input type="text" class="form-control" v-model.trim="$v.address.$model" id="address" style="width:100%!important"/>
+                                        <div class="error" v-if="!$v.address.required">Địa Chỉ Không Được Để Trống!</div>
+                                  </div> 
+                                </b-col>
                                 <b-col md="2" lg="2" cols="12"><label for="example-datepicker">Số Điện Thoại</label></b-col>
-                                <b-col md="4" lg="4" cols="12"><input type="text" name="" id=""></b-col>
+                                <b-col md="4" lg="4" cols="12">
+                                  <div class="form-group"  :class="{ 'form-group--error': $v.phone.$error }">
+                                        <input type="text" class="form-control" v-model.trim="$v.phone.$model" id="phone" style="width:100%!important"/>
+                                        <div class="error" v-if="!$v.phone.required">Số Điện Thoại Không Được Để Trống!</div>
+                                        <div class="error" v-if="!$v.phone.integer">Số Điện Thoại Nhập Vào Phải Là Số Nguyên!</div>
+                                  </div>
+                                </b-col>
                             </b-row>
                             </b-col>
                             <b-col md="12" lg="12" cols="12">
@@ -111,6 +133,7 @@
     </div>
 </template>
 <script>
+import { required, minLength,email,sameAs,integer  } from 'vuelidate/lib/validators'
 import { ModelSelect } from 'vue-search-select'
 import VuePassword from 'vue-password';
 export default {
@@ -127,13 +150,13 @@ export default {
     data() {
       return {
         user: {
-            email: '',
             password: ''
             },
         user2: {
-        email: '',
-        password: ''
-        },
+            password: ''
+            },
+        customer_name:'',
+        email:'',
         score:'',
         updateStrength:'1',
          score2:'',
@@ -159,6 +182,23 @@ export default {
         value: '',
         files: [],
         showRemovedBtn: false,
+      }
+    },
+    validations: {
+      customer_name: {
+        required,
+        minLength: minLength(8)
+      },
+      email: {
+        email,
+        required
+      },
+      address:{
+        required
+      },
+      phone:{
+        integer,
+        required
       }
     },
     computed: {
@@ -219,6 +259,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.customer{
+  background: white;
+}
+
 @media all and(max-width: 576px) { 
   .c-file-input.js-file-input[data-v-66da31d2] {
     margin-left: 0px!important;

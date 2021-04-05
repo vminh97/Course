@@ -20,34 +20,72 @@
                                     <div class="card-carousel">
                                         <div class="card-carousel--overflow-container" >
                                             <div class="card-carousel--cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
-                                                <div class="card-carousel--card" v-for="item in items" :key="item.id">
-                                                    <img src="img/banner/image_url-1607591256.jpg" alt="">                                            
-                                                    <div class="card-carousel--card--footer">
-                                                        <div class="content-course">
-                                                            <span class="count-video">
-                                                                <i class="fa fa-book"></i><span>34</span>
-                                                            </span>
-                                                            <span class="star">
-                                                            <i class="fa fa-star"></i><span>34</span>
-                                                            </span>                                              
-                                                        </div>
-                                                        <p>{{ item.name }}</p>
-                                                        <div class="teacher-m">
-                                                            <img src="img/banner/image_url-1607485822.jpg" alt="">
-                                                            <span class="title">
-                                                                <div class="name-teacher">
-                                                                    Đoàn Tiến Hùng
-                                                                </div>
-                                                                <div class="name-teacher">
-                                                                    Giảng Viên Youtobe
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                        <input type="button" value="Học Thử" class="learn-test">
-                                                        <span class="price">390.000đ</span>
-                                                    
-                                                    </div>
-                                                </div>
+                                                    <div class="card-carousel--card" v-for="item in items" :key="item.id">
+                                                            <b-row>
+                                                                <b-col md="12" lg="12">
+                                                                    <div class="card-carousel--card--footer">
+                                                                        <b-col md="12" lg="12" class="db">
+                                                                            <div class="banner-products">
+                                                                                 <img src="img/banner/image_url-1607485822.jpg" id="banner-products" alt="">               
+                                                                            </div>                                                         
+                                                                        </b-col>
+                                                                        <b-col md="12" lg="12">
+                                                                            <div class="content-course">
+                                                                                <b-row>                                                                               
+                                                                                        <b-col md="6" lg="6">
+                                                                                            <span class="count-video">
+                                                                                                <i class="fa fa-book"></i><span>34</span>
+                                                                                            </span>
+                                                                                        </b-col>
+                                                                                        <b-col md="6" lg="6">
+                                                                                            <span class="star">
+                                                                                                <i class="fa fa-star"></i><span>34</span>
+                                                                                            </span> 
+                                                                                        </b-col>                                             
+                                                                                </b-row>
+                                                                            </div>                                                                          
+                                                                        </b-col>
+                                                                        <b-col md="12" lg="12">
+                                                                            <div class="title-product-lm">
+                                                                                <p>{{ item.name }}</p>
+                                                                            </div>    
+                                                                        </b-col>
+                                                                        <b-col md="12" lg="12">
+                                                                            <div class="teacher-m">
+                                                                                <b-row>
+                                                                                    <b-col md="5" lg="5">
+                                                                                        <div class="avatar-teacher-course">
+                                                                                            <img src="img/teacher/teacher_1.png" alt="" id="teacher-m">
+                                                                                        </div>   
+                                                                                    </b-col>
+                                                                                    <b-col md="7" lg="7">
+                                                                                        <span class="title">
+                                                                                            <div class="name-teacher">
+                                                                                                Đoàn Tiến Hùng
+                                                                                            </div>
+                                                                                            <div class="name-teacher">
+                                                                                                Giảng Viên Youtobe
+                                                                                            </div>
+                                                                                        </span>
+                                                                                    </b-col>
+                                                                                </b-row>                                                                                                                                                    
+                                                                            </div>
+                                                                        </b-col>
+                                                                        <b-col md="12" lg="12">
+                                                                            <b-row>
+                                                                                <b-col md="6" lg="6">
+                                                                                     <input type="button" value="Học Thử" class="learn-test">
+                                                                                </b-col>
+                                                                                <b-col md="6" lg="6">
+                                                                                     <span class="price">390.000đ</span>
+                                                                                </b-col>
+                                                                            </b-row>
+                                                                        </b-col>
+                                                                    </div>
+                                                                </b-col>
+                                                            </b-row>                                       
+                                                            
+                                                    </div>                                            
                                             </div>                                    
                                         </div>
                                     </div>
@@ -69,15 +107,12 @@ data(){
         currentOffset:0,
         slide:0,
         items: [
-            {name: 'Kin Khao', tag: ["Thai"]},
-            {name: 'Jū-Ni', tag: ["Sushi", "Japanese", "$$$$"]},
-            {name: 'Delfina', tag: ["Pizza", "Casual"]},
-            {name: 'San Tung', tag: ["Chinese", "$$"]},
-            {name: 'Anchor Oyster Bar', tag: ["Seafood", "Cioppino"]},
-            {name: 'Locanda', tag: ["Italian"]},
-            {name: 'Garden Creamery', tag: ["Ice cream"]},
-            {name: 'Linh Pham', tag: ["Chinese", "$$"]},
-            {name: 'Anchor Oyster Bar', tag: ["Seafood", "Cioppino"]},
+            {name: 'Kin Khao1', tag: ["Thai1"]},
+            {name: 'Kin Khao2', tag: ["Thai2"]},
+            {name: 'Kin Khao3', tag: ["Thai3"]},
+            {name: 'Kin Khao4', tag: ["Thai4"]},
+            {name: 'Kin Khao5', tag: ["Thai5"]},
+            {name: 'Kin Khao6', tag: ["Thai6"]},
         ]
         
    }
