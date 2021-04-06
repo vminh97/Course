@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store.js'
 import DashboardLayout from './layout/DashboardLayout'
 // import AuthLayout from './layout/AuthLayout'
 import UserProfile from "@/views/User/UserProfile.vue";
 import ListUserPage from "@/views/User/UserManagement/ListUserPage.vue";
-
 
 //Main
 import Main from "@/views/Main/Main.vue";
@@ -15,6 +15,10 @@ import Customer from "@/views/Main/customer/Customer.vue";
 import InfoTeacherHl from "@/views/Main/teacher/InfoTeacher-Hl.vue";
 import Cart from "@/views/Main/cart/Cart.vue";
 
+//admin/login
+import LoginAdmin from "@/views/Admin/Login.vue";
+//admin/dashboard
+import Dashboard from "@/views/Admin/Dashboard.vue";
 //admin/course
 import ListCourse from "@/views/Admin/Course/Course.vue";
 import AddCourse from "@/views/Admin/Course/AddCourse.vue";
@@ -48,10 +52,22 @@ import EditTeacher from "@/views/Admin/Teacher/EditTeacher.vue";
 
 
 
-Vue.use(Router)
 
+
+Vue.use(Router)
+// router.beforeEach((to, from, next) => {
+//   if(to.matched.some(record => record.meta.requiresAuth)) {
+//     if (store.getters.isLoggedIn) {
+//       next()
+//       return
+//     }
+//     next('/admin/login')
+//   } else {
+//     next()
+//   }
+// })
 export default new Router({
-  linkExactActiveClass: 'active',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -89,16 +105,16 @@ export default new Router({
       component:Cart,
     },
     {
+      path: '/admin/login',
+      name: 'LoginAdmin',
+      component: LoginAdmin,
+    },
+    {
       path: '/admin',
-      redirect: 'dashboard',
+      redirect: '/dashboard',
       component: DashboardLayout,
       children: [
-        {
-          path: '/dashboard',
-          name: 'dashboard',
-          component: require('./views/Admin/Dashboard.vue'),
-
-        },
+        { path: '/dashboard',name: 'Dashboard',component: Dashboard},
       ]
     },
     {
@@ -161,14 +177,14 @@ export default new Router({
         { path: "review-course",name: "Review Course",components: { default: ReviewCourse } }
       ]
     },
-    // {
-    //   path: "admin/user",
-    //   component: DashboardLayout,
-    //   name: "User",
-    //   children: [
-    //     { path: "user-profile",name: "User Profile",components: { default: UserProfile }},
-    //     { path: "user-management/list-users",name: "List Users",components: { default: ListUserPage }}
-    //   ]
-    // },
+    {
+      path: "admin/user",
+      component: DashboardLayout,
+      name: "User",
+      children: [
+        { path: "user-profile",name: "User Profile",components: { default: UserProfile }},
+        { path: "user-management/list-users",name: "List Users",components: { default: ListUserPage }}
+      ]
+    },
   ]
 })

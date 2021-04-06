@@ -1,6 +1,7 @@
 <template>
     <div>
         <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
+           <HeaderName></HeaderName>
             <!-- Card stats -->
             <div class="row">
                 <div class="col-xl-3 col-lg-6">
@@ -130,13 +131,15 @@
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
   import PageVisitsTable from './Dashboard/PageVisitsTable';
-
+  //header
+  import HeaderName from '@/views/Admin/Tables/headername.vue';
   export default {
     components: {
       LineChart,
       BarChart,
       PageVisitsTable,
       SocialTrafficTable,
+      HeaderName
     },
     data() {
       return {
@@ -183,4 +186,9 @@
     }
   };
 </script>
-<style></style>
+<style>
+.icon i, .icon svg {
+    font-size: 2.25rem;
+    margin-left: 1px;
+}
+</style>

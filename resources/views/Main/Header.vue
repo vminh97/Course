@@ -35,7 +35,7 @@
                                             <span class="dt"></span>
                                         </b-col>
                                         <div v-if="ischeck" class="col-lg-6 col-md-6" >
-                                                <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
+                                            <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
                                                 <template #button-content>
                                                         <b-row>
                                                             <b-col lg="4" class="hvor">
@@ -131,7 +131,7 @@
                                                                     <b-col md="12" lg="12">
                                                                         <div class="form-group"  :class="{ 'form-group--error': $v.password.$error }">
                                                                             <label>Password</label>
-                                                                            <input type="text" class="form-control" v-model.trim="$v.password.$model" id="password" style="width:100%!important"/>
+                                                                            <input type="password" class="form-control" v-model.trim="$v.password.$model" id="password" style="width:100%!important"/>
                                                                             <div class="error" v-if="!$v.password.minLength">Mật Khẩu Không Dưới {{$v.customer_name.$params.minLength.min}} Kí Tự</div>
                                                                             <div class="error" v-if="!$v.password.required">Mật Khẩu Không Được Để Trống!</div>
                                                                         </div>
@@ -313,6 +313,7 @@ beforeDestroy() {
     window.removeEventListener('message', this.onMessage)
 },  
 methods: {
+    
             async click(value)
             {
                 if (value=="login"){this.action=true, this.isregister=false}

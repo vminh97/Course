@@ -296,7 +296,7 @@ class CustomerController extends Controller
         $user = Customer::where('email', $request->email)->first();
         if (!$user)
             return response()->json([
-                "message" => "We can't find a user with that e-mail address."
+                "message" => "Email này chưa được đăng kí vào hệ thống"
             ], 404);
         $passwordReset = PasswordReset::updateOrCreate(
             ['email' => $user->email],
@@ -309,40 +309,36 @@ class CustomerController extends Controller
             $user->notify(new ResetPasswordRequest($passwordReset->token));
         }
     return response()->json([
-        'message' => 'We have e-mailed your password reset link!'
+        'message' => 'Chúng tôi đã gửi link đổi mật khẩu vào email của bạn, hãy kiểm tra!'
     ]);
 
 
     }
-
-    public function resetPassword(Request $request)
+    public function resetPassword(Request $request,$token)
     {
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required|string|confirmed',
             'token' => 'required|string'
          ]);
-
-        $passwordReset = PasswordReset::where([
-           
+        $passwordReset = PasswordReset::where([      
             ['email', $request->email],
-            ['token', $request->token],
+            ['token', $token],
         ])->first();
         if (!$passwordReset)
             return response()->json([
-                'message' => 'This password reset token is invalid.'
+                'message' => 'Mật khẩu mới chưa được nhập'
             ], 404);
         $user = Customer::where('email', $passwordReset->email)->first();
-
-        if (!$user)
-            return response()->json([
-                "message" => "We find a user with that e-mail address."], 404);
         $user->password = app('hash')->make($request->password);
         $user->save();
         $passwordReset->delete();
-        return response()->json($user);
-
+        return response()->json([
+            'message' => 'Thay đổi mật khẩu thành công'
+        ]);
     }
+
+
     public function register(Request $request)
     {
         //validate incoming request
