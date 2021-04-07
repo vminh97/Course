@@ -1,31 +1,37 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-
+import productStore from "@/store/productstore";
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+
+const modulesAuth={
   state: {
     status: '',
-    token: localStorage.getItem('token') || '',
+    remember_token: localStorage.getItem('remember_token') || '',
     user : {}
   },
   mutations: {
     auth_request(state){
         state.status = 'loading'
       },
-      auth_success(state, token, user){
-        state.status = 'success'
-        state.token = token
-        state.user = user
-      },
-      auth_error(state){
-        state.status = 'error'
-      },
-      logout(state){
-        state.status = ''
-        state.token = ''
-      },
+    auth_success(state, remember_token, user){
+      state.status = 'success'
+      state.remember_token = remember_token
+      state.user = user
+    },
+    auth_success2(state, remember_token, customer){
+      state.status = 'success'
+      state.remember_token = remember_token
+      state.customer = customer
+    },
+    auth_error(state){
+      state.status = 'error'
+    },
+    logout(state){
+      state.status = ''
+      state.remember_token = ''
+    },
   },
   actions: {
     login({commit}, user){
@@ -33,35 +39,35 @@ export default new Vuex.Store({
           commit('auth_request')
           axios({url: 'http://localhost:8000/api/user/login', data: user, method: 'POST' })
           .then(resp => {
-            const token = resp.data.token
+            const remember_token = resp.data.remember_token
             const user = resp.data.user
-            localStorage.setItem('token', token)
-            axios.defaults.headers.common['Authorization'] = token
-            commit('auth_success', token, user)
+            localStorage.setItem('remember_token', remember_token)
+            axios.defaults.headers.common['Authorization'] = remember_token
+            commit('auth_success', remember_token, user)
             resolve(resp)
           })
           .catch(err => {
             commit('auth_error')
-            localStorage.removeItem('token')
+            localStorage.removeItem('remember_token')
             reject(err)
           })
         })
     },
-    register({commit}, user){
+    register({commit}, customer){
         return new Promise((resolve, reject) => {
             commit('auth_request')
-            axios({url: 'http://localhost:8000/api/customer/register', data: user, method: 'POST' })
+            axios({url: 'http://localhost:8000/api/customer/register', data: customer, method: 'POST' })
             .then(resp => {
-            const token = resp.data.token
-            const user = resp.data.user
-            localStorage.setItem('token', token)
-            axios.defaults.headers.common['Authorization'] = token
-            commit('auth_success', token, user)
+            const remember_token = resp.data.remember_token
+            const customer = resp.data.customer
+            localStorage.setItem('remember_token', remember_token)
+            axios.defaults.headers.common['Authorization'] = remember_token
+            commit('auth_success2', remember_token, customer)
             resolve(resp)
             })
             .catch(err => {
             commit('auth_error', err)
-            localStorage.removeItem('token')
+            localStorage.removeItem('remember_token')
             reject(err)
             })
         })
@@ -69,14 +75,21 @@ export default new Vuex.Store({
     logout({commit}){
         return new Promise((resolve, reject) => {
           commit('logout')
-          localStorage.removeItem('token')
+          localStorage.removeItem('remember_token')
           delete axios.defaults.headers.common['Authorization']
           resolve()
         })
     }
   },
   getters : {
-    isLoggedIn: state => !!state.token,
+    isLoggedIn: state => !!state.remember_token,
+    infouser:state=>!!state.user,
     authStatus: state => state.status,
+  }
+}
+export default new Vuex.Store({
+  modules:{
+    a:modulesAuth,
+    productp:productStore,
   }
 })

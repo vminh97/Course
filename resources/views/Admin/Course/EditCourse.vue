@@ -265,7 +265,14 @@
     methods: {
         formatNames(files) {
         return files.length === 1 ? files[0].name : `${files.length} files selected`
-      }
+      },
+      edit: function() {
+                this.$store.dispatch('product/editProduct', {
+                    name: this.name,
+                    price: this.price,
+                });
+                this.$router.push({name: 'productIndex'});
+            }
     },
   }
 

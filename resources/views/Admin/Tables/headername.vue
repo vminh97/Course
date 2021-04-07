@@ -14,12 +14,12 @@
                                 </b-row>
                             </b-col>
                             <b-col md="3" lg="3" offset-lg="1">
-                                <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
+                                <b-dropdown size="lg" v-if="isLoggedIn" variant="link" toggle-class="text-decoration-none" no-caret>
                                         <template #button-content>
                                                 <b-row>
                                                     <b-col lg="4" class="hvor">
                                                         <span>Xin Chào!</span><br>
-                                                        <span class="name-lg">Minh nè</span>
+                                                        <span class="name-lg" >{{user.name}}</span>
                                                     </b-col>
                                                     <b-col lg="1">
                                                         <img src="img/svg/down-arrow.svg" class="arrow-down">
@@ -30,7 +30,7 @@
                                                 </b-row>
                                         </template>
                                         <b-dropdown-item href="#">Thông Tin Cá Nhân</b-dropdown-item>
-                                        <b-dropdown-item v-if="isLoggedIn"  @click="logout" href="#">Đăng Xuất</b-dropdown-item>
+                                        <b-dropdown-item @click="logout" href="#">Đăng Xuất</b-dropdown-item>
                                 </b-dropdown>
                             </b-col>
                       </b-row>                       
@@ -39,13 +39,28 @@
     </div>
 </template>
 <script>
+import store from '@/store.js'
 export default {
-    computed : {
-      isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    store,
+    data() {
+    return {
+        user:{
+          id:0,name:'Văn Minh',
+        },
+      }
     },
+    computed : {
+      isLoggedIn(){ 
+        return this.$store.getters.isLoggedIn
+        },
+    },
+
     methods: {
+      a(){
+        console.log(this.$store.getters.a.isLoggedIn); 
+      },
       logout: function () {
-        this.$store.dispatch('logout')
+        this.$store.a.dispatch('logout')
         .then(() => {
           this.$router.push('/login')
         })
@@ -55,6 +70,9 @@ export default {
 </script>
 
 <style lang="scss" scoped >
+div#__BVID__127 {
+    margin-top: -38px;
+}
 .hvor{
   cursor: pointer;
   margin-top: -8px;
@@ -107,6 +125,7 @@ input#search-btn{
     background-color: white;
     opacity: 0.9;
     transition: 0.8;
+    border-radius: 0px;
     }
 }
 div#__BVID__125 {

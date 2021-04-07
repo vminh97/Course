@@ -267,6 +267,13 @@
         return files.length === 1 ? files[0].name : `${files.length} files selected`
       }
     },
+    add() {
+                this.$store.dispatch('product/addProduct', {
+                    name: this.name,
+                    price: this.price,
+                });
+                this.$router.push({name: 'productIndex'});
+            }
   }
 
 </script>

@@ -130,12 +130,13 @@
 
 </template>
 <script>
-  import axios from 'axios';
+  import store from '@/store.js'
   import Statistical from '../Tables/Statistical'
   export default {
     name: 'statistical',
     components: {
-      Statistical
+      Statistical,
+      store,
     },
     props: {
     },
@@ -147,46 +148,22 @@
         status1:'',
       }
     },
+    computed: {
+        products () {
+            return this.$store.state.productp.products;
+        }
+    },
     created: function()
     {
-        this.getListProducts();
+        this.$store.productp.dispatch('product/fetch');
     },
     methods: {
-        async getListProducts() {
-            try {
-                const response = await axios.get('/api/product/index');
-                this.listProduct = response.data
-            } catch (error) {
-                this.error = error.response.data
-            }           
-        },
-        async editProduct()
-        {
-                try {
-                    this.error = null
-                    const id= this.$route.params.id;
-                    const response = await axios.post('/api/product/update/'+id);
-                    if(response.status === 200){
-                        this.product = response.data;                                                 
-                        console.log(this.category)
-                    }
-                } catch (error) {
-                    console.log(error);
+        deleteProduct: function (id) {
+	            let result = confirm('Are you sure');
+	            if (!result) {
+                    return;
                 }
-        },
-        async deleteProduct()
-        {
-                try {
-                    this.error = null
-                    const id= this.$route.params.id;
-                    const response = await axios.post('/api/product/destroy/'+id);
-                    if(response.status === 200){
-                        this.category = this.category.filter(id);                                               
-                        console.log(this.category)
-                    }
-                } catch (error) {
-                    console.log(error);
-                }
+                this.$store.productp.dispatch('product/deleteProduct', id);
         }
     }  
 }

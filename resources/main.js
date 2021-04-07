@@ -27,6 +27,7 @@ import 'vue-search-select/dist/VueSearchSelect.css'
 import VuePassword from 'vue-password';
 import CKEditor from 'ckeditor4-vue';
 import Vuelidate from 'vuelidate'
+import VueRouter from 'vue-router'
 Vue.use(Vuelidate)
 Vue.config.productionTip = false
 
@@ -39,14 +40,13 @@ Vue.use( CKEditor )
 Vue.use(Vuelidate)
 Vue.use(ArgonDashboard)
 
-
 import store from './store'
 import Axios from 'axios'
 
 Vue.prototype.$http = Axios;
-const token = localStorage.getItem('token')
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+const remember_token = localStorage.getItem('remember_token')
+if (remember_token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = remember_token
 }
 
 new Vue({

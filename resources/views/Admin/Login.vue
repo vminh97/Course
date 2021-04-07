@@ -48,7 +48,9 @@
 </template>
 <script>
 import axios from 'axios';
+import store from '@/store'
 export default {
+    store,
   data: function () {
     return {
       email: null,
@@ -59,13 +61,13 @@ export default {
   methods: {
         login() 
         {
-        let email = this.email
-        let password = this.password
-        this.$store.dispatch('login', { email, password })
-       .then(() => this.$router.push('/dashboard'))
-       .catch(err => console.log(err))
+            let email = this.email
+            let password = this.password
+            this.$store.dispatch('login', { email, password })
+            .then(() => this.$router.push('/admin/index/dashboard'))
+            .catch(err => console.log(err))
         }
-  }
+      }
 }
 </script>
 <style scoped>

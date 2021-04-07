@@ -50,34 +50,27 @@ import ListOrder from "@/views/Admin/Order/Order.vue";
 import ListTeacher from "@/views/Admin/Teacher/Teacher.vue";
 import EditTeacher from "@/views/Admin/Teacher/EditTeacher.vue";
 
+// import router from './router'
+
 
 
 
 
 Vue.use(Router)
-// router.beforeEach((to, from, next) => {
-//   if(to.matched.some(record => record.meta.requiresAuth)) {
-//     if (store.getters.isLoggedIn) {
-//       next()
-//       return
-//     }
-//     next('/admin/login')
-//   } else {
-//     next()
-//   }
-// })
-export default new Router({
+// export default new Router({
+  // mode: 'history',
+let router = new Router({
   // mode: 'history',
   routes: [
     {
       path: '/',
       name: 'Main',
-      component: Main,
+      component: Main
     },
     {
       path: '/category',
       name: 'indexcategory',
-      component: Category,
+      component: Category
     },
     {
       path: '/course',
@@ -110,12 +103,16 @@ export default new Router({
       component: LoginAdmin,
     },
     {
-      path: '/admin',
-      redirect: '/dashboard',
+      path: '/admin/index',
+      name: 'Dashboard',
       component: DashboardLayout,
-      children: [
-        { path: '/dashboard',name: 'Dashboard',component: Dashboard},
-      ]
+      children:[
+        { path: "dashboard",name: "dashboard",component: Dashboard },
+      ],
+      // meta: {
+      //   requiresAuth: true
+      // }
+      
     },
     {
       path: '/admin/category',
@@ -125,7 +122,10 @@ export default new Router({
         { path: "list-category",name: "List Category",component: ListCategory },
         { path: "add-category",name: "Add Category",component: AddCategory },
         { path: "edit-category/:id",name: "Edit Category",component:  EditCategory },
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin/customer',
@@ -134,7 +134,10 @@ export default new Router({
       children:[
         { path: "list-customer",name: "List Customer",component: ListCustomer },
         { path: "edit-customer/:id",name: "Edit Customer",component:  EditCustomer },
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin/new',
@@ -144,7 +147,10 @@ export default new Router({
         { path: "list-new",name: "List New",component: ListNew },
         { path: "add-new",name: "Add New",component: AddNew },
         { path: "edit-new/:id",name: "Edit New",component:  EditNew },
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin/order',
@@ -152,7 +158,10 @@ export default new Router({
       component: DashboardLayout,
       children:[
         { path: "list-order",name: "List Order",component: ListOrder },
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin/teacher',
@@ -161,7 +170,10 @@ export default new Router({
       children:[
         { path: "list-teacher",name: "List Teacher",component:  ListTeacher },
         { path: "edit-teacher/:id",name: "Edit Teacher",component:  EditTeacher },
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin/course',
@@ -175,16 +187,35 @@ export default new Router({
         { path: "keyword-search",name: "Keyword Search",components: { default: KeywordSearch }},
         { path: "rank-course",name: "Rank Course",components: { default: RankCourse }},
         { path: "review-course",name: "Review Course",components: { default: ReviewCourse } }
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: "admin/user",
+      path: "/admin/user",
       component: DashboardLayout,
       name: "User",
       children: [
         { path: "user-profile",name: "User Profile",components: { default: UserProfile }},
         { path: "user-management/list-users",name: "List Users",components: { default: ListUserPage }}
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters.isLoggedIn) {
+      next()
+      return
+    }
+    next('/admin/login')
+  } else {
+    next()
+  }
+})
+export default router
