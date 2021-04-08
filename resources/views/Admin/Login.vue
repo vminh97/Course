@@ -64,7 +64,7 @@ export default {
             let email = this.email
             let password = this.password
             this.$store.dispatch('login', { email, password })
-            .then(() => this.$router.push('/admin/index/dashboard'))
+            .then(() => this.$router.push('/admin/dashboard'))
             .catch(err => console.log(err))
         }
       }

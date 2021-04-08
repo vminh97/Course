@@ -13,8 +13,8 @@
                                     </b-col>
                                 </b-row>
                             </b-col>
-                            <b-col md="3" lg="3" offset-lg="1">
-                                <b-dropdown size="lg" v-if="isLoggedIn" variant="link" toggle-class="text-decoration-none" no-caret>
+                            <b-col md="3" lg="3" offset-lg="1" class="info-admin">
+                                <b-dropdown size="lg" v-if="isLoggedIn" variant="link"  toggle-class="text-decoration-none" no-caret >
                                         <template #button-content>
                                                 <b-row>
                                                     <b-col lg="4" class="hvor">
@@ -50,19 +50,14 @@ export default {
       }
     },
     computed : {
-      isLoggedIn(){ 
-        return this.$store.getters.isLoggedIn
-        },
+     isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
     },
 
     methods: {
-      a(){
-        console.log(this.$store.getters.a.isLoggedIn); 
-      },
       logout: function () {
-        this.$store.a.dispatch('logout')
+        this.$store.dispatch('logout')
         .then(() => {
-          this.$router.push('/login')
+          this.$router.push('/admin/login')
         })
       }
     },

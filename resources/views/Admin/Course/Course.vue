@@ -148,24 +148,24 @@
         status1:'',
       }
     },
-    computed: {
-        products () {
-            return this.$store.state.productp.products;
-        }
-    },
-    created: function()
-    {
-        this.$store.productp.dispatch('product/fetch');
-    },
-    methods: {
-        deleteProduct: function (id) {
-	            let result = confirm('Are you sure');
-	            if (!result) {
-                    return;
-                }
-                this.$store.productp.dispatch('product/deleteProduct', id);
-        }
-    }  
+    // computed: {
+    //     products () {
+    //         return this.$store.state.products;
+    //     }
+    // },
+    // created: function()
+    // {
+    //     this.$store.dispatch('product/fetch');
+    // },
+    // methods: {
+    //     deleteProduct: function (id) {
+	//             let result = confirm('Are you sure');
+	//             if (!result) {
+    //                 return;
+    //             }
+    //             this.$store.dispatch('product/deleteProduct', id);
+    //     }
+    // }  
 }
 </script>
 <style >

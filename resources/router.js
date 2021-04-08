@@ -103,16 +103,12 @@ let router = new Router({
       component: LoginAdmin,
     },
     {
-      path: '/admin/index',
+      path: '/admin',
       name: 'Dashboard',
       component: DashboardLayout,
       children:[
-        { path: "dashboard",name: "dashboard",component: Dashboard },
-      ],
-      // meta: {
-      //   requiresAuth: true
-      // }
-      
+        { path: "dashboard",name: "dashboardadmin",component: Dashboard },            
+      ], 
     },
     {
       path: '/admin/category',

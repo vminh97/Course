@@ -1,48 +1,8 @@
 <template>
-    <div>
-        <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-           <HeaderName></HeaderName>
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-red"
-                                sub-title="350,897"
-                                icon="ni ni-active-40"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Total traffic"
-                                type="gradient-orange"
-                                sub-title="2,356"
-                                icon="ni ni-chart-pie-35"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Sales"
-                                type="gradient-green"
-                                sub-title="924"
-                                icon="ni ni-money-coins"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <stats-card title="Performance"
-                                type="gradient-info"
-                                sub-title="49,65%"
-                                icon="ni ni-chart-bar-32"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-                </div>
-            </div>
-        </base-header>
+    <div>      
+         <Statistical></Statistical>
+        <!-- <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
+        </base-header> -->
 
         <!--Charts-->
         <div class="container-fluid mt--7">
@@ -128,18 +88,17 @@
   import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';
 
+  import Statistical from '@/views/Admin/Tables/Statistical'
   // Tables
   import SocialTrafficTable from './Dashboard/SocialTrafficTable';
   import PageVisitsTable from './Dashboard/PageVisitsTable';
-  //header
-  import HeaderName from '@/views/Admin/Tables/headername.vue';
   export default {
     components: {
       LineChart,
       BarChart,
       PageVisitsTable,
       SocialTrafficTable,
-      HeaderName
+      Statistical
     },
     data() {
       return {
@@ -186,9 +145,13 @@
     }
   };
 </script>
-<style>
+<style scoped>
 .icon i, .icon svg {
     font-size: 2.25rem;
     margin-left: 1px;
 }
+.header-admin[data-v-1d0bfbd9] {
+    margin-top: -245px !important;
+}
 </style>
+

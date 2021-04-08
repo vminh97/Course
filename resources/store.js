@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import productStore from "@/store/productstore";
 Vue.use(Vuex)
 
-
-const modulesAuth={
+export default new Vuex.Store({
   state: {
     status: '',
     remember_token: localStorage.getItem('remember_token') || '',
@@ -85,11 +83,5 @@ const modulesAuth={
     isLoggedIn: state => !!state.remember_token,
     infouser:state=>!!state.user,
     authStatus: state => state.status,
-  }
-}
-export default new Vuex.Store({
-  modules:{
-    a:modulesAuth,
-    productp:productStore,
   }
 })
