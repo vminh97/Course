@@ -51,67 +51,67 @@
                 </div>
             </div>
             <div class="table-responsive">
-            <base-table class="table align-items-center table-flush"
-                        :class="type === 'dark' ? 'table-dark': ''"
-                        :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
-                        tbody-classes="list"
-                        :data="listCategory">
-                <template slot="columns">
-                <th>Id</th>
-                <th>Name</th>
-                <th>Name Display</th>
-                <th>isDisplay</th>
-                <th>parent_id</th>
-                <th>order_number</th>
-                <th>slug_url</th>
-                <th>Action</th>
-                </template>
-                <template slot-scope="{row}">
-                <th scope="row">
-                    <div class="media align-items-center">
-                    <div class="media-body">
-                        <span class="name mb-0 text-sm">{{row.id}}</span>
-                    </div>
-                    </div>
-                </th>
-                <td class="budget">
-                    {{row.Name}}
-                </td>
-                <td>
-                    {{row.name_Display}}
-                </td>
-                <td v-if="row.is_Display = '1'" >
-                    <badge class="badge-dot mr-4" >
-                    <i :class="`bg-success`"></i>
-                    </badge>
-                </td>
-                    <td v-else>
-                    <badge class="badge-dot mr-4" >
-                    <i :class="`bg-danger`"></i>
-                    </badge>
-                </td>
-                <td>
-                    {{row.parent_id}}
-                </td>
-                <td>
-                    {{row.order_number}}
-                </td>
-                <td>
-                    {{row.slug_url}}
-                </td> 
-                <td class="text-right action" >
-                    <a type="text" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit Category',params: {id:row.id}}" >
-                             <i class="fas fa-user-edit"></i>
-                         </router-link>
-                    </a>
-                    <a type="text" @click.prevent="deleteCategory(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                             <i class="fas fa-trash" ></i>   
-                    </a>
-                </td>
-                </template>
+                <base-table class="table align-items-center table-flush"
+                            :class="type === 'dark' ? 'table-dark': ''"
+                            :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
+                            tbody-classes="list"
+                            :data="categorys">
+                    <template slot="columns">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Name Display</th>
+                    <th>isDisplay</th>
+                    <th>parent_id</th>
+                    <th>order_number</th>
+                    <th>slug_url</th>
+                    <th>Action</th>
+                    </template>
+                    <template slot-scope="{row}">
+                    <th scope="row">
+                        <div class="media align-items-center">
+                        <div class="media-body">
+                            <span class="name mb-0 text-sm">{{row.id}}</span>
+                        </div>
+                        </div>
+                    </th>
+                    <td class="budget">
+                        {{row.Name}}
+                    </td>
+                    <td>
+                        {{row.name_Display}}
+                    </td>
+                    <td v-if="row.is_Display = '1'" >
+                        <badge class="badge-dot mr-4" >
+                        <i :class="`bg-success`"></i>
+                        </badge>
+                    </td>
+                        <td v-else>
+                        <badge class="badge-dot mr-4" >
+                        <i :class="`bg-danger`"></i>
+                        </badge>
+                    </td>
+                    <td>
+                        {{row.parent_id}}
+                    </td>
+                    <td>
+                        {{row.order_number}}
+                    </td>
+                    <td>
+                        {{row.slug_url}}
+                    </td> 
+                    <td class="text-right action" >
+                        <a type="text" class="table-action" data-toggle="tooltip">
+                            <router-link :to="{ name: 'Edit Category',params: {id:row.id}}" >
+                                <i class="fas fa-user-edit"></i>
+                            </router-link>
+                        </a>
+                        <a type="text" @click="deleteCategory(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                                <i class="fas fa-trash" ></i>   
+                        </a>
+                    </td>
+                    </template>
 
-            </base-table>
+                </base-table>
             </div>
             <div class="card-footer d-flex justify-content-end">
                  <base-pagination></base-pagination>
@@ -123,7 +123,6 @@
 
 </template>
 <script>
-  import axios from 'axios';
   import Statistical from '../Tables/Statistical'
   export default {
     name: 'statistical',
@@ -134,37 +133,35 @@
     },
     data() {
       return {
-        listCategory: [],
         title: 'Category',
+        id:'',
+        Name:'',
         type:'',
+        name_Display:'',
+        parent_id:'',
+        is_Display:'',
+        order_number:'',
+        slug_url:'',
+
       }
+    },
+    computed: {
+        categorys () {
+            return this.$store.state.category.categorys;
+        }
     },
     created: function()
     {
-        this.getListCategorys();
+        this.$store.dispatch('category/fetch');
     },
     methods: {
-        async getListCategorys() {
-            try {
-                const response = await axios.get('/api/category/index');
-                this.listCategory = response.data
-            } catch (error) {
-                this.error = error.response.data
-            }           
-        },
-        async deleteCategory(index)
-        {  
-            if(confirm("Are you sure you want to delete this item?")){ 
-                axios
-                .delete("/api/category/destroy/" + index)
-                .then(res => {
-                        this.category.splice(index, 1);
-                        })
-                .catch(err => {
-                    console.log(err);
-                });
+        async deleteCategory(id) {
+	            let result = confirm("Are you sure you want to delete this item?");
+	            if (!result) {
+                    return;
+                }
+                this.$store.dispatch('category/deleteCategory', id);
             }
-        }
     }  
 }
 </script>

@@ -18,7 +18,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import './registerServiceWorker'
 import ArgonDashboard from './plugins/argon-dashboard'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -51,5 +50,6 @@ if (remember_token) {
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  store: store,
 }).$mount('#app')

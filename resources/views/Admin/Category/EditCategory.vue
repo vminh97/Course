@@ -86,7 +86,6 @@
         this.listcategorymain();
     },
     methods: { 
-
         async editCategory()
             {
                 try {

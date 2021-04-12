@@ -152,15 +152,16 @@
         },
         async deleteCustomer(index)
         {
-            axios
-            .delete("/api/customer/destroy/" + index)
-            .then(res => {
-            confirm("Are you sure you want to delete this item?") &&
-            this.customer.splice(index, 1);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            if(confirm("Are you sure you want to delete this item?")){ 
+                axios
+                .delete("/api/category/destroy/" + index)
+                .then(res => {
+                        this.category.splice(index, 1);
+                        })
+                .catch(err => {
+                    console.log(err);
+                });
+            }
         }
     }  
   }

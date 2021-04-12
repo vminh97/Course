@@ -25,6 +25,8 @@ Route::group(['prefix' => 'category'], function () {
 
     Route::get('/categorydad', 'CategoryController@listcategorydad');
 
+    Route::get('/show/{id}', 'CategoryController@show');
+
     Route::post('/store','CategoryController@store');
 
     Route::get('/edit/{id}','CategoryController@edit');

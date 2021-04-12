@@ -24286,6 +24286,10 @@ img.avatar-m:hover .tcn {
   z-index: 1;
 }
 
+.ct {
+  background: #FFFFFF !important;
+}
+
 img.arrow-down {
   width: 10px;
   margin-left: 16px;
