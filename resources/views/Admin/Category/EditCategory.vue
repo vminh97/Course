@@ -28,8 +28,9 @@
                                 <div class="col-lg-3 offset-lg-1">
                                        <div class="form-group">
                                             <label class="form-control-label" >Name Category Main</label>
-                                            <select class="form-control" id="categorymain" v-model='category.parent_id' >
-                                                <option v-for="cate in listCategorydad" :key="cate.id" :value="cate.parent_id" >{{ cate.name_Display }}</option>
+                                            <select class="form-control" id="categorymain" v-model="category.parent_id" >
+                                                <!-- <option v-for="cate in categorydad" :key="cate.id" :value="cate.parent_id" >{{ cate.name_Display }}</option> -->
+                                                 <option  >{{ category.name_Display }}</option>
                                             </select>
                                         </div>
                                 </div>
@@ -39,21 +40,19 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <label class="custom-toggle bx">
-                                            <input type="checkbox" v-model='category.is_display' checked >
+                                            <input type="checkbox"  v-model="category.is_display" checked >
                                             <span class="custom-toggle-slider rounded-circle cx"   ></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 offset-lg-1">
                                     <label class="form-control-label">Category Status</label>
-                                    <input type="text" class="form-control" v-model='category.category_status' placeholder="category_status" id="slug_url" aria-describedby="inputGroupPrepend" required="" >
+                                    <input type="text" class="form-control" v-model="category.category_status" placeholder="category_status" id="slug_url" aria-describedby="inputGroupPrepend" required="" >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-5 sb">
-                                    <router-link to="/admin/category/list-category" >
-                                          <button class="btn btn-primary" >Submit</button>
-                                    </router-link>                                      
+                                          <button class="btn btn-primary" type="submit" >Submit</button>                                   
                                 </div>                                                              
                             </div>
                         </form>
@@ -63,8 +62,8 @@
     </div>
 </template>
 <script>
+ import { mapState } from 'vuex';
  import Statistical from '../Tables/Statistical';
- import axios from 'axios';
   export default {
     name: 'statistical',
     components: {
@@ -72,50 +71,29 @@
     },
     data() {
       return {
-        selected: null,
-        category:[],
         checked: true,
-        listCategorydad:[],
       }
     },
+    beforeCreate() {
+         this.$store.dispatch('category/fetchOne', this.$route.params.id);
+    },
     computed: {
-    },
-    created: function()
-    {
-        this.editCategory();
-        this.listcategorymain();
-    },
-    methods: { 
-        async editCategory()
-            {
-                try {
-                    this.error = null
-                    const index= this.$route.params.id;
-                    const response = await axios.get('/api/category/edit/'+index);
-                    this.category= response.data;
-                } catch (error) 
-                {
-                    this.error = error.response.data;
-                } 
-            },
-        async listcategorymain()
-        {
-            try {
-                        const response = await axios.get('/api/category/categorydad');
-                        this.listCategorydad = response.data;
-            } catch (error) 
-            {
-                        this.error = error.response.data;
-            } 
+            ...mapState('category', {
+                category: 'category'
+            }),
+            // categorydad () {
+            // return this.$store.state.category.categorydad;
+            // },
         },
-        async updateCategory()
-        {
-            const index= this.$route.params.id;
-            let uri = `http://127.0.0.1:8000/api/category/update/`+index;
-            this.axios.post(uri, this.post).then((response) => {
-            this.$router.push({name: 'category'});
-          });
-        },       
+    // created: function()
+    // {
+    //     this.$store.dispatch('category/fetchdad');       
+    // },
+    methods: { 
+        edit: function() {
+            this.$store.dispatch('category/editCategory', this.category);
+            this.$router.push({name: 'List Category'});
+        }    
     }
   }
 </script>

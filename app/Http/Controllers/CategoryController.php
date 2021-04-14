@@ -26,7 +26,7 @@ class CategoryController extends Controller
             return $e->getMessage();
         }
     }
-    public function find($id)
+    public function show($id)
     {
         try
         {

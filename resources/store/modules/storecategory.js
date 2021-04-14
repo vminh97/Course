@@ -40,12 +40,12 @@ const storecategory = {
                 .then(response => commit('FETCH_DAD', response.data))
                 .catch();
         },
-        deleteCategory({}, id) {
+        delete({}, id) {
             axios.delete(`${RESOURCE_CATEGORY}/destroy/${id}`)
                 .then(() => this.dispatch('category/fetch'))
                 .catch();
         },
-        editCategory({}, category) {
+        edit({}, category) {
             axios.put(`${RESOURCE_CATEGORY}/update/${category.id}`, {
                 Name: category.Name,
                 name_Display: category.name_Display,
@@ -56,7 +56,7 @@ const storecategory = {
             })
             .then();
         },
-        addCategory({}, category) {
+        add({}, category) {
             axios.post(`${RESOURCE_CATEGORY}/store/`, {
                 Name: category.Name,
                 name_Display: category.name_Display,

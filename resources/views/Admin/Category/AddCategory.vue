@@ -92,7 +92,7 @@
     },
     methods: {
             async add() {
-                this.$store.dispatch('category/addCategory', {
+                this.$store.dispatch('category/add', {
                     Name: this.Name,
                     name_Display: this.name_Display,
                     parent_id:this.parent_id,
