@@ -87,11 +87,21 @@
 // })
 
 import storecategory from "./store/modules/storecategory";
+import storecourse from "./store/modules/storecourse";
+import storecustomer from "./store/modules/storecustomer";
+import storehastang from "./store/modules/storehastang";
+import storenew from "./store/modules/storenew";
+import storeteacher from "./store/modules/storeteacher";
 import Vuex from 'vuex';
 
 const store = new Vuex.Store({
     modules: {
         category: storecategory,
+        course: storecourse,
+        customer: storecustomer,
+        hastang: storehastang,
+        new: storenew,
+        teacher: storeteacher
     }
 });
 

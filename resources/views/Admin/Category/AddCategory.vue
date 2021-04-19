@@ -62,7 +62,6 @@
 </template>
 <script>
  import Statistical from '../Tables/Statistical';
- import axios from 'axios';
   export default {
     name: 'statistical',
     components: {

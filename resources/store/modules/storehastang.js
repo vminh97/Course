@@ -45,7 +45,6 @@ const storehastang = {
                keyword : hastang.keyword,
                description : hastang.description,
                show_order : hastang.show_order,
-                save();
             })
             .then();
         },

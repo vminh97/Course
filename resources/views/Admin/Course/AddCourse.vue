@@ -212,7 +212,6 @@
 </template>
 <script>
  import { ModelSelect } from 'vue-search-select';
- import axios from 'axios';
   export default {
     name: 'statistical',
     components: {

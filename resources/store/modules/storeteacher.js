@@ -48,7 +48,6 @@ const storeteacher = {
                 first_name: teacher.first_name,
                 last_name: teacher.last_name,
                 phone: teacher.phone,
-                save();
             })
             .then();
         },

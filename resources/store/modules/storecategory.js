@@ -13,7 +13,7 @@ const storecategory = {
     },
     mutations: {
         FETCH(state,  categorys) {
-            state. categorys =  categorys;
+            state.categorys =  categorys;
         },
         FETCH_ONE(state, category) {
             state.category = category;
@@ -30,8 +30,8 @@ const storecategory = {
                 .then(response => commit('FETCH', response.data))
                 .catch();
         },
-        fetchOne({ commit }, id) {
-            axios.get(`${RESOURCE_CATEGORY}/show/${id}`)
+        fetchOne({ commit },id) {
+             axios.get(`${RESOURCE_CATEGORY}/show/${id}`)
                 .then(response => commit('FETCH_ONE', response.data))
                 .catch();
         },

@@ -39,14 +39,13 @@ const storenewtoday = {
             axios.put(`${RESOURCE_NEW}/update/${newtoday.id}`, {
                title_news: newtoday.title_news,
                description_news: newtoday.description_news,
-               content_news=newtoday.content_news,
+               content_news:newtoday.content_news,
                editer_by: newtoday.editer_by,
                user_id: newtoday.user_id,
                status: newtoday.status,
                news_Date: newtoday.news_Date,
                news_image: newtoday.news_image,
                category_id: newtoday.category_id,
-                save();
             })
             .then();
         },
@@ -54,7 +53,7 @@ const storenewtoday = {
             axios.post(`${RESOURCE_NEW}/store/`, {
                 title_news: newtoday.title_news,
                 description_news: newtoday.description_news,
-                content_news=newtoday.content_news,
+                content_news:newtoday.content_news,
                 editer_by: newtoday.editer_by,
                 user_id: newtoday.user_id,
                 status: newtoday.status,

@@ -55,7 +55,7 @@
                         :class="type === 'dark' ? 'table-dark': ''"
                         :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
                         tbody-classes="list"
-                        :data="listProduct">
+                        :data="courses">
                 <template slot="columns">
                     <th><b-form-checkbox
                     id="checkbox-1"
@@ -104,18 +104,16 @@
                 <td>
                     {{row.status}}
                 </td>
-                <td class="text-right action" >
-                    <a type="text" @click="editProduct(row.id)" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit Product'}" >
-                             <i class="fas fa-user-edit"></i>
-                         </router-link>
-                    </a>
-                    <a type="text" @click="deleteProduct(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <router-link :to="{ name: 'Delete Product'}" >
-                             <i class="fas fa-trash"></i>
-                        </router-link>     
-                    </a>
-                </td>
+                    <td class="text-right action" >
+                        <a type="text" class="table-action" data-toggle="tooltip">
+                            <router-link :to="{ name: 'Edit Course',params: {id:row.id}}" >
+                                <i class="fas fa-user-edit"></i>
+                            </router-link>
+                        </a>
+                        <a type="text" @click="delete(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                                <i class="fas fa-trash" ></i>   
+                        </a>
+                    </td>
                 </template>
 
             </base-table>
@@ -130,42 +128,39 @@
 
 </template>
 <script>
-  import store from '@/store.js'
   import Statistical from '../Tables/Statistical'
   export default {
     name: 'statistical',
     components: {
       Statistical,
-      store,
     },
     props: {
     },
     data() {
       return {
-        listProduct: [],
         title: 'Product',
         type:'',
         status1:'',
       }
     },
-    // computed: {
-    //     products () {
-    //         return this.$store.state.products;
-    //     }
-    // },
-    // created: function()
-    // {
-    //     this.$store.dispatch('product/fetch');
-    // },
-    // methods: {
-    //     deleteProduct: function (id) {
-	//             let result = confirm('Are you sure');
-	//             if (!result) {
-    //                 return;
-    //             }
-    //             this.$store.dispatch('product/deleteProduct', id);
-    //     }
-    // }  
+    computed: {
+        courses () {
+            return this.$store.state.course.courses;
+        }
+    },
+    created: function()
+    {
+        this.$store.dispatch('course/fetch');
+    },
+        methods: {
+        async delete(id) {
+	            let result = confirm("Are you sure you want to delete this item?");
+	            if (!result) {
+                    return;
+                }
+                this.$store.dispatch('course/delete', id);
+            }
+    }  
 }
 </script>
 <style >
