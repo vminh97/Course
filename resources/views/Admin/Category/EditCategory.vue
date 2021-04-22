@@ -17,18 +17,18 @@
                             <div class="form-row" >
                                 <div class="col-lg-5 offset-lg-1" >
                                     <label class="form-control-label" >Name Category</label>
-                                    <input type="text"  class="form-control" id="namecategory" v-model='category[0].Name' placeholder="Name Category" required="">
+                                    <input type="text"  class="form-control" id="namecategory" v-model='category.Name' placeholder="Name Category" required="">
                                 </div>
                                 <div class="col-lg-5 " >
                                     <label class="form-control-label">Name Display Category</label>
-                                    <input type="text"  class="form-control" id="displaycategory" v-model='category[0].name_Display' placeholder="Name Display Category"  required="">
+                                    <input type="text"  class="form-control" id="displaycategory" v-model='category.name_Display' placeholder="Name Display Category"  required="">
                                 </div>
                             </div>
                             <div class="form-row" >
                                 <div class="col-lg-3 offset-lg-1">
                                         <div class="form-group">
                                             <label class="form-control-label" for="validationCustomUsername">Name Category Main</label>
-                                            <select class="form-control" id="categorymain" v-model='category[0].parent_id' >
+                                            <select class="form-control" id="categorymain" v-model='category.parent_id' >
                                                 <option v-for="cate in categorydad" :key="cate.id" :value="cate.parent_id" >{{ cate.name_Display }}</option>
                                             </select>
                                         </div>
@@ -39,14 +39,14 @@
                                     </div>
                                     <div class="col-lg-12" >
                                         <label class="custom-toggle bx">
-                                            <input type="checkbox"   v-model="category[0].is_display" checked >
+                                            <input type="checkbox"   v-model="category.is_display" checked >
                                             <span class="custom-toggle-slider rounded-circle cx"   ></span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 offset-lg-1" >
                                     <label class="form-control-label">Category Status</label>
-                                    <input type="text" class="form-control"  v-model="category[0].category_status" placeholder="category_status" id="slug_url" aria-describedby="inputGroupPrepend" required="" >
+                                    <input type="text" class="form-control"  v-model="category.category_status" placeholder="category_status" id="slug_url" aria-describedby="inputGroupPrepend" required="" >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -71,17 +71,9 @@
     data() {
       return {
         checked: true,
-        Name:'',
-        type:'',
-        name_Display:'',
-        parent_id:'',
-        is_Display:'',
-        order_number:'',
-        slug_url:'',
       }
     },
     beforeCreate() {
-         this.loading = true;
          this.$store.dispatch('category/fetchOne', this.$route.params.id);
     },
     computed: {
@@ -98,7 +90,7 @@
     },
     methods: { 
         async edit(){
-            this.$store.dispatch('category/edit', this.category[0]);
+            this.$store.dispatch('category/edit', this.category);
             this.$router.push({name: 'List Category'});
         },
     }

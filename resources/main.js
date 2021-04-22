@@ -50,6 +50,7 @@ if (remember_token) {
 
 new Vue({
   router,
+  el: '#app',
   render: h => h(App),
   store: store,
-}).$mount('#app')
+})

@@ -69,9 +69,9 @@
                     <template slot-scope="{row}">
                     <th scope="row">
                         <div class="media align-items-center">
-                        <div class="media-body">
-                            <span class="name mb-0 text-sm">{{row.id}}</span>
-                        </div>
+                            <div class="media-body">
+                                <span class="name mb-0 text-sm">{{row.id}}</span>
+                            </div>
                         </div>
                     </th>
                     <td class="budget">
@@ -134,15 +134,6 @@
     data() {
       return {
         title: 'Category',
-        id:'',
-        Name:'',
-        type:'',
-        name_Display:'',
-        parent_id:'',
-        is_Display:'',
-        order_number:'',
-        slug_url:'',
-
       }
     },
     computed: {

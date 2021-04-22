@@ -11,10 +11,10 @@ const storenewtoday = {
         newtoday: {},
     },
     mutations: {
-        FETCH(state,  newtodays) {
+        FETCH(state,newtodays) {
             state. newtodays =  newtodays;
         },
-        FETCH_ONE(state, newtoday) {
+        FETCH_ONE(state,newtoday) {
             state.newtodays = newtoday;
         },
     },
@@ -25,11 +25,12 @@ const storenewtoday = {
                 .then(response => commit('FETCH', response.data))
                 .catch();
         },
-        fetchOne({ commit }, id) {
+        fetchOne({ commit },id) {
             axios.get(`${RESOURCE_NEW}/show/${id}`)
-                .then(response => commit('FETCH_ONE', response.data))
-                .catch();
-        },
+               .then(response => {
+                   return commit('FETCH_ONE', response.data[0])})
+               .catch();
+       },
         delete({}, id) {
             axios.delete(`${RESOURCE_NEW}/destroy/${id}`)
                 .then(() => this.dispatch('new/fetch'))

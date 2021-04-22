@@ -53,10 +53,8 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-5 sb">
-                                    <router-link to="/admin/category/list-category" >
-                                          <button class="btn btn-primary"  @click="createCategory" >Submit</button>
-                                    </router-link>                                      
-                                </div>                                                              
+                                          <button class="btn btn-primary" type="submit" >Submit</button>                                   
+                                </div>                                                          
                             </div>
                         </form>
                     </div>

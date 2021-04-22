@@ -90,8 +90,9 @@ import storecategory from "./store/modules/storecategory";
 import storecourse from "./store/modules/storecourse";
 import storecustomer from "./store/modules/storecustomer";
 import storehastang from "./store/modules/storehastang";
-import storenew from "./store/modules/storenew";
+import storenewtoday from "./store/modules/storenew";
 import storeteacher from "./store/modules/storeteacher";
+import storeorder from "./store/modules/storeorder";
 import Vuex from 'vuex';
 
 const store = new Vuex.Store({
@@ -100,8 +101,9 @@ const store = new Vuex.Store({
         course: storecourse,
         customer: storecustomer,
         hastang: storehastang,
-        new: storenew,
-        teacher: storeteacher
+        newtoday: storenewtoday,
+        teacher: storeteacher,
+        order:storeorder
     }
 });
 

@@ -23,14 +23,14 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
-    }
-    public function user()
-    {
-        return response()->json(auth('api')->user());
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    // }
+    // public function user()
+    // {
+    //     return response()->json(auth('api')->user());
+    // }
     public function index()
     {
         try

@@ -15,8 +15,11 @@ class CourseController extends Controller
     public function index()
     {
         try{
-            $course = DB::table('products')->join('teachers', 'products.teacher_id', '=', 'teachers.id')
-            ->join('categorys','products.category_id','=','category.id')
+            $course = Course::all();
+            return response()->json($course);   
+            $course = DB::table('products')
+            ->join('category','products.category_id','=','category.id')
+            ->join('teachers', 'products.teacher_id', '=', 'teachers.id')
             ->join('certificates','products.certificate_id','=','certificates.id')
             ->get();
             return response()->json($course);   
@@ -27,7 +30,18 @@ class CourseController extends Controller
         }
 
     }
-
+    public function show($id)
+    {
+        try
+        {
+            $items = Course::select('*')->where('id',$id)->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -105,7 +119,9 @@ class CourseController extends Controller
             $course->material_name=$request->input('material_name');
             $course->search_keywords = $request->input('search_keywords');
             $course->list_image = $request->input('list_image');
-            $course->isPublic=$request->input('isPublic');
+            if($request->isPublic==='true') {$request_display=1;}
+            else{$request_display=0; }            
+            $category->isPublic = $request_display;
             $course->isRefund = $request->input('isRefund');
             $course->isCertification = $request->input('isCertification');
             $course->isOnlinePayment=$request->input('isOnlinePayment');
@@ -139,10 +155,6 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

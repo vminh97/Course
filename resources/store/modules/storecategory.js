@@ -32,7 +32,8 @@ const storecategory = {
         },
         fetchOne({ commit },id) {
              axios.get(`${RESOURCE_CATEGORY}/show/${id}`)
-                .then(response => commit('FETCH_ONE', response.data))
+                .then(response => {
+                    return commit('FETCH_ONE', response.data[0])})
                 .catch();
         },
         fetchdad({ commit }) {

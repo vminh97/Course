@@ -25,11 +25,12 @@ const storehastang = {
                 .then(response => commit('FETCH', response.data))
                 .catch();
         },
-        fetchOne({ commit }, id) {
+        fetchOne({ commit },id) {
             axios.get(`${RESOURCE_HASTANG}/show/${id}`)
-                .then(response => commit('FETCH_ONE', response.data))
-                .catch();
-        },
+               .then(response => {
+                   return commit('FETCH_ONE', response.data[0])})
+               .catch();
+       },
         delete({}, id) {
             axios.delete(`${RESOURCE_HASTANG}/destroy/${id}`)
                 .then(() => this.dispatch('hastang/fetch'))

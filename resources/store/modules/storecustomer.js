@@ -25,11 +25,12 @@ const storecustomer = {
                 .then(response => commit('FETCH', response.data))
                 .catch();
         },
-        fetchOne({ commit }, id) {
+        fetchOne({ commit },id) {
             axios.get(`${RESOURCE_CUSTOMER}/show/${id}`)
-                .then(response => commit('FETCH_ONE', response.data))
-                .catch();
-        },
+               .then(response => {
+                   return commit('FETCH_ONE', response.data[0])})
+               .catch();
+       },
         delete({}, id) {
             axios.delete(`${RESOURCE_CUSTOMER}/destroy/${id}`)
                 .then(() => this.dispatch('customer/fetch'))

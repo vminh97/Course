@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::group(['prefix' => 'category'], function () {
 
     Route::get('/index', 'CategoryController@index');
@@ -37,17 +38,19 @@ Route::group(['prefix' => 'category'], function () {
 
     Route::get('/export', 'CategoryController@export')->name('export');
 });
-Route::group(['prefix' => 'product'], function () {
+Route::group(['prefix' => 'course'], function () {
 
-    Route::get('/index', 'ProductController@index');
+    Route::get('/index', 'CourseController@index');
 
-    Route::post('/store','ProductController@store');
+    Route::get('/show/{id}', 'CourseController@show');
 
-    Route::post('/edit/{id}','ProductController@edit');
+    Route::post('/store','CourseController@store');
+
+    Route::post('/edit/{id}','CourseController@edit');
     
-    Route::delete('/destroy/{id}','ProductController@destroy');
+    Route::delete('/destroy/{id}','CourseController@destroy');
 
-    Route::get('/export', 'ProductController@export')->name('export');
+    Route::get('/export', 'CourseController@export')->name('export');
 });
 Route::group(['prefix' => 'hastang'], function () {
 
@@ -77,15 +80,29 @@ Route::group(['prefix' => 'teacher'], function () {
 
     Route::get('/index', 'TeacherController@index');
 
+    Route::get('/show/{id}', 'TeacherController@show');
+
     Route::post('/store','TeacherController@store');
 
-    Route::get('/edit/{id}','TeacherController@edit');
-
-    Route::put('/update/{id}','CategoryController@update');
+    Route::post('/edit/{id}','TeacherController@edit');
     
     Route::delete('/destroy/{id}','TeacherController@destroy');
 
     Route::get('/export', 'TeacherController@export')->name('export');
+});
+Route::group(['prefix' => 'new'], function () {
+
+    Route::get('/index', 'NewController@index');
+
+    Route::post('/store','NewController@store');
+
+    Route::get('/edit/{id}','NewController@edit');
+
+    Route::put('/update/{id}','NewController@update');
+    
+    Route::delete('/destroy/{id}','NewController@destroy');
+
+    Route::get('/export', 'NewController@export')->name('export');
 });
 Route::group(['prefix' => 'certificate'], function () {
 

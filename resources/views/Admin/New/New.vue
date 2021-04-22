@@ -10,15 +10,15 @@
     <div>
         <div class="card shadow">
             <div class="card-header border-0">
-            <div class="row align-items-center">
-                <div class="col">
-                <h3 class="mb-0">
-                    {{title}}
-                </h3>
+                <div class="row align-items-center">
+                    <div class="col">
+                    <h3 class="mb-0">
+                        {{title}}
+                    </h3>
+                    </div>
                 </div>
-            </div>
-            </div>
-            <div class="row">
+                </div>
+            <div class="row lx">
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="dataTables_length" id="datatable-basic_length">
                     <span class="fill1">
@@ -43,90 +43,73 @@
                 </div>
                 <div class="col text-right">
                   <base-button type="danger">                        
-                    <router-link :to="{ name: 'Add Category' }" class='add'>
+                    <router-link :to="{ name: 'Add New' }" class='add'>
                         <i class="fas fa-user-edit mr-2"></i>
-                        <span class="btn-inner--text">Add Category</span>
+                        <span class="btn-inner--text">Add New</span>
                     </router-link>
                   </base-button>
                 </div>
             </div>
             <div class="table-responsive">
-            <base-table class="table align-items-center table-flush"
-                        :class="type === 'dark' ? 'table-dark': ''"
-                        :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
-                        tbody-classes="list"
-                        :data="listProduct">
-                <template slot="columns">
-                    <th><b-form-checkbox
-                    id="checkbox-1"
-                    v-model="status"
-                    name="checkbox-1"
-                    value="accepted"
-                    unchecked-value="not_accepted"
-                    ></b-form-checkbox></th>
+                <base-table class="table align-items-center table-flush"
+                            tbody-classes="list"
+                            :data="newtodays">
+                    <template slot="columns">
+                    <th>Id</th>
                     <th>Title Name</th>
                     <th>Image News</th>
-                    <th>Content News</th>
-                    <th>Description News</th>
+                    <th>Active</th>
                     <th>Editer by</th>
                     <th>Name Category</th>
-                    <th>Active</th>
                     <th>status</th>
                     <th>Action</th>
-                </template>
-                <template slot-scope="{row}">
-                <th scope="row">
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <b-form-checkbox
-                            id="checkbox-1"
-                            v-model="status"
-                            name="checkbox-1"
-                            value="accepted"
-                            unchecked-value="not_accepted"
-                            ></b-form-checkbox>
+                    </template>
+                    <template slot-scope="{row}">
+                    <th scope="row">
+                        <div class="media align-items-center">
+                            <div class="media-body">
+                                <span class="name mb-0 text-sm">{{row.id}}</span>
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <td class="budget">
-                    {{row.title_news}}
-                </td>
-                <td>
-                   <img src="" alt="">
-                </td>
-                <td>
-                    {{row.content_news}}
-                </td>
-                <td>
-                    {{row.description_news}}
-                </td>
-                <td>
-                    {{row.editer_by}}
-                </td>
-                 <td>
-                    {{row.Name}}
-                </td>
-                <td>
-                    {{row.is_display}}
-                </td>
-                <td>
-                    {{row.status}}
-                </td>
-                <td class="text-right action" >
-                    <a type="text" @click="editNew(row.id)" class="table-action" data-toggle="tooltip">
-                         <router-link :to="{ name: 'Edit New'}" >
-                             <i class="fas fa-user-edit"></i>
-                         </router-link>
-                    </a>
-                    <a type="text" @click="deleteNew(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
-                        <router-link :to="{ name: 'Delete New'}" >
-                             <i class="fas fa-trash"></i>
-                        </router-link>     
-                    </a>
-                </td>
-                </template>
+                    </th>
+                    <td class="budget">
+                        {{row.title_news}}
+                    </td>
+                    <td>
+                        {{row.news_image}}
+                    </td>
+                    <td v-if="row.is_Display = '1'" >
+                        <badge class="badge-dot mr-4" >
+                        <i :class="`bg-success`"></i>
+                        </badge>
+                    </td>
+                        <td v-else>
+                        <badge class="badge-dot mr-4" >
+                        <i :class="`bg-danger`"></i>
+                        </badge>
+                    </td>
+                    <td>
+                        {{row.name}}
+                    </td>
+                    <td>
+                        {{row.Name}}
+                    </td>
+                    <td>
+                        {{row.status}}
+                    </td> 
+                    <td class="text-right action" >
+                        <a type="text" class="table-action" data-toggle="tooltip">
+                            <router-link :to="{ name: 'Edit New',params: {id:row.id}}" >
+                                <i class="fas fa-user-edit"></i>
+                            </router-link>
+                        </a>
+                        <a type="text" @click="delete(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                                <i class="fas fa-trash" ></i>   
+                        </a>
+                    </td>
+                    </template>
 
-            </base-table>
+                </base-table>
             </div>
             <div class="card-footer d-flex justify-content-end">
                  <base-pagination></base-pagination>
@@ -138,7 +121,6 @@
 
 </template>
 <script>
-  import axios from 'axios';
   import Statistical from '../Tables/Statistical'
   export default {
     name: 'statistical',
@@ -149,51 +131,25 @@
     },
     data() {
       return {
-        listNew: [],
-        title: 'New',
-        type:'',
+        title: 'News',
       }
+    },
+    computed: {
+        newtodays () {
+            return this.$store.state.newtoday.newtodays;
+        }
     },
     created: function()
     {
-        this.getListNew();
+        this.$store.dispatch('newtoday/fetch');
     },
     methods: {
-        async getListNew() {
-            try {
-                const response = await axios.get('/api/new/index');
-                this.listNew = response.data
-            } catch (error) {
-                this.error = error.response.data
-            }           
-        },
-            async editNew()
-            {
-                   try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/new/update/'+id);
-                        if(response.status === 200){
-                          this.new = response.data;                                                 
-                          console.log(this.new);
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
-            },
-            async deleteNew()
-            {
-                    try {
-                        this.error = null
-                        const id= this.$route.params.id;
-                        const response = await axios.post('/api/new/destroy/'+id);
-                        if(response.status === 200){
-                          this.customer = this.customer.filter(id);                                               
-                          console.log(this.new)
-                        }
-                    } catch (error) {
-                        console.log(error);
-                    }
+        async delete(id) {
+	            let result = confirm("Are you sure you want to delete this item?");
+	            if (!result) {
+                    return;
+                }
+                this.$store.dispatch('newtoday/delete', id);
             }
     }  
 }
@@ -220,6 +176,10 @@ th,td{
 }
 i.fas.fa-trash {
    margin-right: 30px;
+   color:#007bff;
+}
+i.fas.fa-trash:hover{
+    cursor: pointer;
 }
 a.add {
     color: white;

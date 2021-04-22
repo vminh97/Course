@@ -45,7 +45,7 @@
                   <base-button type="danger">                        
                     <router-link :to="{ name: 'Add Course' }" class='add'>
                         <i class="fas fa-user-edit mr-2"></i>
-                        <span class="btn-inner--text">Add Category</span>
+                        <span class="btn-inner--text">Add Product</span>
                     </router-link>
                   </base-button>
                 </div>

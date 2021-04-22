@@ -27,7 +27,7 @@ class TeacherController extends Controller
             return $e->getMessage();
         }
     }
-    public function find($id)
+    public function show($id)
     {
         try
         {
@@ -71,7 +71,7 @@ class TeacherController extends Controller
         ]);
         try {             
             $teacher = new Teacher();
-            $teacher->customer_name = $request['customer_name'];
+            $teacher->teacher_name = $request['teacher_name'];
             $teacher->gender = $request['gender'];
             $teacher->password = Hash::make($request->password);
             $teacher->birthday = $request['birthday'];
@@ -149,7 +149,7 @@ class TeacherController extends Controller
         ]); 
         try {                
             $teacher = Teacher::find($id);
-            $teacher->customer_name = $request->customer_name;
+            $teacher->teacher_name = $request->teacher_name;
             $teacher->gender = $request['gender'];
             $teacher->password = Hash::make($request->password);
             if($request->file('image_teacher'))

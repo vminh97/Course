@@ -45,6 +45,7 @@ import EditNew from "@/views/Admin/New/EditNew.vue";
 
 //admin/course
 import ListOrder from "@/views/Admin/Order/Order.vue";
+import EditOrder from "@/views/Admin/Order/EditOrder.vue";
 
 //admin/teacher
 import ListTeacher from "@/views/Admin/Teacher/Teacher.vue";
@@ -154,6 +155,7 @@ let router = new Router({
       component: DashboardLayout,
       children:[
         { path: "list-order",name: "List Order",component: ListOrder },
+        { path: "edit-order/:id",name: "Edit Order",component:  EditOrder },
       ],
       meta: {
         requiresAuth: true

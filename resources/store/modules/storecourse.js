@@ -20,16 +20,17 @@ const storecourse = {
     },
     actions: {
 
-        fetch({ commit }) {
+        async fetch({ commit }) {
             return axios.get(RESOURCE_COURSE+'/index')
                 .then(response => commit('FETCH', response.data))
                 .catch();
         },
-        fetchOne({ commit }, id) {
+        fetchOne({ commit },id) {
             axios.get(`${RESOURCE_COURSE}/show/${id}`)
-                .then(response => commit('FETCH_ONE', response.data))
-                .catch();
-        },
+               .then(response => {
+                   return commit('FETCH_ONE', response.data[0])})
+               .catch();
+       },
         delete({}, id) {
             axios.delete(`${RESOURCE_COURSE}/destroy/${id}`)
                 .then(() => this.dispatch('course/fetch'))

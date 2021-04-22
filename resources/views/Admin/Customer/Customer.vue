@@ -10,14 +10,14 @@
     <div>
         <div class="card shadow">
             <div class="card-header border-0">
-            <div class="row align-items-center">
-                <div class="col">
-                <h3 class="mb-0">
-                    {{title}}
-                </h3>
+                <div class="row align-items-center">
+                    <div class="col">
+                    <h3 class="mb-0">
+                        {{title}}
+                    </h3>
+                    </div>
                 </div>
-            </div>
-            </div>
+                </div>
             <div class="row lx">
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="dataTables_length" id="datatable-basic_length">
@@ -35,49 +35,50 @@
                 </div>
                 <div class="col-sm-12 col-md-5 col-lg-5">
                     <div id="datatable-basic_filter" class="dataTables_filter">
-                        <span class="fill1">Search:</span>  
-                        <input type="search" class="form-control form-control-sm fill-table" v-model="row">
+                    <span class="fill1">
+                        Search:
+                    </span>  
+                        <input type="search" class="form-control form-control-sm fill-table" placeholder="" aria-controls="datatable-basic">
                     </div>
                 </div>
-
             </div>
             <div class="table-responsive">
-            <base-table class="table align-items-center table-flush"
-                        :class="type === 'dark' ? 'table-dark': ''"
-                        :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
-                        tbody-classes="list"
-                        :data="listCustomer">
-                <template slot="columns">
-                    <th><b-form-checkbox
-                    id="checkbox-1"
-                    name="checkbox-1"
-                    value="accepted"
-                    unchecked-value="not_accepted"
-                    ></b-form-checkbox></th>
+                <base-table class="table align-items-center table-flush"
+                            tbody-classes="list"
+                            :data="customers">
+                    <template slot="columns">
+                    <th>Id</th>
                     <th>Name Customer</th>
                     <th>Image Customer</th>
+                    <th>Active</th>
                     <th>Birthday</th>
                     <th>Email</th>
-                    <th>Active</th>
                     <th>status</th>
                     <th>Action</th>
-                </template>
-                <template slot-scope="{row}">
-                    <td scope="row">
+                    </template>
+                    <template slot-scope="{row}">
+                    <th scope="row">
                         <div class="media align-items-center">
                             <div class="media-body">
-                                <b-form-checkbox
-                                value="accepted"
-                                unchecked-value="not_accepted"
-                                ></b-form-checkbox>
+                                <span class="name mb-0 text-sm">{{row.id}}</span>
                             </div>
                         </div>
-                    </td>
+                    </th>
                     <td class="budget">
                         {{row.customer_name}}
                     </td>
                     <td>
-                    <img src="" alt="">
+                        {{row.image_customer}}
+                    </td>
+                    <td v-if="row.isactive = '1'" >
+                        <badge class="badge-dot mr-4" >
+                        <i :class="`bg-success`"></i>
+                        </badge>
+                    </td>
+                        <td v-else>
+                        <badge class="badge-dot mr-4" >
+                        <i :class="`bg-danger`"></i>
+                        </badge>
                     </td>
                     <td>
                         {{row.birthday}}
@@ -86,24 +87,21 @@
                         {{row.email}}
                     </td>
                     <td>
-                        {{row.isactive}}
-                    </td>
-                    <td>
                         {{row.status}}
-                    </td>
+                    </td> 
                     <td class="text-right action" >
                         <a type="text" class="table-action" data-toggle="tooltip">
                             <router-link :to="{ name: 'Edit Customer',params: {id:row.id}}" >
                                 <i class="fas fa-user-edit"></i>
                             </router-link>
                         </a>
-                        <a type="text" @click.prevent="deleteCustomer(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                        <a type="text" @click="delete(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
                                 <i class="fas fa-trash" ></i>   
                         </a>
                     </td>
-                </template>
+                    </template>
 
-            </base-table>
+                </base-table>
             </div>
             <div class="card-footer d-flex justify-content-end">
                  <base-pagination></base-pagination>
@@ -115,56 +113,38 @@
 
 </template>
 <script>
-  import axios from 'axios';
   import Statistical from '../Tables/Statistical'
   export default {
     name: 'statistical',
     components: {
       Statistical
     },
+    props: {
+    },
     data() {
       return {
-        search:'',
-        row:'',
-        listCustomer: [],
         title: 'Customer',
-        type:'',
-        total:50,
-        totaltoday:50,
-        totalmonth:50,
-        rate:'34,5',
       }
     },
     computed: {
+        customers () {
+            return this.$store.state.customer.customers;
+        }
     },
     created: function()
     {
-        this.getListCustomer();
+        this.$store.dispatch('customer/fetch');
     },
     methods: {
-        async getListCustomer() {
-            try {
-                const response = await axios.get('/api/customer/index');
-                this.listCustomer = response.data
-            } catch (error) {
-                this.error = error.response.data
-            }           
-        },
-        async deleteCustomer(index)
-        {
-            if(confirm("Are you sure you want to delete this item?")){ 
-                axios
-                .delete("/api/category/destroy/" + index)
-                .then(res => {
-                        this.category.splice(index, 1);
-                        })
-                .catch(err => {
-                    console.log(err);
-                });
+        async delete(id) {
+	            let result = confirm("Are you sure you want to delete this item?");
+	            if (!result) {
+                    return;
+                }
+                this.$store.dispatch('customer/delete', id);
             }
-        }
     }  
-  }
+}
 </script>
 <style >
 select.form-control.form-control-sm.fill-table {
@@ -189,6 +169,9 @@ th,td{
 i.fas.fa-trash {
    margin-right: 30px;
    color:#007bff;
+}
+i.fas.fa-trash:hover{
+    cursor: pointer;
 }
 a.add {
     color: white;

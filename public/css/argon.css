@@ -24474,6 +24474,10 @@ span.b-rating-star {
   margin-left: -4px;
 }
 
+.table-responsive th {
+  text-align: center;
+}
+
 @media all and (max-width: 576px) {
   p.title-keyword {
     line-height: 1.2;
