@@ -56,7 +56,7 @@
                             :data="newtodays">
                     <template slot="columns">
                     <th>Id</th>
-                    <th>Title Name</th>
+                    <!-- <th>Title Name</th> -->
                     <th>Image News</th>
                     <th>Active</th>
                     <th>Editer by</th>
@@ -68,13 +68,13 @@
                     <th scope="row">
                         <div class="media align-items-center">
                             <div class="media-body">
-                                <span class="name mb-0 text-sm">{{row.id}}</span>
+                                <span class="name mb-0 text-sm">{{row.id_new}}</span>
                             </div>
                         </div>
                     </th>
-                    <td class="budget">
+                    <!-- <td class="budget">
                         {{row.title_news}}
-                    </td>
+                    </td> -->
                     <td>
                         {{row.news_image}}
                     </td>
@@ -99,11 +99,11 @@
                     </td> 
                     <td class="text-right action" >
                         <a type="text" class="table-action" data-toggle="tooltip">
-                            <router-link :to="{ name: 'Edit New',params: {id:row.id}}" >
+                            <router-link :to="{ name: 'Edit New',params: {id:row.id_new}}" >
                                 <i class="fas fa-user-edit"></i>
                             </router-link>
                         </a>
-                        <a type="text" @click="delete(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                        <a type="text" @click="delete(row.id_new)" class="table-action table-action-delete" data-toggle="tooltip">
                                 <i class="fas fa-trash" ></i>   
                         </a>
                     </td>
@@ -144,12 +144,12 @@
         this.$store.dispatch('newtoday/fetch');
     },
     methods: {
-        async delete(id) {
+        async delete(id_new) {
 	            let result = confirm("Are you sure you want to delete this item?");
 	            if (!result) {
                     return;
                 }
-                this.$store.dispatch('newtoday/delete', id);
+                this.$store.dispatch('newtoday/delete', id_new);
             }
     }  
 }

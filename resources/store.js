@@ -93,6 +93,7 @@ import storehastang from "./store/modules/storehastang";
 import storenewtoday from "./store/modules/storenew";
 import storeteacher from "./store/modules/storeteacher";
 import storeorder from "./store/modules/storeorder";
+import storeorderdetail from "./store/modules/storeorderdetail";
 import Vuex from 'vuex';
 
 const store = new Vuex.Store({
@@ -103,7 +104,8 @@ const store = new Vuex.Store({
         hastang: storehastang,
         newtoday: storenewtoday,
         teacher: storeteacher,
-        order:storeorder
+        order:storeorder,
+        orderdetail:storeorderdetail
     }
 });
 

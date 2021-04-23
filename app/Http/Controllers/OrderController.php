@@ -24,7 +24,18 @@ class OrderController extends Controller
             return response()->json(['message' => 'response failed!'], 500);
         }
     }
-
+    public function show($id)
+    {
+        try
+        {
+            $items = Order::select('*')->where('id',$id)->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -104,10 +115,6 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

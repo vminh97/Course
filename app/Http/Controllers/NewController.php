@@ -15,8 +15,10 @@ class NewController extends Controller
     public function index()
     {
         try{
-            $news = DB::table('news')->join('users', 'news.user_id', '=', 'users.id')
-            ->join('category','news.category_id','=','category.id')->get();
+            $news = DB::table('news')
+            ->join('category','news.category_id','=','category.id')
+            ->join('users', 'news.user_id', '=', 'users.id')
+            ->get();
             return response()->json($news);   
         }
         catch (\Exception $e) {
@@ -85,9 +87,17 @@ class NewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_new)
     {
-        //
+        try
+        {
+            $items = News::select('*')->where('id_new',$id_new)->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -127,9 +137,9 @@ class NewController extends Controller
             $news->title_news = $request->input('title_news');
             $news->description_news = $request->input('description_news');
             $news->content_news=$request->input('content_news');
-            $news->editer_by = $request->input('editer_by');
             $news->user_id = $request->input('user_id');
-            $news->status=$request->input('status');
+            $news->status = $request->input('status');
+            $news->deadline_date = $request->input('deadline_date');
             $news->news_Date = $request->input('news_Date');
             $news->news_image=$request->input('news_image');
             $news->category_id = $request->input('category_id');

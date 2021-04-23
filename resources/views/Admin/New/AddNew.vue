@@ -15,22 +15,22 @@
                     <div class="card-body">
                         <form class="needs-validation" novalidate="">
                             <div class="form-row">
-                                <div class="col-lg-5 offset-lg-1  " >
-                                    <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Name Category</label>
-                                    <input type="text" class="form-control" id="namecategory" v-model='category.Name' placeholder="Name Category" required="">
-                                </div>
-                                <div class="col-lg-5 ">
-                                    <label class="form-control-label" for="validationCustom02" style="margin-top: 5%;">Name Display Category</label>
-                                    <input type="text" class="form-control" id="displaycategory" v-model='category.name_Display' placeholder="Name Display Category"  required="">
+                                <div class="col-lg-12  " >
+                                    <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Tiêu Đề Tin Tức</label>
+                                    <input type="text" class="form-control" id="content_news"  required="">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-lg-3 offset-lg-1">
                                        <div class="form-group">
-                                            <label class="form-control-label" for="validationCustomUsername">Name Category Main</label>
-                                            <select class="form-control" id="categorymain" v-model='category.parent_id' >
-                                                <option v-for="cate in listCategorydad" :key="cate.id" :value="cate.parent_id" >{{ cate.name_Display }}</option>
-                                            </select>
+                                            <label class="form-control-label" for="validationCustomUsername">Ngày Tin Tức</label>
+                                            <b-form-datepicker
+                                                id="datepicker-buttons"
+                                                today-button:true
+                                                reset-button
+                                                close-button
+                                                locale="en"
+                                            ></b-form-datepicker>
                                         </div>
                                 </div>
                                 <div class="col-lg-3 ">
@@ -65,8 +65,8 @@
     </div>
 </template>
 <script>
+ import { mapState } from 'vuex';
  import Statistical from '../Tables/Statistical';
- import axios from 'axios';
   export default {
     name: 'statistical',
     components: {
@@ -74,70 +74,28 @@
     },
     data() {
       return {
-        selected: null,
-        listCategorydad:[],
-        category:[],
-        categorybyid:[],
         checked: true,
-        valuechecked:''
       }
     },
+    beforeCreate() {
+         this.$store.dispatch('new/fetchOne', this.$route.params.id);
+    },
+    computed: {
+            ...mapState('new', {
+                new: 'new'
+            }),
+        },
     created: function()
     {
-        this.listcategorymain();
-        this.valuebyid()
+        this.$store.dispatch('new/fetchdad');
     },
-    methods: {
-            isChecked() {
-                if(this.checked==true){  this.valuechecked == 1}
-                else {this.valuechecked == 0}
-            },
-            async listcategorymain()
-            {
-                try {
-                            const response = await axios.get('/api/category/categorydad');
-                            this.listCategorydad = response.data;
-                } catch (error) 
-                {
-                            this.error = error.response.data;
-                } 
-            },
-            async valuebyid()
-            {
-                try {
-                            const response = await axios.get('/api/category/categorydad');
-                            this.categorybyid = response.data;
-                } catch (error) 
-                {
-                            this.error = error.response.data;
-                } 
-            },
-            // async deletePost(id)
-            // {              
-            //     let uri = `http://127.0.0.1:8000/api/category/destroy/${id}`;
-            //     this.axios.delete(uri).then(response => {
-            //     this.category.splice(this.category.indexOf(id), 1);
-            //     });
-            // },
-            async createCategory() {
-                try {
-                    const response = await axios.post('http://127.0.0.1:8000/api/category/store', {
-                      Name: this.category.Name,
-                      name_Display: this.category.name_Display,
-                      parent_id: this.category.parent_id,
-                      isDisplay: this.category.isDisplay,
-                      category_status: this.category.category_status,
-                      order_number: this.category.order_number,
-                      slug_url: this.category.slug_url,
-                    })
-                    console.log(response.data)
-                } catch (error) {
-                    console.log(error)
-                }
-            }
+    methods: { 
+        async edit(){
+            this.$store.dispatch('new/edit', this.new);
+            this.$router.push({name: 'List New'});
+        },
     }
   }
-
 </script>
 <style lang="scss" scoped>
 .form1

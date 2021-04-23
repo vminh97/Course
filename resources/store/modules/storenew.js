@@ -15,7 +15,7 @@ const storenewtoday = {
             state. newtodays =  newtodays;
         },
         FETCH_ONE(state,newtoday) {
-            state.newtodays = newtoday;
+            state.newtoday = newtoday;
         },
     },
     actions: {
@@ -25,19 +25,19 @@ const storenewtoday = {
                 .then(response => commit('FETCH', response.data))
                 .catch();
         },
-        fetchOne({ commit },id) {
-            axios.get(`${RESOURCE_NEW}/show/${id}`)
+        fetchOne({ commit },id_new) {
+            axios.get(`${RESOURCE_NEW}/show/${id_new}`)
                .then(response => {
                    return commit('FETCH_ONE', response.data[0])})
                .catch();
        },
-        delete({}, id) {
-            axios.delete(`${RESOURCE_NEW}/destroy/${id}`)
+        delete({}, id_new) {
+            axios.delete(`${RESOURCE_NEW}/destroy/${id_new}`)
                 .then(() => this.dispatch('new/fetch'))
                 .catch();
         },
         edit({}, newtoday) {
-            axios.put(`${RESOURCE_NEW}/update/${newtoday.id}`, {
+            axios.put(`${RESOURCE_NEW}/update/${newtoday.id_new}`, {
                title_news: newtoday.title_news,
                description_news: newtoday.description_news,
                content_news:newtoday.content_news,
@@ -62,7 +62,7 @@ const storenewtoday = {
                 news_image: newtoday.news_image,
                 category_id: newtoday.category_id,
             })
-                .then();
+            .then();
         }
     }
 };

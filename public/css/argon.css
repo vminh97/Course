@@ -24478,6 +24478,10 @@ span.b-rating-star {
   text-align: center;
 }
 
+svg.bi-calendar-fill.b-icon.bi {
+  display: none;
+}
+
 @media all and (max-width: 576px) {
   p.title-keyword {
     line-height: 1.2;

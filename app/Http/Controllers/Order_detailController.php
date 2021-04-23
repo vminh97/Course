@@ -15,9 +15,11 @@ class Order_detailController extends Controller
     public function index()
     {
         try{
-            $od = DB::table('order_detail')->join('products', 'order_detail.product_id', '=', 'products.id')
-            ->join('orders','order_detail.product_id','=','orders.id')
-            ->join('customers','orders.customer_id','=','customers.id')->get();
+            $od = DB::table('order_detail')
+            ->join('orders','order_detail.order_id','=','orders.id')
+            ->join('customers','orders.customer_id','=','customers.id')
+            ->join('products', 'order_detail.product_id', '=', 'products.id')
+            ->get();
             return response()->json($od);   
         }
         catch (\Exception $e) {

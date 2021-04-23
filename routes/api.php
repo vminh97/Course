@@ -94,13 +94,15 @@ Route::group(['prefix' => 'new'], function () {
 
     Route::get('/index', 'NewController@index');
 
+    Route::get('/show/{id_new}', 'NewController@show');
+
     Route::post('/store','NewController@store');
 
-    Route::get('/edit/{id}','NewController@edit');
+    Route::get('/edit/{id_new}','NewController@edit');
 
-    Route::put('/update/{id}','NewController@update');
+    Route::put('/update/{id_new}','NewController@update');
     
-    Route::delete('/destroy/{id}','NewController@destroy');
+    Route::delete('/destroy/{id_new}','NewController@destroy');
 
     Route::get('/export', 'NewController@export')->name('export');
 });
@@ -119,6 +121,8 @@ Route::group(['prefix' => 'certificate'], function () {
 Route::group(['prefix' => 'order'], function () {
 
     Route::get('/index', 'OrderController@index');
+  
+    Route::get('/show/{id}', 'OrderController@show');
 
     Route::post('/store','OrderController@store');
 
@@ -127,6 +131,20 @@ Route::group(['prefix' => 'order'], function () {
     Route::delete('/destroy/{id}','OrderController@destroy');
 
     Route::get('/export', 'OrderController@export')->name('export');
+});
+Route::group(['prefix' => 'orderdetail'], function () {
+
+    Route::get('/index', 'Order_detailController@index');
+  
+    Route::get('/show/{id}', 'Order_detailController@show');
+
+    Route::post('/store','Order_detailController@store');
+
+    Route::post('/edit/{id}','Order_detailController@edit');
+    
+    Route::delete('/destroy/{id}','Order_detailController@destroy');
+
+    Route::get('/export', 'Order_detailController@export')->name('export');
 });
 Route::group(['prefix' => 'customer'], function () {
 
