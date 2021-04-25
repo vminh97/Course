@@ -68,7 +68,7 @@
                                         <label class="form-control-label" style="text-align:center" >Ngày Phát Hành</label>
                                         <b-row>
                                             <b-col lg="6">
-                                                  <b-form-timepicker v-model="value" locale="en"></b-form-timepicker>
+                                                  <b-form-timepicker v-model="newtoday.deadline_date" locale="en"></b-form-timepicker>
                                             </b-col>
                                             <b-col lg="6">                                     
                                                     <b-form-datepicker
@@ -99,7 +99,7 @@
                             <div class="form-row">
                                 <div class="col-lg-12">
                                     <label class="form-control-label" for="validationCustom01" >Nội Dung</label>
-                                    <ckeditor v-model="editorData" :config="editorConfig" :editor-url="editorUrl"    value:='newtoday.title_news' ></ckeditor>
+                                    <ckeditor :config="editorConfig" :editor-url="editorUrl"  v-model='newtoday.title_news'    ></ckeditor>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -127,7 +127,6 @@
         value:'',
         text:'',
         editorUrl: "https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js",
-        editorData: '',
         editorConfig: 
         {
             toolbarGroups : [

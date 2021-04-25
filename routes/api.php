@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Authentication Routes
-Auth::routes();
+// Auth::routes();
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -30,8 +30,6 @@ Route::group(['prefix' => 'category'], function () {
 
     Route::post('/store','CategoryController@store');
 
-    Route::get('/edit/{id}','CategoryController@edit');
-
     Route::put('/update/{id}','CategoryController@update');
 
     Route::delete('/destroy/{id}','CategoryController@destroy');
@@ -46,7 +44,6 @@ Route::group(['prefix' => 'course'], function () {
 
     Route::post('/store','CourseController@store');
 
-    Route::post('/edit/{id}','CourseController@edit');
     
     Route::delete('/destroy/{id}','CourseController@destroy');
 
@@ -57,9 +54,7 @@ Route::group(['prefix' => 'hastang'], function () {
     Route::get('/index', 'HastangController@index');
 
     Route::post('/store','HastangController@store');
-
-    Route::post('/edit/{id}','HastangController@edit');
-    
+ 
     Route::delete('/destroy/{id}','HastangController@destroy');
 
     Route::get('/export', 'HastangController@export')->name('export');
@@ -70,7 +65,6 @@ Route::group(['prefix' => 'comment'], function () {
 
     Route::post('/store','CommentController@store');
 
-    Route::post('/edit/{id}','CommentController@edit');
     
     Route::delete('/destroy/{id}','CommentController@destroy');
 
@@ -84,7 +78,6 @@ Route::group(['prefix' => 'teacher'], function () {
 
     Route::post('/store','TeacherController@store');
 
-    Route::post('/edit/{id}','TeacherController@edit');
     
     Route::delete('/destroy/{id}','TeacherController@destroy');
 
@@ -94,15 +87,13 @@ Route::group(['prefix' => 'new'], function () {
 
     Route::get('/index', 'NewController@index');
 
-    Route::get('/show/{id_new}', 'NewController@show');
+    Route::get('/show/{id}', 'NewController@show');
 
     Route::post('/store','NewController@store');
 
-    Route::get('/edit/{id_new}','NewController@edit');
-
-    Route::put('/update/{id_new}','NewController@update');
+    Route::put('/update/{id}','NewController@update');
     
-    Route::delete('/destroy/{id_new}','NewController@destroy');
+    Route::delete('/destroy/{id}','NewController@destroy');
 
     Route::get('/export', 'NewController@export')->name('export');
 });
@@ -111,8 +102,6 @@ Route::group(['prefix' => 'certificate'], function () {
     Route::get('/index', 'CertificateController@index');
 
     Route::post('/store','CertificateController@store');
-
-    Route::post('/edit/{id}','CertificateController@edit');
     
     Route::delete('/destroy/{id}','CertificateController@destroy');
 
@@ -125,8 +114,6 @@ Route::group(['prefix' => 'order'], function () {
     Route::get('/show/{id}', 'OrderController@show');
 
     Route::post('/store','OrderController@store');
-
-    Route::post('/edit/{id}','OrderController@edit');
     
     Route::delete('/destroy/{id}','OrderController@destroy');
 
@@ -139,8 +126,6 @@ Route::group(['prefix' => 'orderdetail'], function () {
     Route::get('/show/{id}', 'Order_detailController@show');
 
     Route::post('/store','Order_detailController@store');
-
-    Route::post('/edit/{id}','Order_detailController@edit');
     
     Route::delete('/destroy/{id}','Order_detailController@destroy');
 
@@ -152,7 +137,6 @@ Route::group(['prefix' => 'customer'], function () {
 
     Route::post('/store','CustomerController@store');
 
-    Route::post('/edit/{id}','CustomerController@edit');
     
     Route::delete('/destroy/{id}','CustomerController@destroy');
 

@@ -22973,6 +22973,10 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+.badge-secondary {
+  color: black !important;
+}
+
 .error {
   color: red;
   font-size: 14px;

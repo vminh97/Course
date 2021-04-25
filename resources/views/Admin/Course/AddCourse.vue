@@ -14,7 +14,7 @@
                                 <b-row>
                                     <b-col lg="12">
                                         <label for="">Ảnh Đại Diện Sản Phẩm</label>
-                                        <img src="img/product/pr1.jpg" alt="">
+                                        <img class="anhsp" src="img/product/pr1.jpg" alt="">
                                     </b-col>
                                     <b-col lg="12">
                                         <b-form-file multiple
@@ -308,5 +308,8 @@ form
 .custom-file {
     margin-top: 15px;
     width: 86%;
+}
+img.anhsp {
+    width: inherit;
 }
 </style>

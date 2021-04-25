@@ -59,15 +59,14 @@ class NewController extends Controller
             ]);
         
             $news = News::find($id);
-            $news->title_news = $request->input('title_news');
-            $news->description_news = $request->input('description_news');
-            $news->content_news=$request->input('content_news');
-            $news->editer_by = $request->input('editer_by');
-            $news->user_id = $request->input('user_id');
-            $news->status=$request->input('status');
-            $news->news_Date = $request->input('news_Date');
-            $news->news_image=$request->input('news_image');
-            $news->category_id = $request->input('category_id');
+            $news->title_news = $request->title_news;
+            $news->description_news = $request->description_news;
+            $news->content_news=$request->content_news;
+            $news->user_id = $request->user_id;
+            $news->status=$request->status;
+            $news->news_Date = $request->news_Date;
+            $news->news_image=$request->news_image;
+            $news->category_id = $request->category_id;
             
             $news->save();
         
@@ -87,11 +86,11 @@ class NewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_new)
+    public function show($id)
     {
         try
         {
-            $items = News::select('*')->where('id_new',$id_new)->get();
+            $items = News::select('*')->where('id',$id)->get();
             return response()->json($items);   
         }
         catch (\Exception $e)
@@ -108,7 +107,14 @@ class NewController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $post = News::select('*')->where('id',$id)->get();
+            return response()->json($post);
+        }
+        catch (\Exception $e) {
+            //return error message
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -126,29 +132,24 @@ class NewController extends Controller
                 'description_news' => 'required',
                 'content_news' => 'required',
                 'user_id' => 'required',
-                'editer_by' => 'required',
                 'status' => 'required',
                 'news_Date' => 'required',
                 'news_image'=>'required',
                 'category_id'=>'required'
             ]);
-        
             $news = News::find($id);
-            $news->title_news = $request->input('title_news');
-            $news->description_news = $request->input('description_news');
-            $news->content_news=$request->input('content_news');
-            $news->user_id = $request->input('user_id');
-            $news->status = $request->input('status');
-            $news->deadline_date = $request->input('deadline_date');
-            $news->news_Date = $request->input('news_Date');
-            $news->news_image=$request->input('news_image');
-            $news->category_id = $request->input('category_id');
+            $news->title_news = $request->title_news;
+            $news->description_news = $request->description_news;
+            $news->content_news=$request->content_news;
+            $news->user_id = $request->user_id;
+            $news->status=$request->status;
+            $news->news_Date = $request->news_Date;
+            $news->news_image=$request->news_image;
+            $news->category_id = $request->category_id;
             
             $news->save();
         
-            return response([
-                'news' => $news
-            ], 200);
+            return response()->json(['message'=>"successful"]);
         }
         catch (\Exception $e) {
             //return error message

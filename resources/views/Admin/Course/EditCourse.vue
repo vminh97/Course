@@ -15,7 +15,7 @@
                                     <b-row>
                                         <b-col lg="12">
                                             <label for="">Ảnh Đại Diện Sản Phẩm</label>
-                                            <img src="img/product/pr1.jpg" alt="">
+                                            <img class="anhsp" src="img/product/pr1.jpg" alt="">
                                         </b-col>
                                         <b-col lg="12">
                                             <b-form-file multiple
@@ -108,15 +108,27 @@
                                             </b-col>
                                             <b-col lg="12">
                                                 <b-form-checkbox
+                                                id="rate"
+                                                v-model="course.isRate"
+                                                >Hiển Thị Đánh Gía</b-form-checkbox>
+                                            </b-col>
+                                            <b-col lg="12">
+                                                <b-form-checkbox
+                                                id="codeactive"
+                                                v-model="course.isactive"
+                                                >Mã Kích Hoạt Sản Phẩm</b-form-checkbox>
+                                            </b-col>
+                                            <b-col lg="12">
+                                                <b-form-checkbox
                                                 id="payonline"
                                                 v-model="course.isOnlinePayment"
                                                 >Thanh Toán Online</b-form-checkbox>
                                             </b-col>
-                                            <b-col lg="12">
+                                             <b-col lg="12">
                                                 <b-form-checkbox
-                                                id="rate"
-                                                v-model="course.isRate"
-                                                >Hiển Thị Đánh Gía</b-form-checkbox>
+                                                id="discountproduct"
+                                                v-model="course.isdiscount"
+                                                >Giảm Giá Sản Phẩm</b-form-checkbox>
                                             </b-col>
                                             <b-col lg="12">
                                                 <b-form-checkbox
@@ -124,36 +136,39 @@
                                                 v-model="course.isFreeShip"
                                                 >Miễn Phí Vận Chuyển</b-form-checkbox>
                                             </b-col>
-                                            <b-col lg="12">
-                                                <b-form-checkbox
-                                                id="discountproduct"
-                                                v-model="status1"
-                                                >Giảm Giá Sản Phẩm</b-form-checkbox>
-                                            </b-col>
-                                            <b-col lg="12">
-                                                <b-form-checkbox
-                                                id="codediscount"
-                                                v-model="status1"
-                                                > Mã Giảm Giá Sản Phẩm</b-form-checkbox>
-                                            </b-col>
-                                            <b-col lg="12">
-                                                <b-form-checkbox
-                                                id="codeactive"
-                                                v-model="status1"
-                                                >Mã Kích Hoạt Sản Phẩm</b-form-checkbox>
-                                            </b-col>
                                         </div>
                                     </b-row>     
                                 </b-col>
                                 <b-col lg="5">
                                     <b-row>
                                         <b-col lg="12">
-
-                                        </b-col>
-                                        <b-col lg="12">
                                             <b-row>
                                                 <div class="bee">
-                                                    <b-col lg="12">
+                                                    <b-row>
+                                                        <b-col lg="12">
+                                                            <b-form-select v-model="certificatelist" :options="options3"></b-form-select>
+                                                        </b-col>
+                                                    </b-row>
+                                                </div>
+                                            </b-row>
+                                        </b-col>
+                                        <b-col lg="12" v-if="course.isRate" >
+                                            <b-row>
+                                                <b-col lg="12" style="margin-top: 120px;">
+                                                        <input type="text" class="form-control"  v-model="course.material_name" id="positionrv"   required="">
+                                                </b-col>
+                                            </b-row>
+                                        </b-col>
+                                         <b-col lg="12" v-if="course.isactive" >
+                                            <b-row>
+                                                <b-col lg="12" style="margin-top:6px">
+                                                         <input type="text" class="form-control"  v-model="course.discount_code" id="codeactive"  required="" disabled>
+                                                </b-col>
+                                            </b-row>
+                                        </b-col>
+                                         <b-col lg="12" class="boxbox" v-if="course.isdiscount"  >
+                                            <b-row>
+                                                <b-col lg="12">
                                                         <b-row>
                                                             <b-col lg="6">
                                                                 <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Từ</label><b-form-datepicker v-model="timestartrefund" locale="en"></b-form-datepicker>
@@ -162,11 +177,18 @@
                                                                 <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Đến</label><b-form-datepicker v-model="timeendrefund" locale="en"></b-form-datepicker>
                                                             </b-col>
                                                         </b-row>
-                                                    </b-col>
-                                                    <b-col lg="12">
-                                                        <b-form-select v-model="certificatelist" :options="options3"></b-form-select>
-                                                    </b-col>
-                                                </div>
+                                                </b-col>
+                                                <b-col lg="12">
+                                                    <b-row>
+                                                        <b-col lg="5" offset-lg="2">
+                                                            <label class="form-control-label title-discount-count">Phần Trăm Giảm Gía</label>
+                                                        </b-col>
+                                                        <b-col lg="5">
+                                                            <input type="text" class="form-control"  v-model="course.count_discount" id="numberdiscount"   required="">
+                                                        </b-col>
+                                                    </b-row>
+                                                         
+                                                </b-col>
                                             </b-row>
                                         </b-col>
                                     </b-row>
@@ -177,15 +199,19 @@
                             <b-row> 
                                 <b-col lg="4">
                                     <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Từ Khóa</label>
-                                    <b-form-tags input-id="tags-basic"  v-model="value1"></b-form-tags>
+                                    <b-form-tags input-id="tags-basic" style="color:black"  v-model="search_keywords"></b-form-tags>
                                 </b-col>
                                 <b-col lg="4">
                                     <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Hastang</label>
-                                    <b-form-tags input-id="tags-basic"  v-model="value1"></b-form-tags>
+                                    <b-form-tags input-id="tags-basic"  v-model="course.hastang_name"></b-form-tags>
                                 </b-col>
                                 <b-col lg="4">
                                     <label class="form-control-label" for="validationCustom01" style="margin-top: 5%;">Sản Phẩm Tương Tự</label>
-                                    <input type="text" class="form-control" id="nameproduct"  placeholder="Name Product" required="">
+                                    <b-form-textarea
+                                        id="material"
+                                        v-model="course.material_name"
+                                        rows="2"
+                                    ></b-form-textarea>
                                 </b-col>
                             </b-row>
                         </b-col>
@@ -209,7 +235,6 @@
             timeendrefund:'',
             timestartrefund:'',
             item2: '',
-            value1: ['apple', 'orange'],
             status1:'true',
             options2: [
             { value: '1', text: 'Hà Nội' },
@@ -265,9 +290,27 @@
 
 </script>
 <style lang="scss" scoped>
-.text-truncate {
-    color: black!important;
+input#codeactive {
+    width: 45%!important;
 }
+input#numberdiscount{
+    margin-left: -52px;
+}
+.title-discount-count{
+        margin-top: 7px;
+}
+.boxbox
+{
+    margin-top: 5px;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    padding-bottom: 5px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.badge-secondary {
+    color: black !important;
+}
+
 .badge {
     background: darkgray!important;
 }
@@ -302,5 +345,8 @@ form
 .custom-file {
     margin-top: 15px;
     width: 86%;
+}
+img.anhsp {
+    width: inherit;
 }
 </style>

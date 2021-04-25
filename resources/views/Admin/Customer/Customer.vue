@@ -137,12 +137,12 @@
     },
     methods: {
         async delete(id) {
-	            let result = confirm("Are you sure you want to delete this item?");
-	            if (!result) {
-                    return;
-                }
-                this.$store.dispatch('customer/delete', id);
+            let result = confirm("Are you sure you want to delete this item?");
+            if (!result) {
+                return;
             }
+            this.$store.dispatch('customer/delete', id);
+        }
     }  
 }
 </script>
