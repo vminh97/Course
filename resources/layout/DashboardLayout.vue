@@ -20,9 +20,6 @@
               :link="{  name: 'List Course', path: '/admin/course/list-course',}"           
             />
             <sidebar-item
-              :link="{  name: 'Edit Course', path: '/admin/course/edit-course', }"
-            />
-            <sidebar-item
               :link="{  name: 'Favorite Courses', path: '/admin/course/favorite-course',}"           
             />
             <sidebar-item

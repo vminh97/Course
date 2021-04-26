@@ -27,9 +27,10 @@ import VuePassword from 'vue-password';
 import CKEditor from 'ckeditor4-vue';
 import Vuelidate from 'vuelidate'
 import VueRouter from 'vue-router'
+import VueCarousel from 'vue-carousel';
 Vue.use(Vuelidate)
 Vue.config.productionTip = false
-
+Vue.use(VueCarousel);
 Vue.use(VuePassword)
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
@@ -38,6 +39,7 @@ Vue.use(IconsPlugin)
 Vue.use( CKEditor )
 Vue.use(Vuelidate)
 Vue.use(ArgonDashboard)
+
 
 import store from './store'
 import Axios from 'axios'

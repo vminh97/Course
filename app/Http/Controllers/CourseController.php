@@ -100,42 +100,53 @@ class CourseController extends Controller
             ]);
         
             $course =Course::find($id);
-            $course->slug_url = $request->input('slug_url');
-            $course->name_product = $request->input('name_product');
-            $course->teacher_id=$request->input('teacher_id');
-            $course->introduction_product = $request->input('introduction_product');
-            $course->content_product = $request->input('content_product');
-            $course->title_procduct=$request->input('title_procduct');
-            $course->certificate_id = $request->input('certificate_id');
-            $course->category_id = $request->input('category_id');
-            $course->name_brand = $request->input('name_brand');
-            $course->price=$request->input('price');
-            $course->price_no_tax = $request->input('price_no_tax');
-            $course->price_offsale = $request->input('price_offsale');
-            $course->price_offsale_no_tax=$request->input('price_offsale_no_tax');
-            $course->product_image = $request->input('product_image');
-            $course->product_image_text = $request->input('product_image_text');
-            $course->video = $request->input('video');
-            $course->material_name=$request->input('material_name');
-            $course->search_keywords = $request->input('search_keywords');
-            $course->list_image = $request->input('list_image');
-            if($request->isPublic==='true') {$request_display=1;}
+            $course->slug_url = $request->slug_url;
+            $course->name_product = $request->name_product;
+            $course->teacher_id=$request->teacher_id;
+            $course->introduction_product = $request->introduction_product;
+            $course->content_product = $request->content_product;
+            $course->title_procduct=$request->title_procduct;
+            $course->certificate_id = $request->certificate_id;
+            $course->category_id = $request->category_id;
+            $course->name_brand = $request->name_brand;
+            $course->price=$request->price;
+            $course->price_no_tax = $request->price_no_tax;
+            $course->price_offsale = $request->price_offsale;
+            $course->price_offsale_no_tax=$request->price_offsale_no_tax;
+            $course->product_image = $request->product_image;
+            $course->product_image_text = $request->product_image_text;
+            $course->video = $request->video;
+            $course->material_name=$request->material_name;
+            $course->hashtag_name=$request->hashtag_name;
+            $course->search_keywords = $request->search_keywords;
+            $course->list_image = $request->list_image;
+            if($request->isPublic==='true') {$request_public=1;}
             else{$request_display=0; }            
-            $category->isPublic = $request_display;
-            $course->isRefund = $request->input('isRefund');
-            $course->isCertification = $request->input('isCertification');
-            $course->isOnlinePayment=$request->input('isOnlinePayment');
-            $course->isRate = $request->input('isRate');
-            $course->isFreeShip = $request->input('isFreeShip');
-            $course->timeRefund=$request->input('timeRefund');
-            $course->count_video= $request->input('count_video');
-            $course->sum_time_video = $request->input('sum_time_video');
-            $course->date_start = $request->input('date_start');
-            $course->date_end=$request->input('date_end');
-            $course->count_discount = $request->input('count_discount');
-            $course->activationcode = $request->input('activationcode');
-            $course->date_promotion_start=$request->input('date_promotion_start');
-            $course->date_promotion_end = $request->input('date_promotion_end');
+            $category->isPublic = $request_public;
+            if($request->isRefund==='true') {$request_refund=1;}
+            else{$request_refund=0; }
+            if($request->isCertification==='true') {$request_certification=1;}
+            else{$request_certification=0; }
+            if($request->isOnlinePayment==='true') {$request_onlinePayment=1;}
+            else{$request_onlinePayment=0; }
+            if($request->isdiscount==='true') {$request_discount=1;}
+            else{$request_discount=0; }
+            if($request->isactive==='true') {$request_active=1;}
+            else{$request_active=0; }  
+            if($request->isRate==='true') {$request_rate=1;}
+            else{$request_rate=0; }
+            if($request->isFreeShip==='true') {$request_freeShip=1;}
+            else{$request_freeShip=0; }                     
+            $course->timeRefund=$request->timeRefund;
+            $course->count_video= $request->count_video;
+            $course->sum_time_video = $request->sum_time_video;
+            $course->date_start = $request->date_start;
+            $course->date_end=$request->date_end;
+            $course->discount_code=$request->discount_code;
+            $course->status=$course->status;
+            $course->count_discount = $request->count_discount;
+            $course->date_promotion_start=$request->date_promotion_start;
+            $course->date_promotion_end = $request->date_promotion_end;
             
             $course->save();
         
@@ -216,40 +227,53 @@ class CourseController extends Controller
             ]);
         
             $course =Course::find($id);
-            $course->slug_url = $request->input('slug_url');
-            $course->name_product = $request->input('name_product');
-            $course->teacher_id=$request->input('teacher_id');
-            $course->introduction_product = $request->input('introduction_product');
-            $course->content_product = $request->input('content_product');
-            $course->title_procduct=$request->input('title_procduct');
-            $course->certificate_id = $request->input('certificate_id');
-            $course->category_id = $request->input('category_id');
-            $course->name_brand = $request->input('name_brand');
-            $course->price=$request->input('price');
-            $course->price_no_tax = $request->input('price_no_tax');
-            $course->price_offsale = $request->input('price_offsale');
-            $course->price_offsale_no_tax=$request->input('price_offsale_no_tax');
-            $course->product_image = $request->input('product_image');
-            $course->product_image_text = $request->input('product_image_text');
-            $course->video = $request->input('video');
-            $course->material_name=$request->input('material_name');
-            $course->search_keywords = $request->input('search_keywords');
-            $course->list_image = $request->input('list_image');
-            $course->isPublic=$request->input('isPublic');
-            $course->isRefund = $request->input('isRefund');
-            $course->isCertification = $request->input('isCertification');
-            $course->isOnlinePayment=$request->input('isOnlinePayment');
-            $course->isRate = $request->input('isRate');
-            $course->isFreeShip = $request->input('isFreeShip');
-            $course->timeRefund=$request->input('timeRefund');
-            $course->count_video= $request->input('count_video');
-            $course->sum_time_video = $request->input('sum_time_video');
-            $course->date_start = $request->input('date_start');
-            $course->date_end=$request->input('date_end');
-            $course->count_discount = $request->input('count_discount');
-            $course->activationcode = $request->input('activationcode');
-            $course->date_promotion_start=$request->input('date_promotion_start');
-            $course->date_promotion_end = $request->input('date_promotion_end');
+            $course->slug_url = $request->slug_url;
+            $course->name_product = $request->name_product;
+            $course->teacher_id=$request->teacher_id;
+            $course->introduction_product = $request->introduction_product;
+            $course->content_product = $request->content_product;
+            $course->title_procduct=$request->title_procduct;
+            $course->certificate_id = $request->certificate_id;
+            $course->category_id = $request->category_id;
+            $course->name_brand = $request->name_brand;
+            $course->price=$request->price;
+            $course->price_no_tax = $request->price_no_tax;
+            $course->price_offsale = $request->price_offsale;
+            $course->price_offsale_no_tax=$request->price_offsale_no_tax;
+            $course->product_image = $request->product_image;
+            $course->product_image_text = $request->product_image_text;
+            $course->video = $request->video;
+            $course->material_name=$request->material_name;
+            $course->hashtag_name=$request->hashtag_name;
+            $course->search_keywords = $request->search_keywords;
+            $course->list_image = $request->list_image;
+            if($request->isPublic==='true') {$request_public=1;}
+            else{$request_display=0; }            
+            $category->isPublic = $request_public;
+            if($request->isRefund==='true') {$request_refund=1;}
+            else{$request_refund=0; }
+            if($request->isCertification==='true') {$request_certification=1;}
+            else{$request_certification=0; }
+            if($request->isOnlinePayment==='true') {$request_onlinePayment=1;}
+            else{$request_onlinePayment=0; }
+            if($request->isdiscount==='true') {$request_discount=1;}
+            else{$request_discount=0; }
+            if($request->isactive==='true') {$request_active=1;}
+            else{$request_active=0; }  
+            if($request->isRate==='true') {$request_rate=1;}
+            else{$request_rate=0; }
+            if($request->isFreeShip==='true') {$request_freeShip=1;}
+            else{$request_freeShip=0; }                     
+            $course->timeRefund=$request->timeRefund;
+            $course->count_video= $request->count_video;
+            $course->sum_time_video = $request->sum_time_video;
+            $course->date_start = $request->date_start;
+            $course->date_end=$request->date_end;
+            $course->discount_code=$request->discount_code;
+            $course->status=$course->status;
+            $course->count_discount = $request->count_discount;
+            $course->date_promotion_start=$request->date_promotion_start;
+            $course->date_promotion_end = $request->date_promotion_end;
             
             $course->save();
         
@@ -313,12 +337,12 @@ class CourseController extends Controller
         try
         {
 
-                $datemonth=date('m');
-                $dateyear=date('y');
-                $year='20'.$dateyear;
-                $sum=Course::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
-                $count = count($sum);
-                return response()->json($count);   
+            $datemonth=date('m');
+            $dateyear=date('y');
+            $year='20'.$dateyear;
+            $sum=Course::select('*')->whereYear('created_at', $year)->whereMonth('created_at', $datemonth)->get();
+            $count = count($sum);
+            return response()->json($count);   
         }
         catch (\Exception $e)
         {
