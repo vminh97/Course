@@ -632,7 +632,7 @@ components: {
 // Medium devices (tablets, 768px and up)
 @media all and (max-width: 768px) and (min-width:577px ) {
     
- }
+}
 
 // Large devices (desktops, 992px and up)
 @media all and (max-width:992px ) and (min-width:769px ) { 

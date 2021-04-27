@@ -35,6 +35,10 @@ Route::group(['prefix' => 'category'], function () {
     Route::delete('/destroy/{id}','CategoryController@destroy');
 
     Route::get('/export', 'CategoryController@export')->name('export');
+
+    Route::get('/getmenu', 'CategoryController@getmenu');
+   
+    Route::get('/getmenudetail/{id}', 'CategoryController@getmenudetail');
 });
 Route::group(['prefix' => 'course'], function () {
 

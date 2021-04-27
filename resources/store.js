@@ -86,14 +86,15 @@
 //   }
 // })
 
-import storecategory from "./store/modules/storecategory";
-import storecourse from "./store/modules/storecourse";
-import storecustomer from "./store/modules/storecustomer";
-import storehastang from "./store/modules/storehastang";
-import storenewtoday from "./store/modules/storenew";
-import storeteacher from "./store/modules/storeteacher";
-import storeorder from "./store/modules/storeorder";
-import storeorderdetail from "./store/modules/storeorderdetail";
+import storecategory from "./store/modules/admin/storecategory";
+import storecourse from "./store/modules/admin/storecourse";
+import storecustomer from "./store/modules/admin/storecustomer";
+import storehastang from "./store/modules/admin/storehastang";
+import storenewtoday from "./store/modules/admin/storenew";
+import storeteacher from "./store/modules/admin/storeteacher";
+import storeorder from "./store/modules/admin/storeorder";
+import storeorderdetail from "./store/modules/admin/storeorderdetail";
+import clientcategory from "./store/modules/client/clientcategory";
 import Vuex from 'vuex';
 
 const store = new Vuex.Store({
@@ -105,7 +106,8 @@ const store = new Vuex.Store({
         newtoday: storenewtoday,
         teacher: storeteacher,
         order:storeorder,
-        orderdetail:storeorderdetail
+        orderdetail:storeorderdetail,
+        category1:clientcategory
     }
 });
 

@@ -69,7 +69,7 @@ let router = new Router({
       component: Main
     },
     {
-      path: '/category',
+      path: '/category/:id',
       name: 'indexcategory',
       component: Category
     },

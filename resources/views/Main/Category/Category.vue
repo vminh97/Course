@@ -9,23 +9,22 @@
                        <b-row>
                             <b-col md="6" lg="6" cols="12">
                                <b-row>
-                                    <b-col md="4" lg="4" cols="6" offset="2">
+                                    <b-col md="4" lg="4" cols="6" >
                                         <div class="icon-filter">
                                            <span><i class="fa fa-filter"></i></span>Bộ lọc:
                                         </div>
                                     </b-col>
                                     <b-col md="4" lg="4" cols="6">
-                                        <b-dropdown id="dropdown-1" text="Dưới 3 tiếng" class="m-md-2">
-                                            <b-dropdown-item>First Action</b-dropdown-item>
-                                            <b-dropdown-item>Second Action</b-dropdown-item>
-                                            <b-dropdown-item>Third Action</b-dropdown-item>
+                                        <b-dropdown id="dropdown-1" text="Theo Thời Lượng" class="m-md-2">
+                                            <b-dropdown-item>Dưới 3 Tiếng</b-dropdown-item>
+                                            <b-dropdown-item>Từ 3- 24 Tiếng</b-dropdown-item>
                                         </b-dropdown>
                                     </b-col>
                                     <b-col md="4" lg="4" cols="6">
                                         <b-dropdown id="dropdown-1" text="Theo trình độ" class="m-md-2">
-                                            <b-dropdown-item>First Action</b-dropdown-item>
-                                            <b-dropdown-item>Second Action</b-dropdown-item>
-                                            <b-dropdown-item>Third Action</b-dropdown-item>
+                                            <b-dropdown-item>Cơ Bản</b-dropdown-item>
+                                            <b-dropdown-item>Nâng Cao</b-dropdown-item>
+                                            <b-dropdown-item>Chuyên Sâu</b-dropdown-item>
                                         </b-dropdown>
                                     </b-col>
                                </b-row>
@@ -33,7 +32,7 @@
                             <b-col md="5" offset-md="1" lg="5" cols="12">
                                 <b-col md="12" lg="12" cols="12">
                                    <b-row>
-                                        <b-col md="3" lg="3" cols="5" offset="4">
+                                        <b-col md="3" lg="5" cols="5">
                                             <b-form-checkbox
                                                 id="checkbox-1"
                                                 v-model="status"
@@ -44,16 +43,11 @@
                                                 Miễn Phí
                                             </b-form-checkbox>
                                         </b-col>
-                                        <b-col md="5" lg="5" cols="6">
-                                            <div class="icon-filter-1">
-                                              <span><i class="fa fa-list" ></i>Sắp xếp:</span>
-                                            </div>                                      
-                                        </b-col>
-                                        <b-col md="4" lg="4" class="cs1" cols="6">
+                                        <b-col md="4" lg="5" class="cs1" cols="6">
                                             <b-dropdown id="dropdown-1" text="Nổi bật" class="m-md-2">
-                                                <b-dropdown-item>First Action</b-dropdown-item>
-                                                <b-dropdown-item>Second Action</b-dropdown-item>
-                                                <b-dropdown-item>Third Action</b-dropdown-item>
+                                                <b-dropdown-item>Mới Nhất</b-dropdown-item>
+                                                <b-dropdown-item>Nổi Bật</b-dropdown-item>
+                                                <b-dropdown-item>Khuyến Mại</b-dropdown-item>
                                             </b-dropdown>
                                         </b-col>
                                    </b-row>
@@ -73,9 +67,11 @@
                                             <p class="ft-title">SALE - CSKH</p>
                                         </b-col>
                                         <b-col md="12" lg="12">
-                                            <p><a href="">Bán Hàng</a></p>
-                                            <p><a href="">Chăm Sóc Khách Hàng</a></p>
-                                            <p><a href="">Telesales</a></p>
+                                            <li  v-for="cate in categorydetail" :key="cate.id">
+                                                <!-- <router-link :to="{ name: 'indexcategory',params: {id:cate.id}}"> -->
+                                                   {{cate.name_Display}}
+                                                <!-- </router-link> -->
+                                            </li>
                                         </b-col>
                                         <b-col md="12" lg="12">
                                             <p class="filter-all-ca"><a href="" >Xem Các Danh Sách Khác</a></p>
@@ -155,15 +151,32 @@
 <script>
     import Header from "@/Views/Main/Header.vue";
     export default {  
-    components: {
-        'Header':Header,
-    },
+        components: {
+            'Header':Header,
+        },
+        data(){
+        return{           
+              status:'',
+         }
+        },
+        beforeCreate() {
+         this.$store.dispatch('category/getmenudetail', this.$route.params.id);
+        },
+        computed: {
+            categorydetail () {
+                return this.$store.state.category.categorydetail;     
+            }
+        },  
     }
-  
-
 </script>
    
 <style scoped lang="scss">
+.icon-filter{
+    margin-top: 34px;
+}
+.custom-control.custom-checkbox {
+    margin-top: 17px;
+}
 @media all and(max-width: 374px) and (min-width:320px) { 
 
 }

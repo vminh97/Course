@@ -9,7 +9,8 @@
                                 </span>
                             </b-col>
                             <b-col md="4" lg="4">
-                                <span class="tt-hl-ht" v-on:mouseover="mouseOver">
+                                <span class="tt-hl-ht" > 
+                                                                    <!-- v-on:mouseover="mouseOver" -->
                                     <i class="far fa-thumbs-up as"  ></i><span class="i">Bán Chạy Nhất</span>
                                 </span>
                             </b-col>

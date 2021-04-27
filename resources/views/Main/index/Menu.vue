@@ -4,25 +4,13 @@
             <b-row>
                 <b-col md="5" lg="5" cols="12">
                     <span class="menu_m_left" >
-                            <Slide>
-                                <ul>
-                                    <li><i class="fa fa-border-all"></i><a href="#" id="home">Tất cả Khóa Học</a></li>
-                                    <li><i class="fa fa-fist-raised "></i><a href="#" id="home">Khóa học combo</a>
-                                    </li>
-                                    <li><i class="fa fa-universal-access"></i><a href="#" id="home">Sale-Cskh</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-briefcase"></i><a href="#" id="home"><span>Kỹ năng công việc</span></a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-people-arrows"></i><a href="#" id="home">Kỹ năng khác</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-print"></i><a href="#" id="home">Kỹ năng quản trị</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-language"></i><a href="#" id="home">Ngoại ngữ</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-paragraph"></i><a href="#" id="home">Thiết kế đồ họa</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-digital-tachograph"></i><a href="#" id="home">Phần mềm</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-layer-group"></i><a href="#" id="home">Phát triển cá nhân</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-funnel-dollar"></i><a href="#" id="home">Marketing </a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-project-diagram"></i><a href="#" id="home">Kinh doanh</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-tv"></i><a href="#" id="home">IT và lập trình</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-people-carry"></i><a href="#" id="home">Nhân sự</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-money-check-alt"></i><a href="#" id="home">Tài chính</a><i class="fa fa-angle-right c"></i></li>
-                                    <li><i class="fa fa-print"></i><a href="#" id="home">Kế toán</a><i class="fa fa-angle-right c"></i></li>
+                            <Slide >
+                                <ul >
+                                        <li  v-for="cate in categorycline" :key="cate.id" :value="cate.id">
+                                                                               <router-link :to="{ name: 'indexcategory',params: {id:cate.id}}">
+                                                                                   <i v-bind:class="cate.slug_url"></i>{{cate.name_Display}}
+                                                                                </router-link>
+                                        </li>
                                </ul> 
                             </Slide>
                     </span>
@@ -145,14 +133,22 @@ data(){
    }
 },
 computed: {
-    atEndOfList() {
-      return this.currentOffset <= (this.paginationFactor * -1) * (this.items.length - this.windowSize);
+    // atEndOfList() {
+    //   return this.currentOffset <= (this.paginationFactor * -1) * (this.items.length - this.windowSize);
       
-    },
-    atHeadOfList() {
-      return this.currentOffset === 0;
-    },
-},   
+    // },
+    // atHeadOfList() {
+    //   return this.currentOffset === 0;
+    // },
+    categorycline () {
+        return this.$store.state.category.categorycline;     
+    }
+},  
+    created: function()
+    {
+        
+        this.$store.dispatch('category/getmenu');
+    }, 
 methods: {
     mouseOver: function(){
             this.activehl = !this.activehl;   
@@ -164,6 +160,7 @@ methods: {
         this.currentOffset += this.paginationFactor;
       }
     },
+
   },
 }
 </script>

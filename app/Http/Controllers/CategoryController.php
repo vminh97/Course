@@ -245,5 +245,32 @@ class CategoryController extends Controller
             return $e->getMessage();
         }   
     }
+    public function getmenu()
+    {
+        try
+        {
+            $items = Category::select('*')->where('order_number','1')->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
+    public function getmenudetail($id)
+    {
+        try
+        {
+            $items = Category::select('*')
+            ->Where('parent_id', $id)
+            ->where('order_number', '>', 1)
+            ->get();
+            return response()->json($items);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }
+    }
 
 }
