@@ -367,4 +367,37 @@ class CourseController extends Controller
             return $e->getMessage();
         }   
     }
+    public function CourseByCategory($id)
+    {
+        try
+        {
+                $course = DB::table('products')
+                ->join('category','products.category_id','=','category.id')
+                ->join('teachers', 'products.teacher_id', '=', 'teachers.id')
+                ->join('certificates','products.certificate_id','=','certificates.id')
+                ->where('products.category_id',$id)
+                ->get(); 
+                return response()->json($course);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }   
+    }
+    public function CountCourse($id)
+    {
+        try
+        {
+                $course = DB::table('products')
+                ->select(DB::raw('count(*) as count, products.category_id'))
+                ->where('products.category_id',$id)
+                ->groupBy('products.category_id')
+                ->get();
+                return response()->json($course);   
+        }
+        catch (\Exception $e)
+        {
+            return $e->getMessage();
+        }  
+    }
 }

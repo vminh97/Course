@@ -48,10 +48,15 @@ Route::group(['prefix' => 'course'], function () {
 
     Route::post('/store','CourseController@store');
 
+    Route::put('/update/{id}','CategoryController@update');
     
     Route::delete('/destroy/{id}','CourseController@destroy');
 
     Route::get('/export', 'CourseController@export')->name('export');
+
+    Route::get('/getcoursebycategory/{id}', 'CourseController@CourseByCategory');
+
+    Route::get('/getcountcourse/{id}', 'CourseController@CountCourse');
 });
 Route::group(['prefix' => 'hastang'], function () {
 

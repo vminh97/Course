@@ -67,10 +67,9 @@
                                             <p class="ft-title">SALE - CSKH</p>
                                         </b-col>
                                         <b-col md="12" lg="12">
-                                            <li  v-for="cate in categorydetail" :key="cate.id">
-                                                <!-- <router-link :to="{ name: 'indexcategory',params: {id:cate.id}}"> -->
-                                                   {{cate.name_Display}}
-                                                <!-- </router-link> -->
+                                            <li>
+                                                <!-- <router-link :to="{ name: 'indexcategory',params: {id:categorydetail.id}}"> -->
+                                                   {{categorydetail.name_Display}}
                                             </li>
                                         </b-col>
                                         <b-col md="12" lg="12">
@@ -94,13 +93,15 @@
                                 <div class="list-course" >
                                     <b-row>
                                         <b-col md="12" lg="12">
-                                            <div class="name-cateogory">                                         
-                                                <p>16 Khóa học <span style="color:green">Bán Hàng</span> </p>
+                                            <div class="name-cateogory">  
+                                                <p>16 Khóa học <span style="color:green">Bán Hàng</span> </p>                                       
+                                                <!-- <p>{{countcourse.count}}Khóa học <span style="color:green">Bán Hàng</span> </p> -->
                                             </div>
                                         </b-col>
                                     </b-row>
                                     <b-row>
                                         <b-col md="4" lg="4" cols="12">
+                                        <!-- <b-col md="4" lg="4" cols="12"  v-for="co in courses" :key="co.id" > -->
                                             <div class="card-course">
                                                 <b-col md="12" lg="12" cols="5">
                                                     <img src="img/banner/image_url-1607485822.jpg" alt="">
@@ -128,7 +129,8 @@
                                                     </div>
                                                 </b-col>
                                                 <b-col md="12" lg="12" style="border-top: 1px solid #a8a8a8;">
-                                                    <p class="title-n">TeleSale Chuyên Môn Cho Lĩnh Vực Giáo Dục</p>
+                                                    <!-- <p class="title-n">{{co.content_product}}</p> -->
+                                                    <p class="title-n">Alo</p>
                                                     <p class="title-m"><i class="fas fa-user"></i>Trần Quang Minh</p>
                                                     <p class="title-m"><i class="fas fa-briefcase"></i>Giảng Viên</p>
                                                     <p class="title-money">500.000đ</p>
@@ -160,12 +162,14 @@
          }
         },
         beforeCreate() {
-         this.$store.dispatch('category/getmenudetail', this.$route.params.id);
+          this.$store.dispatch('category/getmenudetail', this.$route.params.id);
+          this.$store.dispatch('course/getcountcourse', this.$route.params.id);
+          this.$store.dispatch('course/getcoursebycategory', this.$route.params.id);
         },
         computed: {
-            categorydetail () {
-                return this.$store.state.category.categorydetail;     
-            }
+            categorydetail () {return this.$store.state.category.categorydetail;     },
+            getcountcourse (){return this.$store.state.course.countcourse;  },
+            getcoursebycategory(){return this.$store.state.course.courses;}
         },  
     }
 </script>

@@ -58,8 +58,9 @@ const storecategory = {
         },
         getmenudetail({ commit },id) {
             axios.get(`${RESOURCE_CATEGORY}/getmenudetail/${id}`)
-            .then(response => commit('FETCH_DETAIL', response.data[0]))
-                .catch();
+            .then(response => {
+                return commit('FETCH_DETAIL', response.data)})
+            .catch()
         },
         delete({}, id) {
             axios.delete(`${RESOURCE_CATEGORY}/destroy/${id}`)

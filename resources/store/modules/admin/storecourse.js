@@ -9,6 +9,7 @@ const storecourse = {
     state: {
         courses: [],
         course: {},
+        categorydetail:{}
     },
     mutations: {
         FETCH(state,  courses) {
@@ -17,6 +18,10 @@ const storecourse = {
         FETCH_ONE(state, course) {
             state.course = course;
         },
+        FETCH_DETAIL(state, countcourse)
+        {
+            state.countcourse=countcourse;
+        }
     },
     actions: {
 
@@ -31,6 +36,16 @@ const storecourse = {
                    return commit('FETCH_ONE', response.data[0])})
                .catch();
        },
+        getcoursebycategory({ commit },id) {
+            axios.get(`${RESOURCE_COURSE}/getcoursebycategory/${id}`)
+            .then(response => commit('FETCH', response.data))
+                .catch();
+        },
+        getcountcourse({ commit },id) {
+            axios.get(`${RESOURCE_COURSE}/getcountcourse/${id}`)
+            .then(response => commit('FETCH_DETAIL', response.data))
+                .catch();
+        },
         delete({}, id) {
             axios.delete(`${RESOURCE_COURSE}/destroy/${id}`)
                 .then(() => this.dispatch('course/fetch'))
