@@ -21,12 +21,12 @@
                                                    <b-col md="4" lg="4" offset="4" class="a">
                                                         <b-row>
                                                             <div class="name_teacher">
-                                                                <h5>Trần Văn Minh</h5>
+                                                                <h4>Trần Văn Minh</h4>
                                                             </div>
                                                         </b-row>
                                                         <b-row>
                                                             <div class="position_teacher">
-                                                                <h6>giảng viên đại học</h6>
+                                                                <h4>giảng viên đại học</h4>
                                                             </div>
                                                        </b-row>
                                                    </b-col>
@@ -79,7 +79,7 @@
                                             </b-row>                                            
                                        </div>
                                    </b-col>
-                                   <b-col md="4" lg="4" cols="12">
+                                    <b-col md="4" lg="4" cols="12">
                                        <div class="card-teacher">
                                            <div class="teacher-most-tt">
                                                <b-row>
@@ -91,12 +91,12 @@
                                                    <b-col md="4" lg="4" offset="4" class="a">
                                                         <b-row>
                                                             <div class="name_teacher">
-                                                                <h5>Trần Văn Minh</h5>
+                                                                <h4>Trần Văn Minh</h4>
                                                             </div>
                                                         </b-row>
                                                         <b-row>
                                                             <div class="position_teacher">
-                                                                <h6>giảng viên đại học</h6>
+                                                                <h4>giảng viên đại học</h4>
                                                             </div>
                                                        </b-row>
                                                    </b-col>
@@ -149,7 +149,7 @@
                                             </b-row>                                            
                                        </div>
                                    </b-col>
-                                   <b-col md="4" lg="4" cols="12">
+                                    <b-col md="4" lg="4" cols="12">
                                        <div class="card-teacher">
                                            <div class="teacher-most-tt">
                                                <b-row>
@@ -161,12 +161,12 @@
                                                    <b-col md="4" lg="4" offset="4" class="a">
                                                         <b-row>
                                                             <div class="name_teacher">
-                                                                <h5>Trần Văn Minh</h5>
+                                                                <h4>Trần Văn Minh</h4>
                                                             </div>
                                                         </b-row>
                                                         <b-row>
                                                             <div class="position_teacher">
-                                                                <h6>giảng viên đại học</h6>
+                                                                <h4>giảng viên đại học</h4>
                                                             </div>
                                                        </b-row>
                                                    </b-col>
@@ -219,7 +219,6 @@
                                             </b-row>                                            
                                        </div>
                                    </b-col>
-
                                </b-row>
                             </b-col>
                         </b-row>
@@ -232,8 +231,9 @@
       margin: 0;
       padding: 0;   
         p{
-          text-align: center;
+           text-align: center;
            font-size: 15px;
+           font-family: none;
         }
         .circle-ht {
             margin-left: 13px;
@@ -254,6 +254,7 @@
     p {
         text-align: center;
         font-size: 16px;
+        font-family: none;
      }
     }
     input.readmore{
@@ -272,6 +273,7 @@
     p {
         text-align: center;
         font-size: 16px;
+        font-family: none;
      }
     }
     input.readmore{
@@ -290,6 +292,7 @@
     p {
         text-align: center;
         font-size: 13px;
+        font-family: none;
      }
     }
     input.readmore{
