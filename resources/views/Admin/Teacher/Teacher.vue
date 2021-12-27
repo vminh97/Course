@@ -95,7 +95,7 @@
                                 <i class="fas fa-user-edit"></i>
                             </router-link>
                         </a>
-                        <a type="text" @click="delete(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
+                        <a type="text" @click="deleteteacher(row.id)" class="table-action table-action-delete" data-toggle="tooltip">
                                 <i class="fas fa-trash" ></i>   
                         </a>
                     </td>
@@ -136,12 +136,12 @@
         this.$store.dispatch('teacher/fetch');
     },
     methods: {
-        async delete(id) {
+        async deleteteacher($id) {
 	            let result = confirm("Are you sure you want to delete this item?");
 	            if (!result) {
                     return;
                 }
-                this.$store.dispatch('customer/delete', id);
+                this.$store.dispatch('teacher/delete', $id);
             }
     }  
 }

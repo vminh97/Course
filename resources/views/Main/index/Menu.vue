@@ -3,7 +3,7 @@
         <b-container>
             <b-row>
                 <b-col md="5" lg="5" cols="12">
-                    <span class="menu_m_left" >
+                    <!-- <span class="menu_m_left" >
                             <Slide >
                                 <ul >
                                         <li  v-for="cate in categorycline" :key="cate.id" :value="cate.id">
@@ -13,9 +13,9 @@
                                         </li>
                                </ul> 
                             </Slide>
-                    </span>
+                    </span> -->
                 </b-col>
-                <b-col md="7" lg="7" cols="12">
+                <b-col md="7" lg="7" cols="7" >
                     <span class="banner_m">
                         <div class="banner" >
                             <b-carousel
